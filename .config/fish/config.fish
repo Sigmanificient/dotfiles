@@ -1,6 +1,17 @@
 function fish_greeting
     if status is-interactive
-        # Commands to run in interactive sessions can go here
         neofetch
     end
+end
+
+function py
+    command python3
+end
+
+function victor
+    echo 'oula'
+end
+
+function bruh
+    command reboot
 end
