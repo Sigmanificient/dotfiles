@@ -3,15 +3,3 @@ function fish_greeting
         neofetch
     end
 end
-
-function py
-    command python3
-end
-
-function victor
-    echo 'oula'
-end
-
-function bruh
-    command reboot
-end
