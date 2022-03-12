@@ -1,9 +1,10 @@
 # GRUB boot loader configuration
+
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
-GRUB_DISTRIBUTOR="EndeavourOS"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 nowatchdog pci=nomsi pcie_aspm=off"
-GRUB_CMDLINE_LINUX="pcie_aspm=off"
+GRUB_DISTRIBUTOR="Arch"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"
+GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
@@ -43,7 +44,7 @@ GRUB_DISABLE_RECOVERY=true
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
 #GRUB_BACKGROUND="/path/to/wallpaper"
-GRUB_THEME=/boot/grub/themes/EndeavourOS/theme.txt
+#GRUB_THEME="/path/to/gfxtheme"
 
 # Uncomment to get a beep at GRUB start
 #GRUB_INIT_TUNE="480 440 1"
@@ -54,9 +55,9 @@ GRUB_THEME=/boot/grub/themes/EndeavourOS/theme.txt
 
 # Uncomment to disable submenus in boot menu
 #GRUB_DISABLE_SUBMENU=y
-GRUB_DISABLE_SUBMENU=y
 
-# To enable usage of os-prober, set GRUB_DISABLE_OS_PROBER to 'false'.
-# Note: enabling os-prober creates a potential security risk!
-# More info: https://www.gnu.org/software/grub/manual/grub/grub.html
-GRUB_DISABLE_OS_PROBER=true
+# Probing for other operating systems is disabled for security reasons. Read
+# documentation on GRUB_DISABLE_OS_PROBER, if still want to enable this
+# functionality install os-prober and uncomment to detect and include other
+# operating systems.
+#GRUB_DISABLE_OS_PROBER=false
