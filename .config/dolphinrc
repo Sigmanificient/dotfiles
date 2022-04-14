@@ -1,19 +1,27 @@
-MenuBar=Disabled
-
-[FoldersPanel]
-HiddenFilesShown=true
-
 [General]
 Version=201
-ViewPropsTimestamp=2022,3,12,19,45,36.667
+ViewPropsTimestamp=2022,4,14,7,40,6.428
+
+[InformationPanel]
+dateFormat=ShortFormat
+previewsShown=false
 
 [KPropertiesDialog]
-HDMI-0 DP-1 Height 1920x1080=644
-HDMI-0 DP-1 Width 1920x1080=464
+DP-1 HDMI-0 Height 1920x1080=644
+DP-1 HDMI-0 Width 1920x1080=465
 
 [MainWindow]
-HDMI-0 DP-1 Window-Maximized 1920x1080=true
-HDMI-0 DP-1 XPosition 1920x1080=0
-HDMI-0 DP-1 YPosition 1920x1080=61
+DP-1 HDMI-0 Height 1920x1080=652
+DP-1 HDMI-0 Width 1920x1080=761
+DP-1 HDMI-0 Window-Maximized 1920x1080=true
+DP-1 HDMI-0 XPosition 1920x1080=580
+DP-1 HDMI-0 YPosition 1920x1080=295
 MenuBar=Disabled
 ToolBarsMovable=Disabled
+
+[Notification Messages]
+ConfirmDelete=true
+
+[Open-with settings]
+CompletionMode=1
+History=sub
