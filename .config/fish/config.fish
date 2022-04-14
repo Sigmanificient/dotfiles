@@ -1,5 +1,9 @@
 function fish_greeting
-    if status is-interactive
-        neofetch
-    end
+  if test -d ~/.local/share/JetBrains/Toolbox/shortcut
+    fish_add_path ~/.local/share/JetBrains/Toolbox/shortcut
+  end
+
+  if status is-interactive
+    neofetch
+  end
 end
