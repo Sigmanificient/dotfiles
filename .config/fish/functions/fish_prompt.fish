@@ -1,90 +1,87 @@
 function fish_prompt
-    set -l __last_command_exit_status $status
+end # In case this file gets loaded non-interactively, e.g by conda
+status is-interactive || exit
 
-    if not set -q -g __fish_arrow_functions_defined
-        set -g __fish_arrow_functions_defined
-        function _git_branch_name
-            set -l branch (git symbolic-ref --quiet HEAD 2>/dev/null)
-            if set -q branch[1]
-                echo (string replace -r '^refs/heads/' '' $branch)
-            else
-                echo (git rev-parse --short HEAD 2>/dev/null)
-            end
-        end
+_tide_remove_unusable_items
+_tide_cache_variables
+source (functions --details _tide_pwd)
 
-        function _is_git_dirty
-            not command git diff-index --cached --quiet HEAD -- &>/dev/null
-            or not command git diff --no-ext-diff --quiet --exit-code &>/dev/null
-        end
+set -l prompt_var _tide_prompt_$fish_pid
+set -U $prompt_var # Set var here so if we erase $prompt_var, bg job won't set a uvar
 
-        function _is_git_repo
-            type -q git
-            or return 1
-            git rev-parse --git-dir >/dev/null 2>&1
-        end
+set_color normal | read -l color_normal
+status fish-path | read -l fish_path
 
-        function _hg_branch_name
-            echo (hg branch 2>/dev/null)
-        end
-
-        function _is_hg_dirty
-            set -l stat (hg status -mard 2>/dev/null)
-            test -n "$stat"
-        end
-
-        function _is_hg_repo
-            fish_print_hg_root >/dev/null
-        end
-
-        function _repo_branch_name
-            _$argv[1]_branch_name
-        end
-
-        function _is_repo_dirty
-            _is_$argv[1]_dirty
-        end
-
-        function _repo_type
-            if _is_hg_repo
-                echo hg
-                return 0
-            else if _is_git_repo
-                echo git
-                return 0
-            end
-            return 1
-        end
-    end
-
-    set -l cyan (set_color -o cyan)
-    set -l yellow (set_color -o yellow)
-    set -l red (set_color -o red)
-    set -l green (set_color -o green)
-    set -l blue (set_color -o blue)
-    set -l normal (set_color normal)
-
-    set -l arrow_color "$green"
-    if test $__last_command_exit_status != 0
-        set arrow_color "$red"
-    end
-
-    set -l arrow "$arrow_color➜ "
-    if fish_is_root_user
-        set arrow "$arrow_color# "
-    end
-
-    set -l cwd $cyan(basename (prompt_pwd))
-
-    set -l repo_info
-    if set -l repo_type (_repo_type)
-        set -l repo_branch $red(_repo_branch_name $repo_type)
-        set repo_info "$blue $repo_type:($repo_branch$blue)"
-
-        if _is_repo_dirty $repo_type
-            set -l dirty "$yellow ✗"
-            set repo_info "$repo_info$dirty"
-        end
-    end
-
-    echo -n -s $arrow ' '$cwd $repo_info $normal ' '
+# _tide_repaint prevents us from creating a second background job
+function _tide_refresh_prompt --on-variable $prompt_var --on-variable COLUMNS
+    set -g _tide_repaint
+    commandline -f repaint
 end
+
+if contains newline $_tide_left_items # two line prompt initialization
+    test "$tide_prompt_add_newline_before" = true && set -l add_newline '\n'
+
+    set_color $tide_prompt_color_frame_and_connection -b normal | read -l prompt_and_frame_color
+
+    set -l column_offset 5
+    test "$tide_left_prompt_frame_enabled" = true &&
+        set -l top_left_frame "$prompt_and_frame_color╭─" &&
+        set -l bot_left_frame "$prompt_and_frame_color╰─" &&
+        set column_offset (math $column_offset-2)
+    test "$tide_right_prompt_frame_enabled" = true &&
+        set -l top_right_frame "$prompt_and_frame_color─╮" &&
+        set -l bot_right_frame "$prompt_and_frame_color─╯" &&
+        set column_offset (math $column_offset-2)
+
+    eval "
+function fish_prompt
+    _tide_status=\$status _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
+        jobs -q && set -lx _tide_jobs
+        $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
+CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_2_line_prompt)\" &
+        builtin disown
+
+        command kill \$_tide_last_pid 2>/dev/null
+        set -g _tide_last_pid \$last_pid
+    end
+
+    math \$COLUMNS-(string length -V \"\$$prompt_var[1][1]\$$prompt_var[1][3]\")+$column_offset | read -lx dist_btwn_sides
+
+    echo -ns $add_newline'$top_left_frame'(string replace @PWD@ (_tide_pwd) \"\$$prompt_var[1][1]\")'$prompt_and_frame_color'
+    string repeat -Nm(math max 0, \$dist_btwn_sides-\$_tide_pwd_len) '$tide_prompt_icon_connection'
+    echo -ns \"\$$prompt_var[1][3]$top_right_frame\"\n\"$bot_left_frame\$$prompt_var[1][2]$color_normal \"
+end
+
+function fish_right_prompt
+    string unescape \"\$$prompt_var[1][4]$bot_right_frame$color_normal\"
+end"
+else # one line prompt initialization
+    test "$tide_prompt_add_newline_before" = true && set -l add_newline '\0'
+
+    math 5 -$tide_prompt_min_cols | read -l column_offset
+    test $column_offset -ge 0 && set column_offset "+$column_offset"
+
+    eval "
+function fish_prompt
+    _tide_status=\$status _tide_pipestatus=\$pipestatus if not set -e _tide_repaint
+        jobs -q && set -lx _tide_jobs
+        $fish_path -c \"set _tide_pipestatus \$_tide_pipestatus
+CMD_DURATION=\$CMD_DURATION fish_bind_mode=\$fish_bind_mode set $prompt_var (_tide_1_line_prompt)\" &
+        builtin disown
+
+        command kill \$_tide_last_pid 2>/dev/null
+        set -g _tide_last_pid \$last_pid
+    end
+
+    math \$COLUMNS-(string length -V \"\$$prompt_var[1][1]\$$prompt_var[1][2]\")$column_offset | read -lx dist_btwn_sides
+    string replace @PWD@ (_tide_pwd) $add_newline \$$prompt_var[1][1]'$color_normal '
+end
+
+function fish_right_prompt
+    string unescape \"\$$prompt_var[1][2]$color_normal\"
+end"
+end
+
+eval "function _tide_on_fish_exit --on-event fish_exit
+    set -e $prompt_var
+end"
