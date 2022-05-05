@@ -1,1 +1,2 @@
 .*rc linguist-language=shell
+copy linguist-language=py
