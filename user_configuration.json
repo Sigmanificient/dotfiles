@@ -7,7 +7,7 @@
     "debug": false,
     "gfx_driver": "AMD / ATI (open-source)",
     "harddrives": [
-        "/dev/vda"
+        "/dev/nvme0n1p1"
     ],
     "hostname": "Sigmachine",
     "keyboard-layout": "fr",
@@ -50,7 +50,7 @@
         "type": "nm"
     },
     "packages": [
-        "kitty"
+        "kitty", "firefox-developer-edition", "bpytop"
     ],
     "plugin": null,
     "profile": {
