@@ -1,5 +1,5 @@
 {
-    "/dev/vda": {
+    "/dev/nvme0n1p1": {
         "partitions": [
             {
                 "boot": true,
@@ -8,7 +8,7 @@
                     "format": "fat32"
                 },
                 "mountpoint": "/boot",
-                "size": "203MiB",
+                "size": "512MiB",
                 "start": "3MiB",
                 "type": "primary",
                 "wipe": true
@@ -20,8 +20,8 @@
                     "mount_options": []
                 },
                 "mountpoint": "/",
-                "size": "20GiB",
-                "start": "206MiB",
+                "size": "69GiB",
+                "start": "515MiB",
                 "type": "primary",
                 "wipe": true
             },
@@ -33,7 +33,7 @@
                 },
                 "mountpoint": "/home",
                 "size": "100%",
-                "start": "20GiB",
+                "start": "69GiB",
                 "type": "primary",
                 "wipe": true
             }
