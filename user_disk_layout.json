@@ -1,0 +1,43 @@
+{
+    "/dev/vda": {
+        "partitions": [
+            {
+                "boot": true,
+                "encrypted": false,
+                "filesystem": {
+                    "format": "fat32"
+                },
+                "mountpoint": "/boot",
+                "size": "203MiB",
+                "start": "3MiB",
+                "type": "primary",
+                "wipe": true
+            },
+            {
+                "encrypted": false,
+                "filesystem": {
+                    "format": "ext4",
+                    "mount_options": []
+                },
+                "mountpoint": "/",
+                "size": "20GiB",
+                "start": "206MiB",
+                "type": "primary",
+                "wipe": true
+            },
+            {
+                "encrypted": false,
+                "filesystem": {
+                    "format": "ext4",
+                    "mount_options": []
+                },
+                "mountpoint": "/home",
+                "size": "100%",
+                "start": "20GiB",
+                "type": "primary",
+                "wipe": true
+            }
+        ],
+        "wipe": true
+    }
+}
