@@ -1,5 +1,5 @@
 {
-    "/dev/nvme0n1": {
+    "/dev/{{disk}}": {
         "partitions": [
             {
                 "boot": true,

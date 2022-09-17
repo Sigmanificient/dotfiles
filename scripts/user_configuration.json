@@ -7,7 +7,7 @@
     "debug": false,
     "gfx_driver": "AMD / ATI (open-source)",
     "harddrives": [
-        "/dev/nvme0n1p1"
+        "/dev/{{disk}}"
     ],
     "hostname": "Sigmachine",
     "keyboard-layout": "fr",
@@ -53,9 +53,6 @@
         "kitty", "firefox-developer-edition", "bpytop"
     ],
     "plugin": null,
-    "profile": {
-        "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/xorg.py"
-    },
     "script": "guided",
     "silent": false,
     "sys-language": "en_US",
