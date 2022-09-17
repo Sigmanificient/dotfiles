@@ -1,4 +1,4 @@
-361u#!/bin/sh
+#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
