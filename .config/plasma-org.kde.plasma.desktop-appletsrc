@@ -80,7 +80,7 @@ immutability=1
 plugin=org.kde.plasma.systemmonitor
 
 [Containments][3][Applets][25][Configuration]
-PreloadWeight=65
+PreloadWeight=70
 
 [Containments][3][Applets][25][Configuration][Appearance]
 chartFace=org.kde.ksysguard.barchart
