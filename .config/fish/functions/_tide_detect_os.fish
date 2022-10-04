@@ -6,11 +6,19 @@ function _tide_detect_os
             printf %s\n  D6D6D6 333333 # from apple.com header
         case freebsd openbsd dragonfly
             printf %s\n  FFFFFF AB2B28 # https://freebsdfoundation.org/about-us/about-the-foundation/project/
+        case 'cygwin*'
+            printf %s\n  FFFFFF 00CCFF # https://answers.microsoft.com/en-us/windows/forum/all/what-is-the-official-windows-8-blue-rgb-or-hex/fd57144b-f69b-42d8-8c21-6ca911646e44
         case linux
-            _tide_detect_os_linux_cases /etc/os-release ID ||
-                _tide_detect_os_linux_cases /etc/os-release ID_LIKE ||
-                _tide_detect_os_linux_cases /etc/lsb-release DISTRIB_ID ||
-                printf %s\n  $defaultColor
+            if test (uname -o) = Android
+                echo ﲎ # This character is evil and messes up code display, so it's put on its own line
+                # https://developer.android.com/distribute/marketing-tools/brand-guidelines
+                printf %s\n 3DDC84 3C3F41 # fg is from above link, bg is from Android Studio default dark theme
+            else
+                _tide_detect_os_linux_cases /etc/os-release ID ||
+                    _tide_detect_os_linux_cases /etc/os-release ID_LIKE ||
+                    _tide_detect_os_linux_cases /etc/lsb-release DISTRIB_ID ||
+                    printf %s\n  $defaultColor
+            end
         case '*'
             echo -ns '?'
     end
@@ -53,6 +61,8 @@ function _tide_detect_os_linux_cases -a file key
             printf %s\n  73BA25 173f4f # https://en.opensuse.org/openSUSE:Artwork_brand
         case raspbian
             printf %s\n  FFFFFF A22846 # https://static.raspberrypi.org/files/Raspberry_Pi_Visual_Guidelines_2020.pdf
+        case rhel
+            printf %s\n  EE0000 000000 # https://www.redhat.com/en/about/brand/standards/color
         case sabayon
             printf %s\n  $defaultColor # Can't find colors, and they are rebranding anyway
         case slackware

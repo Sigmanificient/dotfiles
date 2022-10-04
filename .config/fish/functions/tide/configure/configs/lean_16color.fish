@@ -1,3 +1,5 @@
+tide_aws_bg_color normal
+tide_aws_color yellow
 tide_character_color brgreen
 tide_character_color_failure brred
 tide_chruby_bg_color normal
@@ -8,6 +10,8 @@ tide_context_bg_color normal
 tide_context_color_default yellow
 tide_context_color_root bryellow
 tide_context_color_ssh yellow
+tide_crystal_bg_color normal
+tide_crystal_color brwhite
 tide_docker_bg_color normal
 tide_docker_color blue
 tide_git_bg_color normal
@@ -29,6 +33,8 @@ tide_jobs_bg_color normal
 tide_jobs_color green
 tide_kubectl_bg_color normal
 tide_kubectl_color blue
+tide_nix_shell_bg_color normal
+tide_nix_shell_color brblue
 tide_node_bg_color normal
 tide_node_color green
 tide_os_bg_color normal
@@ -58,10 +64,12 @@ tide_time_color brblack
 tide_toolbox_bg_color normal
 tide_toolbox_color magenta
 tide_vi_mode_bg_color_default normal
+tide_vi_mode_bg_color_insert normal
 tide_vi_mode_bg_color_replace normal
 tide_vi_mode_bg_color_visual normal
-tide_vi_mode_color_default green
-tide_vi_mode_color_replace yellow
-tide_vi_mode_color_visual blue
+tide_vi_mode_color_default white
+tide_vi_mode_color_insert cyan
+tide_vi_mode_color_replace green
+tide_vi_mode_color_visual yellow
 tide_virtual_env_bg_color normal
 tide_virtual_env_color cyan

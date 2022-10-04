@@ -1,27 +1,29 @@
 function _tide_sub_bug-report
-    argparse c/clean v/verbose -- $argv
+    argparse c/clean v/verbose check -- $argv
+
+    set -l fish_path (status fish-path)
 
     if set -q _flag_clean
-        HOME=(mktemp -d) fish --init-command "curl --silent \
+        HOME=(mktemp -d) $fish_path --init-command "curl --silent \
         https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish |
         source && fisher install ilancosman/tide@v5"
     else if set -q _flag_verbose
         set --long | string match -r "^_?tide.*" | # Get only tide variables
             string match -r --invert "^_tide_prompt_var.*" # Remove _tide_prompt_var
     else
-        set -l fish_path (status fish-path)
-
         set -l fish_version ($fish_path --version | string match -r "fish, version (\d\.\d\.\d)")[2]
         _tide_check_version Fish fish-shell/fish-shell "(\d\.\d\.\d)" $fish_version || return
 
         set -l tide_version (tide --version | string match -r "tide, version (\d\.\d\.\d)")[2]
         _tide_check_version Tide IlanCosman/tide "v(\d\.\d\.\d)" $tide_version || return
 
-        test (git --version | string match -r "git version ([\d\.]*)" | string replace --all . '')[2] -gt 2220
-        _tide_check_condition \
-            "Your git version is too old." \
-            "Tide requires at least version 2.22." \
-            "Please update before submitting a bug report." || return
+        if command --query git
+            test (git --version | string match -r "git version ([\d\.]*)" | string replace --all . '')[2] -gt 2220
+            _tide_check_condition \
+                "Your git version is too old." \
+                "Tide requires at least version 2.22." \
+                "Please update before submitting a bug report." || return
+        end
 
         # Check that omf is not installed
         not functions --query omf
@@ -29,20 +31,22 @@ function _tide_sub_bug-report
             "Tide does not work with oh-my-fish installed." \
             "Please uninstall it before submitting a bug report." || return
 
-        set -l fish_startup_time (fish -ic "time fish -c exit" 2>&1 |
-            string match -r "Executed in(.*)fish" | string trim)[2]
+        if not set -q _flag_check
+            set -l fish_startup_time ($fish_path -ic "time $fish_path -c exit" 2>|
+                string match -r "Executed in(.*)fish" | string trim)[2]
 
-        read --local --prompt-str "What operating system are you using? (e.g Ubuntu 20.04): " os
-        read --local --prompt-str "What terminal emulator are you using? (e.g Kitty): " terminal_emulator
+            read --local --prompt-str "What operating system are you using? (e.g Ubuntu 20.04): " os
+            read --local --prompt-str "What terminal emulator are you using? (e.g Kitty): " terminal_emulator
 
-        printf '%b\n' "\nPlease copy the following information into the issue:\n" \
-            "fish version: $fish_version" \
-            "tide version: $tide_version" \
-            "term: $TERM" \
-            "os: $os" \
-            "terminal emulator: $terminal_emulator" \
-            "fish startup: $fish_startup_time" \
-            "fisher plugins: $_fisher_plugins"
+            printf '%b\n' "\nPlease copy the following information into the issue:\n" \
+                "fish version: $fish_version" \
+                "tide version: $tide_version" \
+                "term: $TERM" \
+                "os: $os" \
+                "terminal emulator: $terminal_emulator" \
+                "fish startup: $fish_startup_time" \
+                "fisher plugins: $_fisher_plugins"
+        end
     end
 end
 

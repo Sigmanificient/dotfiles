@@ -1,3 +1,6 @@
+tide_aws_bg_color normal
+tide_aws_color FF9900
+tide_aws_icon 
 tide_character_color $_tide_color_green
 tide_character_color_failure FF0000
 tide_character_icon ❯
@@ -17,8 +20,13 @@ tide_context_bg_color normal
 tide_context_color_default D7AF87
 tide_context_color_root $_tide_color_gold
 tide_context_color_ssh D7AF87
+tide_context_hostname_parts 1
+tide_crystal_bg_color normal
+tide_crystal_color FFFFFF
+tide_crystal_icon ⬢
 tide_docker_bg_color normal
 tide_docker_color 2496ED
+tide_docker_default_contexts default colima
 tide_docker_icon 
 tide_git_bg_color normal
 tide_git_bg_color_unstable normal
@@ -51,6 +59,9 @@ tide_left_prompt_prefix ''
 tide_left_prompt_separator_diff_color ' '
 tide_left_prompt_separator_same_color ' '
 tide_left_prompt_suffix ' '
+tide_nix_shell_bg_color normal
+tide_nix_shell_color 7EBAE4
+tide_nix_shell_icon 
 tide_node_bg_color normal
 tide_node_color 44883E
 tide_node_icon ⬢
@@ -78,7 +89,7 @@ tide_pwd_icon_home
 tide_pwd_icon_unwritable 
 tide_pwd_markers .bzr .citc .git .hg .node-version .python-version .ruby-version .shorten_folder_marker .svn .terraform Cargo.toml composer.json CVS go.mod package.json
 tide_right_prompt_frame_enabled false
-tide_right_prompt_items status cmd_duration context jobs node virtual_env rustc java php chruby go kubectl toolbox terraform
+tide_right_prompt_items status cmd_duration context jobs node virtual_env rustc java php chruby go kubectl toolbox terraform aws nix_shell crystal
 tide_right_prompt_prefix ' '
 tide_right_prompt_separator_diff_color ' '
 tide_right_prompt_separator_same_color ' '
@@ -105,15 +116,18 @@ tide_time_format %T
 tide_toolbox_bg_color normal
 tide_toolbox_color 613583
 tide_toolbox_icon ⬢
-tide_vi_mode_bg_color_default
-tide_vi_mode_bg_color_replace
-tide_vi_mode_bg_color_visual
-tide_vi_mode_color_default
-tide_vi_mode_color_replace
-tide_vi_mode_color_visual
-tide_vi_mode_icon_default
-tide_vi_mode_icon_replace
-tide_vi_mode_icon_visual
+tide_vi_mode_bg_color_default normal
+tide_vi_mode_bg_color_insert normal
+tide_vi_mode_bg_color_replace normal
+tide_vi_mode_bg_color_visual normal
+tide_vi_mode_color_default 949494
+tide_vi_mode_color_insert 87AFAF
+tide_vi_mode_color_replace 87AF87
+tide_vi_mode_color_visual FF8700
+tide_vi_mode_icon_default D
+tide_vi_mode_icon_insert I
+tide_vi_mode_icon_replace R
+tide_vi_mode_icon_visual V
 tide_virtual_env_bg_color normal
 tide_virtual_env_color 00AFAF
 tide_virtual_env_icon 
