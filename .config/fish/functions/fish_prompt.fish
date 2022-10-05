@@ -13,16 +13,6 @@ set -U $prompt_var # Set var here so if we erase $prompt_var, bg job won't set a
 set_color normal | read -l color_normal
 status fish-path | read -l fish_path
 
-set -l project
-
-if echo (pwd) | grep -qEi "^/Users/$USER/Sites/"
-    set  project (echo (pwd) | sed "s#^/Users/$USER/Sites/\\([^/]*\\).*#\\1#")
-else
-    set  project "Terminal"
-end
-
-wakatime --write --plugin "fish-wakatime/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
-
 # _tide_repaint prevents us from creating a second background job
 function _tide_refresh_prompt --on-variable $prompt_var --on-variable COLUMNS
     set -g _tide_repaint
@@ -99,3 +89,14 @@ eval "function _tide_on_fish_exit --on-event fish_exit
     set -e $prompt_var
 end"
 
+
+# Wakatime
+set -l project
+
+if echo (pwd) | grep -qEi "^/Users/$USER/Sites/"
+    set project (echo (pwd) | sed "s#^/Users/$USER/Sites/\\([^/]*\\).*#\\1#")
+else
+    set project "Terminal"
+end
+
+wakatime --write --plugin "fish-wakatime/0.0.1" --entity-type app --project "$project" --entity (echo $history[1] | cut -d ' ' -f1) 2>&1 > /dev/null&
