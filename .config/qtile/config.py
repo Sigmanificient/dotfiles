@@ -37,6 +37,9 @@ keys = [
     Key([mod], "l", lazy.spawn("betterlockscreen -l")),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floatting"),
     Key([mod], "b", lazy.spawn(browser)),
+    Key([mod], "k", lazy.spaw(
+        "Xephyr -br -ac -noreset -screen 1600x900 :1"
+    )),
 
     Key([], "Print", lazy.spawn("flameshot gui --clipboard")),
 
