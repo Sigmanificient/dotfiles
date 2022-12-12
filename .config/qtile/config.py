@@ -34,6 +34,7 @@ terminal = guess_terminal()
 browser = "firefox-developer-edition"
 
 keys = [
+    Key([mod], "l", lazy.spawn("betterlockscreen -l")),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floatting"),
     Key([mod], "b", lazy.spawn(browser)),
 
