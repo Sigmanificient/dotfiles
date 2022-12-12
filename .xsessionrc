@@ -1,4 +1,0 @@
-picom -f &
-nitrogen --restore &
-flameshot &
-dunst &

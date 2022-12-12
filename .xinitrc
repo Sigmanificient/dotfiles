@@ -31,3 +31,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  done
  unset f
 fi
+
+picom -f &
+nitrogen --restore &
+flameshot &
+dunst &
+exec qtile start
