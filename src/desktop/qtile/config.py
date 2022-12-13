@@ -29,6 +29,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from colors import Color
+
 mod = "mod4"
 terminal = guess_terminal()
 browser = "firefox-developer-edition"
@@ -108,8 +110,8 @@ layouts = [
     layout.Columns(
         border_width=2,
         margin=8,
-        border_focus="#403DE8",
-        border_normal="#222145"
+        border_focus=Color.BLUE_DARK,
+        border_normal=Color.BG_DARK
     ),
     # layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -133,35 +135,73 @@ screens = [
                 widget.GroupBox(
                     highlight_method='line',
                     disable_drag=True,
-                    other_screen_border="#2A2965",
-                    other_current_screen_border="#2A2965",
-                    this_screen_border="#6461EB",
-                    this_current_screen_border="#6461EB"
+                    other_screen_border=Color.BLUE_VERY_DARK,
+                    other_current_screen_border=Color.BLUE_VERY_DARK,
+                    this_screen_border=Color.BLUE_DARK,
+                    this_current_screen_border=Color.BLUE_DARK,
+                    foreground=Color.TEXT_LIGHT,
+                    background=Color.BG_DARK,
+                    block_highlight_text_color=Color.TEXT_LIGHT,
+                    highlight_color=[Color.BG_LIGHT, Color.BG_LIGHT],
+                    inactive=Color.TEXT_INACTIVE,
+                    active=Color.TEXT_LIGHT
                 ),
                 widget.Prompt(),
-                widget.Sep(padding=12, linewidth=1, size_percent=50),
-                widget.WindowName(),
+                widget.Sep(
+                    foreground=Color.TEXT_LIGHT,
+                    padding=12,
+                    linewidth=1,
+                    size_percent=50
+                ),
+                widget.WindowName(
+                    foreground=Color.TEXT_LIGHT
+                ),
                 widget.Chord(
                     chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
+                        "launch": (Color.RED_DARK, Color.TEXT_LIGHT),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
                 widget.Clipboard(),
                 widget.Systray(),
+                widget.Sep(
+                    foreground=Color.TEXT_LIGHT,
+                    padding=12,
+                    linewidth=1,
+                    size_percent=50
+                ),
                 widget.PulseVolume(
                     fmt="Vol: {}",
-                    foreground="#ffffff",
-                    background="#111111",
-                    padding=15
+                    foreground=Color.TEXT_LIGHT,
+                    background=Color.BG_LIGHT,
+                    padding=12,
                 ),
-                widget.Sep(padding=12, linewidth=1, size_percent=50),
-                widget.Clock(format="%d/%m %H:%M"),
-                widget.Sep(padding=12, linewidth=1, size_percent=50),
-                widget.QuickExit(default_text='Quit', countdown_format='{:4d}'),
+                widget.Sep(
+                    foreground=Color.TEXT_LIGHT,
+                    padding=12,
+                    linewidth=1,
+                    size_percent=50
+                ),
+                widget.Clock(
+                    format="%d/%m %H:%M",
+                    foreground=Color.TEXT_LIGHT,
+                    background=Color.BG_LIGHT,
+                    padding=12,
+                ),
+                widget.Sep(
+                    foreground=Color.TEXT_LIGHT,
+                    padding=12,
+                    linewidth=1,
+                    size_percent=50
+                ),
+                widget.QuickExit(
+                    foreground=Color.TEXT_LIGHT,
+                    default_text='Quit',
+                    countdown_format='{:4d}'
+                ),
                 widget.Spacer(4),
             ],
-            24, background="#1B1B29",
+            24, background=Color.BG_DARK,
         ),
     ),
     Screen(
@@ -171,15 +211,28 @@ screens = [
                 widget.GroupBox(
                     highlight_method='line',
                     disable_drag=True,
-                    other_screen_border="#2A2965",
-                    other_current_screen_border="#2A2965",
-                    this_screen_border="#6461EB",
-                    this_current_screen_border="#6461EB"
+                    other_screen_border=Color.BLUE_VERY_DARK,
+                    other_current_screen_border=Color.BLUE_VERY_DARK,
+                    this_screen_border=Color.BLUE_DARK,
+                    this_current_screen_border=Color.BLUE_DARK,
+                    foreground=Color.TEXT_LIGHT,
+                    background=Color.BG_DARK,
+                    block_highlight_text_color=Color.TEXT_LIGHT,
+                    highlight_color=[Color.BG_LIGHT, Color.BG_LIGHT],
+                    inactive=Color.TEXT_INACTIVE,
+                    active=Color.TEXT_LIGHT
                 ),
-                widget.Sep(padding=12, linewidth=1, size_percent=50),
-                widget.WindowName(),
+                widget.Sep(
+                    foreground=Color.TEXT_LIGHT,
+                    padding=12,
+                    linewidth=1,
+                    size_percent=50
+                ),
+                widget.WindowName(
+                    foreground=Color.TEXT_LIGHT
+                ),
             ],
-            24, background="#1B1B29",
+            24, background=Color.BG_DARK,
         )
     )
 ]
