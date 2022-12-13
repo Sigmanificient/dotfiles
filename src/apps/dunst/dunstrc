@@ -1,0 +1,61 @@
+[global]
+    monitor = 0
+    follow = mouse
+
+    indicate_hidden = yes
+    shrink = no
+    transparency = 0
+    separator_height = 2
+    padding = 8
+    horizontal_padding = 14
+    text_icon_padding = 0
+    frame_width = 2
+    frame_color = "#8AADF4"
+    separator_color = frame
+    sort = yes
+    idle_threshold = 0
+
+    # gap_size = 8
+
+    font = JetBrainsMono Nerd Font Mono 10
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+
+    sticky_history = no
+    history_length = 20
+
+    browser = /usr/bin/firefox-developer-edition
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 4
+
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+
+[urgency_low]
+    background = "#0D0D1680"
+    foreground = "#8AADF4"
+    timeout = 10
+
+[urgency_normal]
+    background = "#0D0D1680"
+    foreground = "#EED49F"
+    timeout = 15
+
+[urgency_critical]
+    background = "#0D0D1680"
+    foreground = "#ED8796"
+    timeout = 30

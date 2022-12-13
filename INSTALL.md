@@ -28,6 +28,18 @@ yay -Sy discord
 yay -Sy dunst
 ```
 
+#### Config
+```shell
+cp -r src/apps/dunst ~/.config
+```
+
+#### Test
+```shell
+notify-send "Critical" -u low
+notify-send "Normal" -u normal
+notify-send "Low" -u critical
+```
+
 ### Emacs
 
 #### Install
