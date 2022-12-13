@@ -127,6 +127,10 @@ cp -r assets/wallpaper.png $HOME/Pictures/wallpaper.png
 yay -Sy picom
 ```
 
+```sh
+cp -r src/apps/picom ~/.config
+```
+
 ### Sublime Text
 
 #### Install
