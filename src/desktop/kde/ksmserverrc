@@ -1,0 +1,15 @@
+[$Version]
+update_info=ksmserver_update_loginMode_value.upd:ksmserver_update_loginMode_value_default_enum
+
+[LegacySession: saved at previous logout]
+clientMachine1=localhost
+command1=firefoxdeveloperedition
+count=1
+
+[Session: saved at previous logout]
+clientId1=10122131cfd6000167085728500000018970006
+count=1
+program1=/usr/lib/DiscoverNotifier
+restartCommand1=/usr/lib/DiscoverNotifier,-session,10122131cfd6000167085728500000018970006_1670889288_538717
+restartStyleHint1=0
+userId1=sigmanificient

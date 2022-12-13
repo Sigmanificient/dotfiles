@@ -1,10 +1,14 @@
 [General]
-Version=201
+Version=202
 ViewPropsTimestamp=2022,4,14,7,40,6.428
 
 [InformationPanel]
 dateFormat=ShortFormat
 previewsShown=false
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
 
 [KPropertiesDialog]
 DP-1 HDMI-0 Height 1920x1080=644
