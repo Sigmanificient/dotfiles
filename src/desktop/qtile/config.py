@@ -202,7 +202,7 @@ screens = [
                 widget.Spacer(4),
             ],
             size=24,
-            background=Color.BG_DARK,
+            background=Color.BG_DARK.with_alpha(0.5),
             margin=[8, 8, 8, 8]
         ),
         bottom=bar.Gap(4),
@@ -238,7 +238,7 @@ screens = [
                 ),
             ],
             size=24,
-            background=Color.BG_DARK,
+            background=Color.BG_DARK.with_alpha(0.5),
             margin=[8, 8, 8, 8]
         ),
         bottom=bar.Gap(4),

@@ -1,27 +1,39 @@
-class Color(str):
-    BG_DARK = "#0F0F1C"
-    BG_LIGHT = "#1A1C31"
-    BG_LIGHTER = "#22263F"
+from __future__ import annotations
 
-    RED_DARK = "#D22942"
-    RED_LIGHT = "#DE4259"
 
-    GREEN_DARK = "#17B67C"
-    GREEN_LIGHT = "#3FD7A0"
+AlphaColor = str
 
-    YELLOW_DARK = "#F2A174"
-    YELLOW_LIGHT = "#EED49F"
 
-    BLUE_VERY_DARK = "#3F3D9E"
-    BLUE_DARK = "#8C8AF1"
-    BLUE_LIGHT = "#A7A5FB"
+class _Color(AlphaColor):
 
-    PURPLE_DARK = "#D78AF1"
-    PURPLE_LIGHT = "#E5A5FB"
+    def with_alpha(self, alpha: float) -> AlphaColor:
+        return AlphaColor(f"{self}{int(alpha * 255):02x}")
 
-    CYAN_DARK = "#8ADEF1"
-    CYAN_LIGHT = "#A5EBFB"
 
-    TEXT_INACTIVE = "#292C39"
-    TEXT_DARK = "#A2B1E8"
-    TEXT_LIGHT = "#CAD3F5"
+class Color(AlphaColor):
+    BG_DARK = _Color("#0F0F1C")
+    BG_LIGHT = _Color("#1A1C31")
+    BG_LIGHTER = _Color("#22263F")
+
+    RED_DARK = _Color("#D22942")
+    RED_LIGHT = _Color("#DE4259")
+
+    GREEN_DARK = _Color("#17B67C")
+    GREEN_LIGHT = _Color("#3FD7A0")
+
+    YELLOW_DARK = _Color("#F2A174")
+    YELLOW_LIGHT = _Color("#EED49F")
+
+    BLUE_VERY_DARK = _Color("#3F3D9E")
+    BLUE_DARK = _Color("#8C8AF1")
+    BLUE_LIGHT = _Color("#A7A5FB")
+
+    PURPLE_DARK = _Color("#D78AF1")
+    PURPLE_LIGHT = _Color("#E5A5FB")
+
+    CYAN_DARK = _Color("#8ADEF1")
+    CYAN_LIGHT = _Color("#A5EBFB")
+
+    TEXT_INACTIVE = _Color("#292C39")
+    TEXT_DARK = _Color("#A2B1E8")
+    TEXT_LIGHT = _Color("#CAD3F5")
