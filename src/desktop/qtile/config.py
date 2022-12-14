@@ -109,7 +109,7 @@ for key, i in enumerate(groups, start=1):
 layouts = [
     layout.Columns(
         border_width=2,
-        margin=8,
+        margin=4,
         border_focus=Color.BLUE_DARK,
         border_normal=Color.BG_DARK
     ),
@@ -130,7 +130,7 @@ layouts = [
 screens = [
     Screen(
         top=bar.Bar(
-            [
+            widgets=[
                 widget.Spacer(4),
                 widget.GroupBox(
                     highlight_method='line',
@@ -201,12 +201,17 @@ screens = [
                 ),
                 widget.Spacer(4),
             ],
-            24, background=Color.BG_DARK,
+            size=24,
+            background=Color.BG_DARK,
+            margin=[8, 8, 8, 8]
         ),
+        bottom=bar.Gap(4),
+        left=bar.Gap(4),
+        right=bar.Gap(4),
     ),
     Screen(
         top=bar.Bar(
-            [
+            widgets=[
                 widget.Spacer(4),
                 widget.GroupBox(
                     highlight_method='line',
@@ -232,8 +237,13 @@ screens = [
                     foreground=Color.TEXT_LIGHT
                 ),
             ],
-            24, background=Color.BG_DARK,
-        )
+            size=24,
+            background=Color.BG_DARK,
+            margin=[8, 8, 8, 8]
+        ),
+        bottom=bar.Gap(4),
+        left=bar.Gap(4),
+        right=bar.Gap(4),
     )
 ]
 widget_defaults = dict(
