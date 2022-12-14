@@ -99,7 +99,7 @@ yay -Sy neofetch
 
 #### Config
 ```shell
-cp -r src/apps/neofetch ~/.config/neofetch
+cp -r src/apps/neofetch ~/.config
 ```
 
 ### Picom
