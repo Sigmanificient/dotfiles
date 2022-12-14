@@ -157,11 +157,26 @@ makepkg -si
 ## Desktop Environment
 
 ### Qtile
+
+#### Install
+```sh
+yay -Sy qtile
+```
+
+#### Config
 ```sh
 cp -r src/desktop/qtile $HOME/.config
 ```
 
 ### KDE
+
+#### Install
+
+```sh
+yay -Sy plasma-meta dolphin ark
+```
+
+#### Config
 ```sh
 cp -r src/desktop/kde/* $HOME/.config
 ```
