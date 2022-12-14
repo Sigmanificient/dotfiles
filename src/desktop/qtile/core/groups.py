@@ -3,7 +3,7 @@ from libqtile.lazy import lazy
 
 from .keys import keys, mod
 
-groups = [Group(f" {i} ") for i in "ζδωχλξπσς"]
+groups = [Group(f"{i}") for i in "ζδωχλξπσς"]
 
 for key, i in enumerate(groups, start=1):
     keys.extend(

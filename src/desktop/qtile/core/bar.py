@@ -2,9 +2,11 @@ from libqtile.bar import Bar, Gap
 
 from utils import Color
 from .widgets import (
+    prompt,
+    chords,
     spacer,
-    seperator,
     group_box,
+    seperator,
     win_name,
     systray,
     volume,
@@ -12,11 +14,14 @@ from .widgets import (
     quick_exit
 )
 
-bar_widgets = [
+main_bar_widgets = [
     spacer,
     group_box,
     seperator,
     win_name,
+    prompt,
+    chords,
+    seperator,
     systray,
     seperator,
     volume,
@@ -27,8 +32,15 @@ bar_widgets = [
     spacer,
 ]
 
+secondary_bar_widgets = main_bar_widgets[:4] + main_bar_widgets[6:]
+
 
 def create_bar(secondary=False):
+    if secondary:
+        bar_widgets = secondary_bar_widgets
+    else:
+        bar_widgets = main_bar_widgets
+
     return Bar(
         widgets=[
             BarWidget()
@@ -37,7 +49,7 @@ def create_bar(secondary=False):
         ],
         size=24,
         background=Color.BG_DARK.with_alpha(0.5),
-        margin=[8, 8, 8, 8]
+        margin=[8, 8, 8, 8],
     )
 
 
