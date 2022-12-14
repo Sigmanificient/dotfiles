@@ -102,24 +102,6 @@ yay -Sy neofetch
 cp -r src/apps/neofetch ~/.config/neofetch
 ```
 
-### Nitrogen
-
-#### Install
-```shell
-yay -Sy nitrogen
-```
-
-#### Config
-```shell
-cp -r src/apps/nitrogen ~/.config/nitrogen
-```
-
-#### Wallpaper
-```shell
-mkdir -p $HOME/Pictures
-cp -r assets/wallpaper.png $HOME/Pictures/wallpaper.png
-```
-
 ### Picom
 
 #### Install
@@ -166,6 +148,12 @@ yay -Sy qtile
 #### Config
 ```sh
 cp -r src/desktop/qtile $HOME/.config
+```
+
+#### Wallpaper
+```shell
+mkdir -p $HOME/Pictures
+cp -r assets/wallpaper.png $HOME/Pictures/wallpaper.png
 ```
 
 ### KDE
