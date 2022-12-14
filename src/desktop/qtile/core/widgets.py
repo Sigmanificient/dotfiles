@@ -1,5 +1,4 @@
 from libqtile import widget
-from libqtile.widget.systray import Systray
 
 from utils import Color
 
@@ -46,14 +45,15 @@ def win_name():
 
 
 def systray():
-    return widget.Systray(
-        background=Color.BG_DARK,
-        padding=4
-    )
+    return widget.Systray(padding=4)
 
 
 def volume():
-    return widget.Volume()
+    return widget.PulseVolume(
+        fmt="{}",
+        foreground=Color.TEXT_LIGHT,
+        padding=12
+    )
 
 
 def clock():
@@ -82,4 +82,20 @@ def chords():
             'launch': ("#ff0000", "#ffffff"),
         },
         name_transform=lambda name: name.upper(),
+    )
+
+
+def fix_systray_left():
+    return widget.Sep(
+        background=Color.BG_DARK.with_alpha(0.5),
+        padding=8,
+        linewidth=0,
+    )
+
+
+def fix_systray_right():
+    return widget.Sep(
+        background=Color.BG_DARK.with_alpha(0.5),
+        padding=12,
+        linewidth=0,
     )

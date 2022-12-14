@@ -8,6 +8,8 @@ from .widgets import (
     group_box,
     seperator,
     win_name,
+    fix_systray_left,
+    fix_systray_right,
     systray,
     volume,
     clock,
@@ -22,7 +24,9 @@ main_bar_widgets = [
     prompt,
     chords,
     seperator,
+    fix_systray_left,
     systray,
+    fix_systray_right,
     seperator,
     volume,
     seperator,
@@ -32,7 +36,7 @@ main_bar_widgets = [
     spacer,
 ]
 
-secondary_bar_widgets = main_bar_widgets[:4] + main_bar_widgets[6:]
+secondary_bar_widgets = main_bar_widgets[:6] + main_bar_widgets[10:]
 
 
 def create_bar(secondary=False):
@@ -42,11 +46,7 @@ def create_bar(secondary=False):
         bar_widgets = main_bar_widgets
 
     return Bar(
-        widgets=[
-            BarWidget()
-            for BarWidget in bar_widgets
-            if (BarWidget != systray or not secondary)
-        ],
+        widgets=[BarWidget() for BarWidget in bar_widgets],
         size=24,
         background=Color.BG_DARK.with_alpha(0.5),
         margin=[8, 8, 8, 8],
