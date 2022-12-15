@@ -19,7 +19,7 @@ keys = [
     ),
     Key(
         [mod], "k",
-        lazy.spaw("Xephyr -br -ac -noreset -screen 1600x900 :1")
+        lazy.spawn("Xephyr -br -ac -noreset -screen 1600x900 :1")
     ),
     Key(
         [], "Print",
