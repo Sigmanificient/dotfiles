@@ -4,12 +4,18 @@
 
 I currently use `Qtile` as my Desktop Environment, but I am still configuring it.
 
-![wallpaper](assets/screenshots/qtile.png)
+## Some nice screenshots
+
+![Qtile recursive screenshot](assets/screenshots/qtile.png)
+
+![Qtile is a tiling window manager](assets/screenshots/qtile_tiling.png)
+
+![Qtile has floating window support](assets/screenshots/qtile_floating.png)
 
 So, for now, I have a side configuration for `KDE Plasma`.
 I use `KDE` in a Xephyr window when necessary, but I use `Qtile` in the main screen.
 
-![wallpaper](assets/screenshots/kde.png)
+![KDE running within Xephyr](assets/screenshots/qtile_kde.png)
 
 
 ## Organization
