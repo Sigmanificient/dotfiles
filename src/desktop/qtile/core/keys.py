@@ -11,7 +11,7 @@ keys = [
     Key(
         [mod], "f",
         lazy.window.toggle_floating(),
-        desc="Toggle floatting"
+        desc="Toggle floating"
     ),
     Key(
         [mod], "b",
@@ -83,5 +83,18 @@ keys = [
     Key(
         [], "XF86MonBrightnessDown",
         lazy.spawn("brightnessctl set 5%-")
+    ),
+    # Volume
+    Key(
+        [], "XF86AudioMute",
+        lazy.spawn("pamixer --toggle-mute")
+    ),
+    Key(
+        [], "XF86AudioLowerVolume",
+        lazy.spawn("pamixer --decrease 5")
+    ),
+    Key(
+        [], "XF86AudioRaiseVolume",
+        lazy.spawn("pamixer --increase 5")
     )
 ]
