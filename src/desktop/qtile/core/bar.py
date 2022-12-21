@@ -1,6 +1,7 @@
 from libqtile.bar import Bar, Gap
 
 from utils import Color
+from widgets.battery import CustomBattery
 from widgets.volume import CustomVolume
 from .widgets import (
     prompt,
@@ -29,6 +30,8 @@ main_bar_widgets = [
     fix_systray_right,
     seperator,
     CustomVolume,
+    seperator,
+    CustomBattery,
     seperator,
     clock,
     seperator,

@@ -18,4 +18,4 @@ class CustomVolume(PulseVolume):
 
     def _update_drawer(self):
         icon = self.__icons[(self.volume > 1) + (self.volume > 50)]
-        self.text = f"{icon} {self.volume: 3d}%"
+        self.text = f"{icon} {self.volume: 3d}"
