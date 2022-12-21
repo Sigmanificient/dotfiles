@@ -48,14 +48,6 @@ def systray():
     return widget.Systray(padding=4)
 
 
-def volume():
-    return widget.PulseVolume(
-        fmt="{}",
-        foreground=Color.TEXT_LIGHT,
-        padding=12
-    )
-
-
 def clock():
     return widget.Clock(format="%d/%m %H:%M")
 

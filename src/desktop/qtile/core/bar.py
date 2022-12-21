@@ -1,6 +1,7 @@
 from libqtile.bar import Bar, Gap
 
 from utils import Color
+from widgets.volume import CustomVolume
 from .widgets import (
     prompt,
     chords,
@@ -11,7 +12,6 @@ from .widgets import (
     fix_systray_left,
     fix_systray_right,
     systray,
-    volume,
     clock,
     quick_exit
 )
@@ -28,12 +28,12 @@ main_bar_widgets = [
     systray,
     fix_systray_right,
     seperator,
-    volume,
+    CustomVolume,
     seperator,
     clock,
     seperator,
     quick_exit,
-    spacer,
+    spacer
 ]
 
 secondary_bar_widgets = main_bar_widgets[:6] + main_bar_widgets[10:]
