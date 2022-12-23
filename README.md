@@ -17,6 +17,18 @@ I use `KDE` in a Xephyr window when necessary, but I use `Qtile` in the main scr
 
 ![KDE running within Xephyr](assets/screenshots/qtile_kde.png)
 
+## Color palette
+
+> tty
+
+![tty](assets/screenshots/palette.png)
+
+| Black    | Red      | Green    | Yellow   | Blue     | Magenta  | Cyan     | White    |
+|----------|----------|----------|----------|----------|----------|----------|----------|
+| `0F0F1C` | `D22942` | `17B67C` | `F2A174` | `8B8AF1` | `D78AF1` | `4FCFEB` | `B4C0EC` |
+| `1A1C31` | `DE4259` | `3FD7A0` | `EEC09F` | `A7A5FB` | `E5A5FB` | `82E3F8` | `CAD3F5` |
+
+
 
 ## Organization
 
