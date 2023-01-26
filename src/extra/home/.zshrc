@@ -127,3 +127,5 @@ if [ "$TERM" = "linux" ]; then
     echo -en "\e]PFCAD3F5"  # light white
     clear
 fi
+
+source .profile
