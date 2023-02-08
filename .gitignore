@@ -2,3 +2,8 @@
 
 # install logs
 *.log
+
+# install
+.deps
+.install
+.yay
