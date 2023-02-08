@@ -1,0 +1,9 @@
+apache
+php
+php-cgi
+php-gd
+php-pgsql
+php-apache
+mariadb
+libmariadbclient
+mariadb-clients
