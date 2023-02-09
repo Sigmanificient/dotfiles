@@ -10,18 +10,19 @@ $(INSTALL): $(DEPS)
 	@ cp -r src/apps/* ~/.config
 	@ cp -r src/desktop/qtile ~/.config
 
+ifeq ($(shell whoami),sigmanificient)
 	@ cp -r src/extra/home/.bashrc ~
 	@ cp -r src/extra/home/.gitconfig ~
 	@ cp -r src/extra/home/.profile ~
 	@ cp -r src/extra/home/.xinitrc ~
 	@ cp -r src/extra/home/.zshrc ~
-
 	@ sudo cp src/extra/system/grub /etc/default/grub
 	@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 	@ sudo cp src/extra/system/grub /etc/hostname
 	@ sudo cp src/extra/system/hosts /etc/hosts
 	@ sudo cp src/extra/system/issue /etc/issue
+endif
 
 	@ sudo  cp src/extra/system/vconsole.conf /etc/vconsole.conf
 	@ sudo cp src/extra/system/mkinitcpio.conf /etc/mkinitcpio.conf
@@ -33,7 +34,7 @@ $(INSTALL): $(DEPS)
 	@ betterlockscreen -u ~/Pictures/wallpaper.png
 	@ touch $@
 
-$(DEPS): yay
+$(DEPS): $(YAY)
 	@ sudo cp src/extra/system/pacman.conf /etc/pacman.conf
 	@ yay -Sy $(shell cat deps/*.deps )
 	@ touch $@
@@ -44,6 +45,6 @@ $(YAY):
 
 deps: $(DEPS)
 install: $(INSTALL)
-yay: $(YAY)
+get_yay: $(YAY)
 
-.PHONY: deps install yay
+.PHONY: deps install get_yay
