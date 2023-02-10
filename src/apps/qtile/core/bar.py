@@ -1,9 +1,9 @@
 from libqtile.bar import Bar, Gap
 
 from utils import Color
-from widgets.battery import CustomBattery
-from widgets.volume import CustomVolume
-from .widgets import (
+from src.apps.qtile.core.widgets import CustomBattery
+from src.apps.qtile.core.widgets import CustomVolume
+from src.apps.qtile.core.widgets import (
     prompt,
     chords,
     spacer,

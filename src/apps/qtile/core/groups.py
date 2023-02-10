@@ -1,7 +1,7 @@
 from libqtile.config import Group, Key
 from libqtile.lazy import lazy
 
-from .keys import keys, mod
+from src.apps.qtile.core.keys import keys, mod
 
 groups = [Group(f"{i}") for i in "ζδωχλξπσς"]
 group_keys = [
