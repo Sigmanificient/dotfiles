@@ -1,4 +1,6 @@
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown
+#!/usr/bin/env sh
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-notify-send "Welcome, $USER!" & disown
-kitty -e "noefetch" & disown
+. "$HOME/.profile"
+
+notify-send "Welcome, $USER!" &
