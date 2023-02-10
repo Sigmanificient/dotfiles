@@ -1,12 +1,21 @@
-.idea
+# Ignore everything by default.
+/*
+!.gitignore
 
-# install logs
-*.log
+# Add Legacy Repo folder
+!/assets
+!/config
+!/deps
+!/extra
 
-# install
-.deps
-.install
-.yay
+# Add home config
+!/.bashrc
+!/.gitconfig
+!/.profile
+!/.xinitrc
+!/.zshrc
 
-# yay
-yay
+# Add repo files
+!/INSTALL.md
+!/LICENCE
+!/README.md
