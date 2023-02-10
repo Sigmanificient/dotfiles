@@ -9,6 +9,9 @@
 # Add really .config
 !/.config
 
+# Add global scripts
+!/Scripts
+
 # Add home config
 !/.bashrc
 !/.gitconfig
