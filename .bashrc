@@ -37,4 +37,4 @@ pre_prompt_command() {
 }
 
 PROMPT_COMMAND="pre_prompt_command; $PROMPT_COMMAND"
-source .profile
+source $HOME/.profile

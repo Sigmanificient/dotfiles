@@ -105,7 +105,6 @@ zstyle ':autocomplete:*' default-context ''
 zstyle ':autocomplete:*' min-input 1  # characters (int)
 
 source $HOME/.config/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-export PATH="$PATH:/home/sigmanificient/Scripts/global"
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P00F0F1C"  # black
@@ -128,4 +127,4 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
 
-source .profile
+source $HOME/.profile
