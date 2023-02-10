@@ -21,4 +21,5 @@ polkit
 polkit-gnome
 qtile
 qtile-extras
+rofi
 tree
