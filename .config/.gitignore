@@ -1,0 +1,17 @@
+# Ignore everything by default.
+/*
+
+!bpytop
+!dunst
+!emacs
+!flameshot
+!gtk-2.0
+!gtk-3.0
+!gtk-4.0
+!kitty
+!neofetch
+!picom
+!qtile
+
+# Add the gitignore itself
+!.gitignore
