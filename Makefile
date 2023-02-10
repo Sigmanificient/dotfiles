@@ -1,50 +1,68 @@
-DEPS = .deps
-INSTALL = .install
-YAY = .yay
-
-$(INSTALL): $(DEPS)
-	@ mkdir -p ~/Pictures
-	@ cp assets/wallpaper.png ~/Pictures/wallpaper.png
-
-	@ mkdir -p /home/sigmanificient/Pictures/screenshots
-	@ cp -r src/apps/* ~/.config
-	@ cp -r src/desktop/qtile ~/.config
-
-ifeq ($(shell whoami),sigmanificient)
-	@ cp -r src/extra/home/.bashrc ~
-	@ cp -r src/extra/home/.gitconfig ~
-	@ cp -r src/extra/home/.profile ~
-	@ cp -r src/extra/home/.xinitrc ~
-	@ cp -r src/extra/home/.zshrc ~
-	@ sudo cp src/extra/system/grub /etc/default/grub
-	@ sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-	@ sudo cp src/extra/system/grub /etc/hostname
-	@ sudo cp src/extra/system/hosts /etc/hosts
-	@ sudo cp src/extra/system/issue /etc/issue
+ifneq ($(shell whoami), sigmanificient)
+   $(error This makefile is meant as a personal way to install my dotfiles)
 endif
 
-	@ sudo  cp src/extra/system/vconsole.conf /etc/vconsole.conf
-	@ sudo cp src/extra/system/mkinitcpio.conf /etc/mkinitcpio.conf
-	@ sudo mkinitcpio -p linux
+CMD_NOT_FOUND = $(error $(strip $(1)) is required for this rule)
+CHECK_CMD = $(if $(shell command -v $(1)),, $(call CMD_NOT_FOUND, $(1)))
+CHECK_CMDS = $(foreach cmd, $(1), $(call CHECK_CMD, $(1)))
 
-	@ cp -r src/themes/gtk-* ~/.config
-	@ cp src/themes/.gtkrc-2.0 ~
+DEPS := ._deps.lock
+INSTALL := ._install.lock
 
-	@ betterlockscreen -u ~/Pictures/wallpaper.png
-	@ touch $@
+DEPS_DIR := $(HOME)/deps
+WALLPAPER := $(HOME)/Pictures/wallpaper.png
 
-$(DEPS): $(YAY)
-	@ sudo cp src/extra/system/pacman.conf /etc/pacman.conf
-	@ yay -Sy $(shell cat deps/*.deps )
-	@ touch $@
+HOME_FOLDERS := $(HOME)/Pictures
+HOME_FOLDERS := $(HOME)/Pictures/screenshots
+HOME_FOLDERS += $(HOME)/Scripts
+HOME_FOLDERS += $(HOME)/Desktop
+HOME_FOLDERS += $(HOME)/Downloads
 
-$(YAY):
-	@ git clone https://aur.archlinux.org/yay.git
+REPO_NAME := Sigmanificient/dotfiles.git
+BARE_REPO_DIR := $(HOME)/.git
+
+GIT := /usr/bin/git
+YAY := /usr/bin/yay
+B_LOCKSCREEN := /usr/bin/betterlockscreen
+
+all: $(INSTALL)
+
+$(BARE_REPO_DIR): $(GIT)
+	@ $(GIT) clone --bare https://github.com/$(REPO_NAME) $@
+	@ $(GIT) --git-dir=$@ --work-tree=$(HOME) remote set-url origin git@github.com:$(REPO_NAME)
+	@ $(GIT) config --local core.bare false
+	@ $(GIT) pull
+	@ $(GIT) init
+
+$(HOME_FOLDERS):
+	@ mkdir -p $@
+
+$(GIT):
+	$(call CHECK_CMDS, pacman sudo)
+	@ sudo pacman -Sy git
+
+$(YAY): $(GIT)
+	$(call CHECK_CMD, makepkg)
+	@ $(GIT) clone https://aur.archlinux.org/yay.git
 	@ cd yay && makepkg -si
+	@ touch $@
 
-deps: $(DEPS)
-install: $(INSTALL)
-get_yay: $(YAY)
+$(DEPS): $(shell find $(DEPS_DIR) -type f -name "*.deps") $(YAY)
+	$(call CHECK_CMD, yay)
+	@ $(YAY) -Sy $(shell cat $(HOME)/deps/*)
+	@ touch $@
 
-.PHONY: deps install get_yay
+$(WALLPAPER):
+	@ cp $(HOME)/assets/wallpaper.png $(WALLPAPER)
+
+$(INSTALL): $(DEPS) $(BARE_REPO_DIR) $(HOME_FOLDERS)
+	$(call CHECK_CMD, $(B_LOCKSCREEN))
+	@ $(B_LOCKSCREEN) -u $(WALLPAPER)
+	@ touch $@
+
+clean:
+	@ $(RM) $(DEPS) $(INSTALL)
+
+re:	clean all
+
+.PHONY: clean re

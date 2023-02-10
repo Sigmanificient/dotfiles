@@ -3,7 +3,6 @@
 
 # Add Legacy Repo folder
 !/assets
-!/config
 !/deps
 !/extra
 
@@ -21,6 +20,9 @@
 !/INSTALL.md
 !/LICENCE
 !/README.md
+
+# Add Makefile
+!/Makefile
 
 # Ignore logs
 *.log

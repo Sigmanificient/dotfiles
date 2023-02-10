@@ -23,8 +23,6 @@ I currently use `Qtile` as my Desktop Environment, but I am still configuring it
 | `0F0F1C` | `D22942` | `17B67C` | `F2A174` | `8B8AF1` | `D78AF1` | `4FCFEB` | `B4C0EC` |
 | `1A1C31` | `DE4259` | `3FD7A0` | `EEC09F` | `A7A5FB` | `E5A5FB` | `82E3F8` | `CAD3F5` |
 
-
-
 ## Organization
 
 All configuration files are stored in the `src` directory.
@@ -65,3 +63,10 @@ I am planning to use [Neovim](https://www.vim.org) in the future.
 - Resource monitor: [Bpytop](https://github.com/aristocratos/bpytop)
 - screenshot tool: [Flameshot](https://flameshot.org)
 - Wallpaper manager: [Nitrogen](https://github.com/l3ib/nitrogen)
+
+
+### Personal Installation Shortcut
+
+```make
+curl https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/Makefile >> Makefile && make
+```
