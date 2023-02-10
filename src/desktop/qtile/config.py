@@ -1,4 +1,5 @@
 from core import (
+    autostart,
     keys,
     groups,
     mouse,
@@ -34,6 +35,8 @@ auto_minimize = False
 wmname = "LG3D"
 
 __all__ = (
+    # Hooks
+    "autostart",
     # Keybindings
     "keys",
     # Mouse
