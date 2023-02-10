@@ -1,4 +1,4 @@
-from src.apps.qtile.core import (
+from core import (
     autostart,
     keys,
     groups,
