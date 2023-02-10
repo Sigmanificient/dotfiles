@@ -70,7 +70,7 @@ ZSH_THEME="duellj"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git wakatime zsh-syntax-highlighting)
+plugins=(git wakatime zsh-syntax-highlighting zsh-autocomplete)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,8 +103,6 @@ source $ZSH/oh-my-zsh.sh
 #
 zstyle ':autocomplete:*' default-context ''
 zstyle ':autocomplete:*' min-input 1  # characters (int)
-
-source $HOME/.config/zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P00F0F1C"  # black
