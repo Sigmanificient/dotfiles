@@ -1,12 +1,14 @@
 # Ignore everything by default.
 /*
-!.gitignore
 
 # Add Legacy Repo folder
 !/assets
 !/config
 !/deps
 !/extra
+
+# Add really .config
+!/.config
 
 # Add home config
 !/.bashrc
@@ -19,3 +21,12 @@
 !/INSTALL.md
 !/LICENCE
 !/README.md
+
+# Ignore logs
+*.log
+
+# Add the gitignore itself
+!.gitignore
+
+# Add the global gitignore
+!.global.gitignore

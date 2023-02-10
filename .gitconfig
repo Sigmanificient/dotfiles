@@ -1,3 +1,6 @@
+[core]
+    excludesfile = ~/.global.gitignore
+
 [user]
 	name = sigmanificient
 	email = edhyjox@gmail.com

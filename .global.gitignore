@@ -1,0 +1,40 @@
+# Backup files
+*.bak
+*.old
+
+# C - GCC coverage
+*.gc??
+
+# C - Generated files
+.c[oda]
+
+# C - Valgrind repots
+vgcore.*
+
+# IDE configuration folders
+.idea
+.vs
+.vscode
+
+# Keys
+*.key
+
+# Locked files
+*.~
+\#.*#
+\#.*
+
+# Logs
+*.log
+
+# Mac stuff
+.DS_Store
+
+# Python virtual env
+.env
+venv
+.nox
+
+# Pytest & Coverage
+.pytest_cache
+.coverage
