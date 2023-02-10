@@ -14,7 +14,6 @@ WALLPAPER := $(HOME)/Pictures/wallpaper.png
 
 HOME_FOLDERS := $(HOME)/Pictures
 HOME_FOLDERS := $(HOME)/Pictures/screenshots
-HOME_FOLDERS += $(HOME)/Scripts
 HOME_FOLDERS += $(HOME)/Desktop
 HOME_FOLDERS += $(HOME)/Downloads
 

@@ -4,4 +4,4 @@ export GTK_THEME=Catppuccin-Mocha-Standard-Sapphire-Dark
 export PATH="$PATH:/home/sigmanificient/.local/share/JetBrains/Toolbox/scripts"
 
 # Global scripts
-export PATH="$PATH:/home/sigmanificient/Scripts"
+export PATH="$PATH:/home/sigmanificient/scripts"

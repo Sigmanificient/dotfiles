@@ -10,7 +10,7 @@
 !/.config
 
 # Add global scripts
-!/Scripts
+!/scripts
 
 # Add home config
 !/.bashrc
