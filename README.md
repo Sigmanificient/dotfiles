@@ -12,11 +12,6 @@ I currently use `Qtile` as my Desktop Environment, but I am still configuring it
 
 ![Qtile has floating window support](assets/screenshots/qtile_floating.png)
 
-So, for now, I have a side configuration for `KDE Plasma`.
-I use `KDE` in a Xephyr window when necessary, but I use `Qtile` in the main screen.
-
-![KDE running within Xephyr](assets/screenshots/qtile_kde.png)
-
 ## Color palette
 
 > tty
@@ -47,7 +42,7 @@ You can also find extra configuration files in the `src/extra` directory.
 
 - OS: [GNU](https://www.gnu.org/home.en.html)/[Linux](https://en.wikipedia.org/wiki/Linux)
 - Distribution: [Arch](https://archlinux.org)
-- Desktop Environment: [Qtile](http://www.qtile.org), [KDE Plasma](https://kde.org/plasma-desktop)
+- Desktop Environment: [Qtile](http://www.qtile.org)
 - Terminal Emulator: [Kitty](https://sw.kovidgoyal.net/kitty)
 - Shell: [Bash](https://www.gnu.org/software/bash)
 
