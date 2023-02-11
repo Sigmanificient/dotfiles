@@ -23,19 +23,6 @@ I currently use `Qtile` as my Desktop Environment, but I am still configuring it
 | `0F0F1C` | `D22942` | `17B67C` | `F2A174` | `8B8AF1` | `D78AF1` | `4FCFEB` | `B4C0EC` |
 | `1A1C31` | `DE4259` | `3FD7A0` | `EEC09F` | `A7A5FB` | `E5A5FB` | `82E3F8` | `CAD3F5` |
 
-## Organization
-
-All configuration files are stored in the `src` directory.
-
-It contains 4 subdirectories:
-
-- `apps` contains configuration files for applications.
-- `desktop` contains configuration files for the desktop environment.
-- `extra` contains configuration files for other things.
-- `themes` contains configuration files for themes (like gtk).
-
-You can also find extra configuration files in the `src/extra` directory.
-
 ## Tools I use
 
 - OS: [GNU](https://www.gnu.org/home.en.html)/[Linux](https://en.wikipedia.org/wiki/Linux)
