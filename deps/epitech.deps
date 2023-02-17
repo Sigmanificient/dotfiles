@@ -2,7 +2,9 @@ boost
 compiledb
 criterion
 csfml
+gcovr
 emacs-nox
 ncurses
 teams
 tmux
+valgrind
