@@ -1,4 +1,5 @@
 from libqtile import widget
+from libqtile.lazy import lazy
 
 from utils import Color
 
@@ -19,7 +20,15 @@ def spacer():
 
 def memory():
     return widget.Memory(
-        format='{MemUsed: .3f}Mb'
+        format='{MemUsed: .3f}Mb',
+        mouse_callbacks={
+            'Button1': lazy.spawn(
+                "kitty"
+                " -o initial_window_width=1720"
+                " -o initial_window_height=860"
+                " -e bpytop"
+            )
+        }
     )
 
 
