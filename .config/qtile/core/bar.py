@@ -4,6 +4,7 @@ from utils import Color
 from widgets import CustomBattery
 from widgets import CustomVolume
 from .widgets import (
+    arch_logo,
     prompt,
     chords,
     group_box,
@@ -17,6 +18,7 @@ from .widgets import (
 )
 
 main_bar_widgets = [
+    arch_logo,
     group_box,
     win_name,
     prompt,

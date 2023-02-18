@@ -18,6 +18,16 @@ def spacer():
     return widget.Spacer(length=4)
 
 
+def arch_logo():
+    return widget.Image(
+        margin=6,
+        scale=True,
+        filename="~/assets/arch_icon.svg",
+        mouse_callbacks={
+            'Button1': lazy.spawn("rofi -show drun")
+        }
+    )
+
 def memory():
     return widget.Memory(
         format='{MemUsed: .3f}Mb',
