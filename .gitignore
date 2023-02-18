@@ -36,5 +36,8 @@
 # Add the gitignore itself
 !.gitignore
 
+# Add gitmodules
+!.gitmodules
+
 # Add the global gitignore
 !.global.gitignore

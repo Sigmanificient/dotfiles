@@ -1,0 +1,19 @@
+[submodule "oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule "wakatime"]
+	path = extra/zsh/plugins/wakatime
+	url = https://github.com/wbingli/zsh-wakatime.git
+
+[submodule "zsh-autocomplete"]
+	path = extra/zsh/plugins/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+
+[submodule "zsh-syntax-highlighting"]
+	path = extra/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+[submodule "banana"]
+    path = scripts/banana-coding-style-checker
+    url = https://github.com/Epitech/banana-coding-style-checker.git
