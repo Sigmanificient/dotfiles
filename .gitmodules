@@ -2,7 +2,7 @@
 	path = .oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 
-[submodule "wakatime"]
+[submodule "zsh-wakatime"]
 	path = extra/zsh/plugins/wakatime
 	url = https://github.com/wbingli/zsh-wakatime.git
 
