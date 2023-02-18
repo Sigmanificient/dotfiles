@@ -9,6 +9,10 @@ keys = [
         lazy.spawn("thunar")
     ),
     Key(
+        [mod], "v",
+        lazy.spawn("kitty -e nmtui")
+    ),
+    Key(
         [mod], "l",
         lazy.spawn("betterlockscreen -l")
     ),
