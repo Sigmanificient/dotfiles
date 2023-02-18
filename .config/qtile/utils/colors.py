@@ -25,7 +25,7 @@ class Color(AlphaColor):
     YELLOW_LIGHT = _Color("#EED49F")
 
     BLUE_VERY_DARK = _Color("#3F3D9E")
-    BLUE_DARK = _Color("#8C8AF1")
+    BLUE_DARK = _Color("#8B8AF1")
     BLUE_LIGHT = _Color("#A7A5FB")
 
     PURPLE_DARK = _Color("#D78AF1")
