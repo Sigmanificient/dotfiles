@@ -5,6 +5,10 @@ mod = "mod4"
 
 keys = [
     Key(
+        [mod], "e",
+        lazy.spawn("thunar")
+    ),
+    Key(
         [mod], "l",
         lazy.spawn("betterlockscreen -l")
     ),
