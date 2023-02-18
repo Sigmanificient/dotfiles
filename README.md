@@ -6,7 +6,9 @@ I currently use `Qtile` as my Desktop Environment, but I am still configuring it
 
 ## Some nice screenshots
 
-![Qtile recursive screenshot](assets/screenshots/qtile.png)
+![Qtile recursive screenshot](assets/screenshots/qtile_recursion.png)
+
+![Qtile is a tiling window manager](assets/screenshots/qtile_base.png)
 
 ![Qtile is a tiling window manager](assets/screenshots/qtile_tiling.png)
 
