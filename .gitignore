@@ -19,6 +19,9 @@
 !/.xinitrc
 !/.zshrc
 
+# oh my zsh repo
+!.oh-my-zsh
+
 # Add repo files
 !/INSTALL.md
 !/LICENCE
