@@ -1,45 +1,41 @@
 from libqtile.bar import Bar, Gap
-
 from utils import Color
+
 from widgets import CustomBattery
 from widgets import CustomVolume
 from .widgets import (
     prompt,
     chords,
-    spacer,
     group_box,
+    cpu_graph,
+    memory,
     seperator,
     win_name,
-    fix_systray_left,
-    fix_systray_right,
     systray,
     clock,
     quick_exit
 )
 
 main_bar_widgets = [
-    spacer,
     group_box,
-    seperator,
     win_name,
     prompt,
     chords,
+    memory,
+    cpu_graph,
     seperator,
-    fix_systray_left,
     systray,
-    fix_systray_right,
-    seperator,
     CustomVolume,
-    seperator,
     CustomBattery,
-    seperator,
     clock,
     seperator,
     quick_exit,
-    spacer
 ]
 
-secondary_bar_widgets = main_bar_widgets[:6] + main_bar_widgets[10:]
+secondary_bar_widgets = [
+    w for w in main_bar_widgets
+    if w not in (systray, quick_exit)
+]
 
 
 def create_bar(secondary=False):
@@ -51,8 +47,8 @@ def create_bar(secondary=False):
     return Bar(
         widgets=[BarWidget() for BarWidget in bar_widgets],
         size=24,
-        background=Color.BG_DARK.with_alpha(0.5),
-        margin=[8, 8, 8, 8],
+        background=Color.BG_DARK.with_alpha(0.7),
+        margin=[0, 0, 8, 0],
     )
 
 

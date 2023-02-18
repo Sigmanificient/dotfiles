@@ -6,7 +6,7 @@ widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
     fontsize=12,
     padding=12,
-    background=Color.BG_DARK.with_alpha(0.5),
+    background=Color.BG_DARK.with_alpha(0.7),
     foreground=Color.TEXT_LIGHT
 )
 
@@ -17,10 +17,24 @@ def spacer():
     return widget.Spacer(length=4)
 
 
+def memory():
+    return widget.Memory(
+        format='{MemUsed: .3f}Mb'
+    )
+
+
+def cpu_graph():
+    return widget.CPUGraph(
+        type='line',
+        line_width=1,
+        border_width=0
+    )
+
+
 def seperator():
     return widget.Sep(
-        background=Color.BG_DARK.with_alpha(0),
-        padding=16,
+        background=Color.BG_DARK.with_alpha(0.7),
+        padding=4,
         linewidth=0,
     )
 
@@ -41,11 +55,19 @@ def group_box():
 
 
 def win_name():
-    return widget.WindowName()
+    return widget.TaskList(
+        icon_size=16,
+        fontsize=12,
+        borderwidth=0,
+        margin=0,
+        padding=4,
+        txt_floating='',
+        spacing=8
+    )
 
 
 def systray():
-    return widget.Systray(padding=4)
+    return widget.Systray(padding=4, icon_size=16)
 
 
 def clock():
@@ -79,7 +101,7 @@ def chords():
 
 def fix_systray_left():
     return widget.Sep(
-        background=Color.BG_DARK.with_alpha(0.5),
+        background=Color.BG_DARK.with_alpha(0.8),
         padding=8,
         linewidth=0,
     )
@@ -87,7 +109,7 @@ def fix_systray_left():
 
 def fix_systray_right():
     return widget.Sep(
-        background=Color.BG_DARK.with_alpha(0.5),
+        background=Color.BG_DARK.with_alpha(0.8),
         padding=12,
         linewidth=0,
     )
