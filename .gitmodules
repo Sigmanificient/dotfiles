@@ -1,19 +1,19 @@
 [submodule "oh-my-zsh"]
 	path = .oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
+	url = ssh:git@github/ohmyzsh/ohmyzsh.git
 
 [submodule "extra/zsh/plugins/zsh-wakatime"]
 	path = extra/zsh/plugins/zsh-wakatime
-	url = https://github.com/wbingli/zsh-wakatime.git
+	url = ssh:git@github/wbingli/zsh-wakatime.git
 
 [submodule "extra/zsh/plugins/zsh-autocomplete"]
 	path = extra/zsh/plugins/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete.git
+	url = ssh:git@github/marlonrichert/zsh-autocomplete.git
 
 [submodule "extra/zsh/plugins/zsh-syntax-highlighting"]
 	path = extra/zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+	url = ssh:git@github/zsh-users/zsh-syntax-highlighting.git
 
 [submodule "scripts/banana"]
     path = scripts/banana-coding-style-checker
-    url = https://github.com/Epitech/banana-coding-style-checker.git
+    url = ssh:git@github/Epitech/banana-coding-style-checker.git
