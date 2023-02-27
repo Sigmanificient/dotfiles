@@ -3,11 +3,13 @@
 
 # Add Legacy Repo folder
 !/assets
-!/deps
 !/extra
 
 # Add really .config
 !/.config
+
+# User nix packages
+!/packages
 
 # Add global scripts
 !/scripts
@@ -18,6 +20,9 @@
 !/.profile
 !/.xinitrc
 !/.zshrc
+
+# Arch deps
+!arch.deps
 
 # oh my zsh repo
 !.oh-my-zsh
