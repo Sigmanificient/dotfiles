@@ -1,4 +1,4 @@
-[submodule "oh-my-zsh"]
+[submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = ssh:git@github/ohmyzsh/ohmyzsh.git
 
@@ -14,6 +14,6 @@
 	path = extra/zsh/plugins/zsh-syntax-highlighting
 	url = ssh:git@github/zsh-users/zsh-syntax-highlighting.git
 
-[submodule "scripts/banana"]
+[submodule "scripts/banana-coding-style-checker"]
     path = scripts/banana-coding-style-checker
     url = ssh:git@github/Epitech/banana-coding-style-checker.git
