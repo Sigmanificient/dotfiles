@@ -4,7 +4,7 @@ from libqtile.config import Screen
 
 from core.bar import create_bar, gap
 
-wallpaper_path = os.path.expanduser("~/Pictures/wallpaper.png")
+wallpaper_path = os.path.expanduser("~/assets/wallpaper.png")
 screens = [
     Screen(
         top=create_bar(),
