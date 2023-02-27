@@ -33,8 +33,12 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+
   users.users.sigmanificient = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       aseprite
