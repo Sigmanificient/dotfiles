@@ -44,6 +44,7 @@
     extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       (pkgs.callPackage /home/sigmanificient/packages/APL385Mono.nix { })
+      (pkgs.callPackage /home/sigmanificient/packages/VeraPP.nix { })
       aseprite
       bat
       betterlockscreen
