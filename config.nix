@@ -44,28 +44,20 @@
     extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       (pkgs.callPackage /home/sigmanificient/packages/APL385Mono.nix { })
-      (pkgs.callPackage /home/sigmanificient/packages/VeraPP.nix { })
-      aseprite
       bat
       betterlockscreen
-      boost
       bpytop
-      csfml
-      criterion
       dunst
       discord
       feh
       firefox-devedition-bin
       flameshot
-      gcovr
-      gh
       gimp
       insomnia
       jetbrains.clion
       jetbrains.pycharm-professional
       kitty
       lazygit
-      ncurses
       neofetch
       obsidian
       oh-my-zsh
@@ -76,9 +68,7 @@
       rofi
       sublime4
       tdesktop
-      tmux
       tokei
-      valgrind
       wakatime
       zsh
     ];
