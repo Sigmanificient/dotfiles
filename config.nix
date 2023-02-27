@@ -58,6 +58,7 @@
       jetbrains.pycharm-professional
       kitty
       lazygit
+      gnumake
       neofetch
       obsidian
       oh-my-zsh
