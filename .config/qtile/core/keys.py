@@ -23,11 +23,7 @@ keys = [
     ),
     Key(
         [mod], "b",
-        lazy.spawn("firefox-developer-edition")
-    ),
-    Key(
-        [mod], "k",
-        lazy.spawn("Xephyr -br -ac -noreset -screen 1600x900 :1")
+        lazy.spawn("firefox-devedition")
     ),
     Key(
         [], "Print",

@@ -1,8 +1,6 @@
 from libqtile.bar import Bar, Gap
 from utils import Color
 
-from widgets import CustomBattery
-from widgets import CustomVolume
 from .widgets import (
     arch_logo,
     prompt,
@@ -18,7 +16,7 @@ from .widgets import (
 )
 
 main_bar_widgets = [
-    arch_logo,
+#    arch_logo,
     group_box,
     win_name,
     prompt,
@@ -27,8 +25,6 @@ main_bar_widgets = [
     cpu_graph,
     seperator,
     systray,
-    CustomVolume,
-    CustomBattery,
     clock,
     seperator,
     quick_exit,
