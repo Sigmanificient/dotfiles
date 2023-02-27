@@ -43,6 +43,7 @@
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
+      (pkgs.callPackage /home/sigmanificient/packages/APL385Mono.nix { })
       aseprite
       bat
       betterlockscreen
