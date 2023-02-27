@@ -36,10 +36,12 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
+  virtualisation.docker.enable = true;
+
   users.users.sigmanificient = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
       aseprite
       bat
