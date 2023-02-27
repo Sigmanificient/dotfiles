@@ -37,27 +37,54 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      pamixer
-      sublime4
-      qtile
-      firefox-devedition-bin
-      kitty
+      aseprite
+      bat
+      betterlockscreen
+      boost
       bpytop
+      csfml
+      criterion
       dunst
-      flameshot
       discord
-      picom
+      feh
+      firefox-devedition-bin
+      flameshot
+      gcovr
+      gh
+      gimp
+      insomnia
+      jetbrains.clion
+      jetbrains.pycharm-professional
+      kitty
+      lazygit
+      ncurses
       neofetch
+      obsidian
+      oh-my-zsh
+      pamixer
+      peek
+      picom
+      qtile
+      rofi
+      sublime4
+      tdesktop
+      tmux
+      tokei
+      valgrind
+      wakatime
+      zsh
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-      vim
-      wget
       git
       htop
       nerdfonts
+      tree
+      vim
+      vifm
+      wget
   ];
 
   programs.gnupg.agent = {
