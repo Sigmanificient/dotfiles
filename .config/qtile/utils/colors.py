@@ -5,7 +5,6 @@ AlphaColor = str
 
 
 class _Color(AlphaColor):
-
     def with_alpha(self, alpha: float) -> AlphaColor:
         return AlphaColor(f"{self}{int(alpha * 255):02x}")
 

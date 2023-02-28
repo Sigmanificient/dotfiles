@@ -50,5 +50,5 @@ __all__ = (
     "screens",
     # Widgets
     "widget_defaults",
-    "extension_defaults"
+    "extension_defaults",
 )

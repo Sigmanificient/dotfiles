@@ -8,7 +8,7 @@ widget_defaults = dict(
     fontsize=12,
     padding=12,
     background=Color.BG_DARK.with_alpha(0.7),
-    foreground=Color.TEXT_LIGHT
+    foreground=Color.TEXT_LIGHT,
 )
 
 extension_defaults = widget_defaults.copy()
@@ -23,31 +23,26 @@ def arch_logo():
         margin=6,
         scale=True,
         filename="~/assets/arch_icon.svg",
-        mouse_callbacks={
-            'Button1': lazy.spawn("rofi -show drun")
-        }
+        mouse_callbacks={"Button1": lazy.spawn("rofi -show drun")},
     )
+
 
 def memory():
     return widget.Memory(
-        format='{MemUsed: .3f}Mb',
+        format="{MemUsed: .3f}Mb",
         mouse_callbacks={
-            'Button1': lazy.spawn(
+            "Button1": lazy.spawn(
                 "kitty"
                 " -o initial_window_width=1720"
                 " -o initial_window_height=860"
                 " -e bpytop"
             )
-        }
+        },
     )
 
 
 def cpu_graph():
-    return widget.CPUGraph(
-        type='line',
-        line_width=1,
-        border_width=0
-    )
+    return widget.CPUGraph(type="line", line_width=1, border_width=0)
 
 
 def seperator():
@@ -60,7 +55,7 @@ def seperator():
 
 def group_box():
     return widget.GroupBox(
-        highlight_method='line',
+        highlight_method="line",
         disable_drag=True,
         other_screen_border=Color.BLUE_VERY_DARK,
         other_current_screen_border=Color.BLUE_VERY_DARK,
@@ -80,8 +75,8 @@ def win_name():
         borderwidth=0,
         margin=0,
         padding=4,
-        txt_floating='',
-        spacing=8
+        txt_floating="",
+        spacing=8,
     )
 
 
@@ -95,8 +90,8 @@ def clock():
 
 def quick_exit():
     return widget.QuickExit(
-        default_text='⏻',
-        countdown_format='{}',
+        default_text="⏻",
+        countdown_format="{}",
     )
 
 
@@ -112,7 +107,7 @@ def prompt():
 def chords():
     return widget.Chord(
         chords_colors={
-            'launch': ("#ff0000", "#ffffff"),
+            "launch": ("#ff0000", "#ffffff"),
         },
         name_transform=lambda name: name.upper(),
     )

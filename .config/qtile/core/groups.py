@@ -31,6 +31,6 @@ for (g, key) in zip(groups, group_keys):
                 key,
                 lazy.window.togroup(g.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(g.name),
-            )
+            ),
         ]
     )

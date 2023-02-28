@@ -12,11 +12,11 @@ from .widgets import (
     win_name,
     systray,
     clock,
-    quick_exit
+    quick_exit,
 )
 
 main_bar_widgets = [
-#    arch_logo,
+    #    arch_logo,
     group_box,
     win_name,
     prompt,
@@ -30,10 +30,7 @@ main_bar_widgets = [
     quick_exit,
 ]
 
-secondary_bar_widgets = [
-    w for w in main_bar_widgets
-    if w not in (systray, quick_exit)
-]
+secondary_bar_widgets = [w for w in main_bar_widgets if w not in (systray, quick_exit)]
 
 
 def create_bar(secondary=False):
