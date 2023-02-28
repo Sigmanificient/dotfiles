@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
   ];
 
+
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -36,6 +37,7 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
+  programs.command-not-found.enable = false;
   virtualisation.docker.enable = true;
 
   users.users.sigmanificient = {
