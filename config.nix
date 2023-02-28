@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
   ];
 
+  programs.command-not-found.enable = false;
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -37,7 +38,6 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
-  programs.command-not-found.enable = false;
   virtualisation.docker.enable = true;
 
   users.users.sigmanificient = {
@@ -60,17 +60,20 @@
       jetbrains.pycharm-professional
       kitty
       lazygit
+      lxappearance
       gnumake
       neofetch
       obsidian
       oh-my-zsh
       pamixer
+      pavucontrol
       peek
       picom
       qtile
       rofi
       sublime4
       tdesktop
+      xfce.thunar
       tokei
       wakatime
       zsh
@@ -92,8 +95,12 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+      catppuccin-cursors
+      catppuccin-gtk
       git
       htop
+      papirus-icon-theme
+      papirus-folders
       tree
       vim
       vifm
