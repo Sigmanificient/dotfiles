@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 {
   imports = [
@@ -40,12 +36,22 @@
 
   virtualisation.docker.enable = true;
 
+  nixpkgs.config = {
+    allowUnfree = true;
+
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
   users.users.sigmanificient = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "wheel" "docker" ];
     packages = with pkgs; [
-      (pkgs.callPackage /home/sigmanificient/packages/APL385Mono.nix { })
+      (pkgs.callPackage packages/APL385Mono.nix { })
       bat
       betterlockscreen
       bpytop
@@ -75,6 +81,7 @@
       tdesktop
       xfce.thunar
       tokei
+      unstable.catppuccin-papirus-folders
       wakatime
       zsh
     ];
@@ -93,18 +100,15 @@
     proggyfonts
   ];
 
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-      catppuccin-cursors
-      catppuccin-gtk
-      git
-      htop
-      papirus-icon-theme
-      papirus-folders
-      tree
-      vim
-      vifm
-      wget
+    catppuccin-cursors
+    catppuccin-gtk
+    git
+    htop
+    tree
+    vim
+    vifm
+    wget
   ];
 
   programs.gnupg.agent = {
