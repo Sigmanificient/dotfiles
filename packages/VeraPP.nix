@@ -1,10 +1,4 @@
-{ stdenv
-, fetchFromGitHub
-, cmake
-, python3
-, boost
-, tcl
-}:
+{stdenv, fetchFromGitHub, cmake, python3, boost, tcl}:
 
 stdenv.mkDerivation {
   pname = "vera++";
@@ -17,10 +11,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-1nAKhUltQS1301JNrr0PQQrrf2W9Hj5gk1nbUhN4cXw=";
   };
 
-  nativeBuildInputs = [
-    cmake
-  ];
-
+  nativeBuildInputs = [cmake];
   buildInputs = [
     python3
     (boost.override { enablePython = true; python = python3; })

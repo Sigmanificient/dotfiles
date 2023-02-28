@@ -1,17 +1,14 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
-  programs.command-not-found.enable = false;
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
+  boot.loader.grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+  };
 
   networking.hostName = "Sigmachine";
   networking.networkmanager.enable = true;
@@ -23,10 +20,12 @@
     useXkbConfig = true;
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.startx.enable = true;
-  services.xserver.libinput.enable = true;
-  services.xserver.layout = "fr";
+  services.xserver = {
+      enable = true;
+      displayManager.startx.enable = true;
+      libinput.enable = true;
+      layout = "fr";
+  };
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -34,6 +33,7 @@
   programs.zsh.enable = true;
   environment.shells = with pkgs; [ zsh ];
 
+  programs.command-not-found.enable = false;
   virtualisation.docker.enable = true;
 
   nixpkgs.config = {
