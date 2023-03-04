@@ -70,7 +70,7 @@ ZSH_CUSTOM=$HOME/extra/zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-wakatime zsh-syntax-highlighting zsh-autocomplete)
+plugins=(git wakatime zsh-wakatime zsh-syntax-highlighting zsh-autocomplete)
 
 source $ZSH/oh-my-zsh.sh
 
