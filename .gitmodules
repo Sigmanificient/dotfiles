@@ -2,9 +2,13 @@
 	path = .oh-my-zsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
 
+[submodule "extra/zsh/plugins/wakatime"]
+	path = extra/zsh/plugins/wakatime
+	url = git@github.com:sobolevn/zsh-wakatime.git
+
 [submodule "extra/zsh/plugins/zsh-wakatime"]
 	path = extra/zsh/plugins/zsh-wakatime
-	url = git@github.com:wbingli/zsh-wakatime.git
+	url = git@github.com:wbingli/wakatime-zsh-plugin.git
 
 [submodule "extra/zsh/plugins/zsh-autocomplete"]
 	path = extra/zsh/plugins/zsh-autocomplete
@@ -13,7 +17,3 @@
 [submodule "extra/zsh/plugins/zsh-syntax-highlighting"]
 	path = extra/zsh/plugins/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
-
-[submodule "scripts/banana-coding-style-checker"]
-    path = scripts/banana-coding-style-checker
-    url = git@github.com:Epitech/banana-coding-style-checker.git
