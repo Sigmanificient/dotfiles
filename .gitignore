@@ -32,8 +32,10 @@
 !/LICENCE
 !/README.md
 
-# Add Makefile
-!/Makefile
+# Add Nix flake
+!*.nix
+!**/*.nix
+!flake.lock
 
 # Ignore logs
 *.log
