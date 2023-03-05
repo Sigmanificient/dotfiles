@@ -1,7 +1,6 @@
+{ unstable }:
 { config, pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   boot.loader.systemd-boot.enable = false;
@@ -38,15 +37,7 @@
   programs.command-not-found.enable = false;
   virtualisation.docker.enable = true;
 
-  nixpkgs.config = {
-    allowUnfree = true;
-
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   users.users.sigmanificient = {
     isNormalUser = true;
@@ -138,6 +129,6 @@
   };
 
   services.openssh.enable = true;
-  system.copySystemConfiguration = true;
+  system.copySystemConfiguration = false;
   system.stateVersion = "22.11";
 }
