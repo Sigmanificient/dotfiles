@@ -4,6 +4,12 @@
 
 I currently use `Qtile` as my Desktop Environment, but I am still configuring it.
 
+> Install of nixos
+
+```
+sudo nixos-rebuild switch --flake '.'
+```
+
 ## Some nice screenshots
 
 ![Qtile recursive screenshot](assets/screenshots/qtile_recursion.png)
@@ -52,10 +58,3 @@ I am planning to use [Neovim](https://www.vim.org) in the future.
 - Resource monitor: [Bpytop](https://github.com/aristocratos/bpytop)
 - screenshot tool: [Flameshot](https://flameshot.org)
 - Wallpaper manager: [Nitrogen](https://github.com/l3ib/nitrogen)
-
-
-### Personal Installation Shortcut
-
-```make
-curl https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/Makefile >> Makefile && make
-```
