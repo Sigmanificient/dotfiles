@@ -74,7 +74,6 @@
       tdesktop
       xfce.thunar
       tokei
-      unstable.catppuccin-papirus-folders
       wakatime
       zsh
     ];
@@ -94,6 +93,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    unstable.catppuccin-papirus-folders
     catppuccin-cursors
     catppuccin-gtk
     git
