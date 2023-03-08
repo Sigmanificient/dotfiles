@@ -2,17 +2,19 @@
 { config, pkgs, ... }:
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = [ "amdgpu" ];
-
-    loader.systemd-boot.enable = false;
-    loader.efi.canTouchEfiVariables = true;
-    loader.grub = {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        gfxmodeEfi = "1920x1080x32";
+      };
     };
   };
 
