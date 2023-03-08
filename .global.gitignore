@@ -5,9 +5,6 @@
 # C - GCC coverage
 *.gc??
 
-# C - Generated files
-.c[oda]
-
 # C - Valgrind repots
 vgcore.*
 
@@ -21,7 +18,7 @@ vgcore.*
 
 # Locked files
 *.~
-\#.*#
+\#.*\#
 \#.*
 
 # Logs
