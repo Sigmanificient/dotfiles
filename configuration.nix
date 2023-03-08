@@ -42,7 +42,7 @@
   users.users.sigmanificient = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
       (pkgs.callPackage packages/APL385Mono.nix { })
       bat
