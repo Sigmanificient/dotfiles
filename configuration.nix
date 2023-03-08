@@ -3,12 +3,17 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub = {
+  boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelModules = [ "amdgpu" ];
+
+    loader.systemd-boot.enable = false;
+    loader.efi.canTouchEfiVariables = true;
+    loader.grub = {
       enable = true;
       device = "nodev";
       efiSupport = true;
+    };
   };
 
   networking.hostName = "Sigmachine";
