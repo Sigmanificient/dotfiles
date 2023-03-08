@@ -73,6 +73,7 @@
       sublime4
       tdesktop
       xfce.thunar
+      xfce.thunar-archive-plugin
       tokei
       wakatime
       zsh
