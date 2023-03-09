@@ -34,10 +34,12 @@ sudo nixos-rebuild switch --flake '.'
 ## Tools I use
 
 - OS: [GNU](https://www.gnu.org/home.en.html)/[Linux](https://en.wikipedia.org/wiki/Linux)
-- Distribution: [Arch](https://archlinux.org)
+- Distribution: [Nix](https://nixos.org)
+- Linux Kernel: [Xanmod](https://xanmod.org/)
 - Desktop Environment: [Qtile](http://www.qtile.org)
 - Terminal Emulator: [Kitty](https://sw.kovidgoyal.net/kitty)
-- Shell: [Bash](https://www.gnu.org/software/bash)
+- Shell: [Zsh](https://www.zsh.org/) with [Oh my Zsh](https://ohmyz.sh/)
+- Compositor: [Picom](https://github.com/yshui/picom)
 
 ### Dev
 
@@ -47,14 +49,16 @@ sudo nixos-rebuild switch --flake '.'
 [DataGrip](https://www.jetbrains.com/datagrip)
 [PhpStorm](https://www.jetbrains.com/phpstorm) 
 & [WebStorm](https://www.jetbrains.com/webstorm)
-- Lighter TUI Editor: [Emacs](https://www.gnu.org/software/emacs)
-- Text Editor: [Sublime Text](https://www.sublimetext.com)
+- GUI Text Editor: [Sublime Text](https://www.sublimetext.com)
+- TUI Commit Helper: [Lazygit](https://github.com/jesseduffield/lazygit)
 
 I am planning to use [Neovim](https://www.vim.org) in the future.
 
-### Utilities
+### Other Utilities
 
 - TUI File manager: [Ranger](https://ranger.github.io)
+- GUI File manager: [Thunar](https://docs.xfce.org/xfce/thunar/start)
+
 - Resource monitor: [Bpytop](https://github.com/aristocratos/bpytop)
 - screenshot tool: [Flameshot](https://flameshot.org)
-- Wallpaper manager: [Nitrogen](https://github.com/l3ib/nitrogen)
+- Notifier: [dunst](https://dunst-project.org)
