@@ -9,7 +9,7 @@
 !/.config
 
 # User nix packages
-!/packages
+!/.config/nixos/packages
 
 # Add global scripts
 !/scripts

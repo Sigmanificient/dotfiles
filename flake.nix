@@ -12,8 +12,8 @@
     nixosConfigurations.Sigmachine = nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-        ./hardware-configuration.nix
-        (import ./configuration.nix { inherit unstable; })
+        ./.config/nixos/hardware-configuration.nix
+        (import ./.config/nixos/configuration.nix { inherit unstable; })
       ];
     };
   };

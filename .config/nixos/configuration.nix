@@ -51,7 +51,6 @@
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
-      (pkgs.callPackage packages/APL385Mono.nix { })
       bat
       betterlockscreen
       bpytop
@@ -112,7 +111,7 @@
     wget
   ];
 
-  environment.etc.issue.text = (builtins.readFile ./extra/issue);
+  environment.etc.issue.text = (builtins.readFile ../../extra/issue);
 
   programs.gnupg.agent = {
     enable = true;
