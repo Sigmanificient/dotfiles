@@ -1,20 +1,6 @@
 { unstable }:
 { config, pkgs, ... }:
 {
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:6:0:0";
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = [ "amdgpu" ];
@@ -27,6 +13,21 @@
         gfxmodeEfi = "1920x1080x32";
       };
     };
+  };
+
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:6:0:0";
+  };
+
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+    settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
   networking = {
@@ -46,6 +47,7 @@
     displayManager.startx.enable = true;
     layout = "fr";
     libinput.enable = true;
+    videoDrivers = [ "nvidia" ];
     windowManager.qtile.enable = true;
   };
 
@@ -54,26 +56,26 @@
 
   programs.zsh = {
     enable = true;
-    ohMyZsh.custom = "$HOME/extra/zsh";
-    ohMyZsh.enable = true;
-    ohMyZsh.plugins = [
-      "git"
-      "ssh-agent"
-      "wakatime"
-      "zsh-autocomplete"
-      "zsh-syntax-highlighting"
-      "zsh-wakatime"
-    ];
-    ohMyZsh.theme = "sigma";
+    ohMyZsh = {
+      enable = true;
+      custom = "$HOME/extra/zsh";
+      plugins = [
+        "git"
+        "ssh-agent"
+        "wakatime"
+        "zsh-autocomplete"
+        "zsh-syntax-highlighting"
+        "zsh-wakatime"
+      ];
+      theme = "sigma";
+    };
   };
 
-  environment.shells = with pkgs; [ zsh ];
-
   programs.command-not-found.enable = false;
-  virtualisation.docker.enable = true;
+  programs.thunar.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  programs.thunar.enable = true;
+  virtualisation.docker.enable = true;
 
   users.users.sigmanificient = {
     isNormalUser = true;
@@ -123,6 +125,8 @@
     proggyfonts
   ];
 
+  environment.etc.issue.text = (builtins.readFile ../../extra/issue);
+  environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [
     unstable.catppuccin-papirus-folders
     catppuccin-cursors
@@ -135,8 +139,6 @@
     wget
   ];
 
-  environment.etc.issue.text = (builtins.readFile ../../extra/issue);
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -147,7 +149,6 @@
      fade = true;
   };
 
-  services.openssh.enable = true;
   system.copySystemConfiguration = false;
   system.stateVersion = "22.11";
 }
