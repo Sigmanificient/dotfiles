@@ -30,22 +30,38 @@
   };
 
   services.xserver = {
-      enable = true;
-      displayManager.startx.enable = true;
-      libinput.enable = true;
-      layout = "fr";
+    enable = true;
+    displayManager.startx.enable = true;
+    layout = "fr";
+    libinput.enable = true;
+    windowManager.qtile.enable = true;
   };
 
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    ohMyZsh.custom = "$HOME/extra/zsh";
+    ohMyZsh.enable = true;
+    ohMyZsh.plugins = [
+      "git"
+      "ssh-agent"
+      "wakatime"
+      "zsh-autocomplete"
+      "zsh-syntax-highlighting"
+      "zsh-wakatime"
+    ];
+    ohMyZsh.theme = "sigma";
+  };
+
   environment.shells = with pkgs; [ zsh ];
 
   programs.command-not-found.enable = false;
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  programs.thunar.enable = true;
 
   users.users.sigmanificient = {
     isNormalUser = true;
@@ -71,20 +87,14 @@
       gnumake
       neofetch
       obsidian
-      oh-my-zsh
       pamixer
       pavucontrol
       peek
-      picom
-      qtile
       rofi
       sublime4
       tdesktop
-      xfce.thunar
-      xfce.thunar-archive-plugin
       tokei
       wakatime
-      zsh
     ];
   };
 
@@ -118,6 +128,11 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  services.picom = {
+     enable = true;
+     fade = true;
   };
 
   services.openssh.enable = true;
