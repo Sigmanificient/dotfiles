@@ -2,19 +2,26 @@
 
 ![NixOS](assets/nixos_logo_custom_colors.png)
 
-</div>
+# Sigma's Dotfiles
 
-# Dotfiles
-
-![GitHub Repo stars](https://img.shields.io/github/stars/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) \
-![GitHub last commit](https://img.shields.io/github/last-commit/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) \
-![GitHub repo size](https://img.shields.io/github/repo-size/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD)
+![GitHub Repo stars](https://img.shields.io/github/stars/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) ![GitHub last commit](https://img.shields.io/github/last-commit/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) ![GitHub repo size](https://img.shields.io/github/repo-size/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD)
 
 *Configuration files for my GNU/Linux system.*
 
-I currently use `Qtile` as my Desktop Environment, but I am still configuring it.
+</div>
 
-> Install of nixos
+## Installation
+
+Clone the repository
+
+> Note: I personally clone the repository as my ~ folder.
+```
+git clone https://github.com/Sigmanificient/dotfiles.git
+cd dotfiles
+```
+
+> Note: Don't forget to edit the appropriate settings such as username & hardware configuration
+> You can use `cp /etc/nixos/hardware-configuration.nix .config/nixos/hardware-configuration.nix`
 
 ```
 sudo nixos-rebuild switch --flake '.'
@@ -34,16 +41,15 @@ sudo nixos-rebuild switch --flake '.'
 
 > tty
 
-![tty](assets/screenshots/palette.png)
+!_[tty](assets/screenshots/palette.png)
 
 | Black    | Red      | Green    | Yellow   | Blue     | Magenta  | Cyan     | White    |
 |----------|----------|----------|----------|----------|----------|----------|----------|
 | `0F0F1C` | `D22942` | `17B67C` | `F2A174` | `8B8AF1` | `D78AF1` | `4FCFEB` | `B4C0EC` |
 | `1A1C31` | `DE4259` | `3FD7A0` | `EEC09F` | `A7A5FB` | `E5A5FB` | `82E3F8` | `CAD3F5` |
 
-## Tools I use
+## Details
 
-- OS: [GNU](https://www.gnu.org/home.en.html)/[Linux](https://en.wikipedia.org/wiki/Linux)
 - Distribution: [Nix](https://nixos.org)
 - Linux Kernel: [Xanmod](https://xanmod.org/)
 - Desktop Environment: [Qtile](http://www.qtile.org)
