@@ -2,13 +2,12 @@
 { config, pkgs, ... }:
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = [ "amdgpu" ];
     loader = {
-      efi = {
-        canTouchEfiVariables = true;
-      };
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         efiSupport = true;
@@ -18,8 +17,10 @@
     };
   };
 
-  networking.hostName = "Sigmachine";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "Sigmachine";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -56,6 +57,7 @@
       bpytop
       dunst
       discord
+      direnv
       feh
       firefox-devedition-bin
       flameshot
