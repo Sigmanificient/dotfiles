@@ -1,4 +1,14 @@
+<div align="center">
+
+![NixOS](assets/nixos_logo_custom_colors.png)
+
+</div>
+
 # Dotfiles
+
+![GitHub Repo stars](https://img.shields.io/github/stars/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) \
+![GitHub last commit](https://img.shields.io/github/last-commit/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD) \
+![GitHub repo size](https://img.shields.io/github/repo-size/Sigmanificient/dotfiles?style=for-the-badge&labelColor=1B2330&color=807EDD)
 
 *Configuration files for my GNU/Linux system.*
 
@@ -58,7 +68,6 @@ I am planning to use [Neovim](https://www.vim.org) in the future.
 
 - TUI File manager: [Ranger](https://ranger.github.io)
 - GUI File manager: [Thunar](https://docs.xfce.org/xfce/thunar/start)
-
 - Resource monitor: [Bpytop](https://github.com/aristocratos/bpytop)
 - screenshot tool: [Flameshot](https://flameshot.org)
 - Notifier: [dunst](https://dunst-project.org)
