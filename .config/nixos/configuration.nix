@@ -27,8 +27,20 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      keep-outputs = true;
+      keep-derivations = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
   };
+  environment.pathsToLink = [ "/share/nix-direnv" ];
+  nixpkgs.overlays = [
+    (self: super: { 
+      nix-direnv = super.nix-direnv.override {
+        enableFlakes = true; 
+      };
+    })
+  ];
 
   networking = {
     hostName = "Sigmachine";
@@ -87,7 +99,6 @@
       bpytop
       dunst
       discord
-      direnv
       feh
       firefox-devedition-bin
       flameshot
@@ -131,6 +142,8 @@
     unstable.catppuccin-papirus-folders
     catppuccin-cursors
     catppuccin-gtk
+    direnv 
+    nix-direnv
     git
     htop
     tree

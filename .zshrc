@@ -38,3 +38,4 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 source $HOME/.profile
+eval "$(direnv hook zsh)"
