@@ -5,7 +5,9 @@ mod = "mod4"
 
 keys = [
     Key([mod], "e", lazy.spawn("thunar")),
-    Key([mod], "v", lazy.spawn("kitty -e nmtui")),
+    Key([mod], "v", lazy.spawn("kitty -e pulsemixer")),
+    Key([mod], "h", lazy.spawn("kitty -e nmtui")),
+    Key([mod, "shift"], "v", lazy.spawn("pavucontrol")),
     Key([mod], "l", lazy.spawn("betterlockscreen -l")),
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "b", lazy.spawn("firefox-devedition")),

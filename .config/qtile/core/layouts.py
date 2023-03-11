@@ -18,6 +18,7 @@ floating_layout = layout.Floating(
     border_normal=Color.BG_DARK,
     float_rules=[
         *layout.Floating.default_float_rules,
+        Match(wm_class="pavucontrol"),  # gitk
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
