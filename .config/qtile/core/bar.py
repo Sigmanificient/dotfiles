@@ -1,8 +1,8 @@
+from libqtile import widget
 from libqtile.bar import Bar, Gap
 from utils import Color
 
 from .widgets import (
-    arch_logo,
     prompt,
     chords,
     group_box,
@@ -16,7 +16,6 @@ from .widgets import (
 )
 
 main_bar_widgets = [
-    #    arch_logo,
     group_box,
     win_name,
     prompt,
@@ -24,6 +23,7 @@ main_bar_widgets = [
     memory,
     cpu_graph,
     seperator,
+    widget.Volume,
     systray,
     clock,
     seperator,
