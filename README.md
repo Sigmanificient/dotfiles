@@ -102,23 +102,23 @@ sudo nixos-rebuild switch --flake '.'
     Cloning as the home directory
     <br>
     <kbd>I.</kbd> Bare Clone 
-    ```
+    ```bash
     git clone --bare https://github.com/Sigmanificient/dotfiles.git $HOME/.git
     git --git-dir=$HOME/.git --work-tree=$HOME remote set-url origin git@github.com:Sigmanificient/dotfiles
     git config --local core.bare false
     ```
     <kbd>II.</kbd> Update
-    ```
+    ```bash
     git reset --hard HEAD
     git pull --rebase
     ```
     <kbd>III.</kbd> Submodules
-    ```
+    ```bash
     git submodule init
     git submodule update --init --force
     ```
     <kbd>IV.</kbd> Fix history
-    ```
+    ```bash
     git clone https://github.com/Sigmanificient/dotfiles.git tmp
     cp tmp/.git ~ -r
     git add .
