@@ -1,0 +1,11 @@
+* text=lf
+* eol=lf
+
+*.png binary
+*.jpg binary
+
+*.md linguist-detectable=true
+*.md linguist-language=md
+
+.config/neofetch/config.conf linguist-language=shell
+.config/bpytop/bpytop.conf linguist-language=shell

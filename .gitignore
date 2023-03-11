@@ -40,11 +40,10 @@
 # Ignore logs
 *.log
 
-# Add the gitignore itself
+# Add git files
+!.gitattributes
+!.gitmodules
 !.gitignore
 
-# Add gitmodules
-!.gitmodules
-
-# Add the global gitignore
+# Add global gitignore
 !.global.gitignore
