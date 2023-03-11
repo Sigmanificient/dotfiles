@@ -4,12 +4,10 @@
 *.png binary
 *.jpg binary
 
-*.md linguist-detectable=true
+*.* linguist-detectable=true
+
 *.md linguist-documentation=false
 *.md linguist-language=md
-
-*.json linguist-detectable=true
-*.* linguist-detectable=true
 
 .config/neofetch/config.conf linguist-language=shell
 .config/bpytop/bpytop.conf linguist-language=shell

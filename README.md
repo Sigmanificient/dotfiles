@@ -1,6 +1,6 @@
 <div align="center">
 
-![NixOS](assets/nixos_logo_custom_colors.png)
+<img alt="NixOS" src="assets/nixos_logo_custom_colors.svg" width="120px"/>
 
 # ❖ Sigma's Dotfiles ❖
 
