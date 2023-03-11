@@ -37,7 +37,7 @@
   nixpkgs.overlays = [
     (self: super: { 
       nix-direnv = super.nix-direnv.override {
-        enableFlakes = true; 
+        enableFlakes = true;
       };
     })
   ];
@@ -96,6 +96,7 @@
     packages = with pkgs; [
       bat
       betterlockscreen
+      brightnessctl
       bpytop
       dunst
       discord
@@ -113,6 +114,7 @@
       neofetch
       obsidian
       pamixer
+      pulsemixer
       pavucontrol
       peek
       rofi
