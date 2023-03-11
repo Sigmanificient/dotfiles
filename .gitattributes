@@ -6,8 +6,10 @@
 
 *.* linguist-detectable
 
-*.md linguist-documentation=false
-*.md linguist-language=md
+*.md -linguist-documentation
+*.md -linguist-generated
 
 .config/neofetch/config.conf linguist-language=shell
 .config/bpytop/bpytop.conf linguist-language=shell
+
+.config/gtk-*/*.css linguist-vendored
