@@ -17,7 +17,9 @@ from .widgets import (
 
 main_bar_widgets = [
     group_box,
+    seperator,
     win_name,
+    seperator,
     prompt,
     chords,
     memory,

@@ -70,13 +70,18 @@ def group_box():
 
 def win_name():
     return widget.TaskList(
-        icon_size=16,
+        icon_size=0,
         fontsize=12,
         borderwidth=0,
         margin=0,
         padding=4,
         txt_floating="",
+        highlight_method = "block",
+        title_width_method = "uniform",
         spacing=8,
+        foreground=Color.TEXT_LIGHT,
+        background=Color.BG_DARK.with_alpha(0.6),
+        border=Color.BG_DARK.with_alpha(0.5),
     )
 
 
