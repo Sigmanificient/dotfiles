@@ -4,3 +4,5 @@
 [user]
 	name = sigmanificient
 	email = edhyjox@gmail.com
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
