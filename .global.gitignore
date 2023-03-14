@@ -35,3 +35,7 @@ venv
 # Pytest & Coverage
 .pytest_cache
 .coverage
+
+# direnv
+.direnv
+.envrc
