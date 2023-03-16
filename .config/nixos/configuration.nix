@@ -59,7 +59,6 @@
     displayManager.startx.enable = true;
     layout = "fr";
     libinput.enable = true;
-    videoDrivers = [ "nvidia" ];
     windowManager.qtile.enable = true;
   };
 
