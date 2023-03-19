@@ -25,14 +25,19 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
     settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "@wheel" ];
       keep-outputs = true;
       keep-derivations = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      warn-dirty = false;
     };
+    optimise.automatic = true;
   };
+
   environment.pathsToLink = [ "/share/nix-direnv" ];
   nixpkgs.overlays = [
     (self: super: { 
@@ -122,6 +127,7 @@
       pulsemixer
       pavucontrol
       peek
+      ripgrep
       rofi
       sublime4
       tdesktop
