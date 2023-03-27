@@ -8,12 +8,6 @@
 # Add really .config
 !/.config
 
-# User nix packages
-!/.config/nixos/packages
-
-# Add global scripts
-!/scripts
-
 # Add home config
 !/.bashrc
 !/.gitconfig
@@ -21,14 +15,10 @@
 !/.xinitrc
 !/.zshrc
 
-# Arch deps
-!arch.deps
-
 # oh my zsh repo
 !.oh-my-zsh
 
 # Add repo files
-!/INSTALL.md
 !/LICENCE
 !/README.md
 
@@ -36,9 +26,6 @@
 !*.nix
 !**/*.nix
 !flake.lock
-
-# Ignore logs
-*.log
 
 # Add git files
 !.gitattributes
