@@ -104,6 +104,7 @@
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
+      arandr
       bat
       betterlockscreen
       brightnessctl
