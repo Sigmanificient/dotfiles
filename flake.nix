@@ -19,7 +19,6 @@
         (import ./.config/nixos/configuration.nix { inherit unstable; })
         nixos-hardware.nixosModules.asus-battery
         nixos-hardware.nixosModules.common-cpu-amd
-        nixos-hardware.nixosModules.common-gpu-nvidia
         nixos-hardware.nixosModules.common-pc
         nixos-hardware.nixosModules.common-pc-ssd
         hosts.nixosModule {
