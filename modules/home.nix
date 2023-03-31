@@ -44,14 +44,15 @@
     };
 
     feh.enable = true;
+    git = import ./components/git.nix {};
+    lazygit.enable = true;
+
+    kitty = import ./components/kitty.nix {};
 
     firefox = {
       enable = true;
       package = pkgs.firefox-devedition-bin;
     };
-
-    lazygit.enable = true;
-    git = import ./components/git.nix {};
   };
 
   services = {
