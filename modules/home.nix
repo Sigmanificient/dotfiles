@@ -2,6 +2,7 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  editorconfig.enable = true;
   home = {
     username = "sigmanificient";
     homeDirectory = "/home/sigmanificient";
@@ -13,7 +14,6 @@
       brightnessctl
       bpytop
       discord
-      firefox-devedition-bin
       gimp
       insomnia
       jetbrains.clion
@@ -44,6 +44,12 @@
     };
 
     feh.enable = true;
+
+    firefox = {
+      enable = true;
+      package = pkgs.firefox-devedition-bin;
+    };
+
     lazygit.enable = true;
 
     git = {
@@ -87,6 +93,7 @@
         global = {
           alignment = "left";
           always_run_script = true;
+          browser = "${pkgs.firefox-devedition-bin}";
           corner_radius = 4;
           font = "JetBrainsMono Nerd Font Mono 10";
           frame_color = "#8AADF4";
