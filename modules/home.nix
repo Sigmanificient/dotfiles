@@ -1,8 +1,19 @@
 { config, pkgs, ... }:
 {
-  home.username = "sigmanificient";
-  home.homeDirectory = "/home/sigmanificient";
+  home = {
+    username = "sigmanificient";
+    homeDirectory = "/home/sigmanificient";
 
-  home.stateVersion = "22.11";
-  programs.home-manager.enable = true;
+    stateVersion = "22.11";
+  };
+
+  programs = {
+    home-manager.enable = true;
+
+    git = {
+      enable = true;
+      userName = "Sigmanificient";
+      userEmail = "edhyjox" + "@" + "gmail.com";
+    };
+  };
 }
