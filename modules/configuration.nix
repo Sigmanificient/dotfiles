@@ -15,6 +15,8 @@
     };
   };
 
+  hardware.cpu.amd.updateMicrocode = true;
+
   nix = {
     gc = {
       automatic = true;

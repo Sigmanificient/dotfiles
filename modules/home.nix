@@ -8,30 +8,43 @@
     homeDirectory = "/home/sigmanificient";
 
     stateVersion = "22.11";
+    sessionVariables = {
+      EDITOR = pkgs.nano;
+    };
 
     packages = with pkgs; [
+      # settings
       arandr
       brightnessctl
-      bpytop
-      discord
-      gimp
-      insomnia
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      kitty
       lxappearance
-      gnumake
-      neofetch
-      obsidian
+
+      # volume
       pamixer
       pulsemixer
       pavucontrol
-      peek
-      ripgrep
-      sublime4
+
+      # messaging
+      discord
       tdesktop
+
+      # dev
+      gnumake
+      insomnia
+      jetbrains.clion
+      jetbrains.pycharm-professional
+      sublime4
       tokei
       wakatime
+
+      # misc
+      gimp
+      neofetch
+      obsidian
+
+      # utils
+      bpytop
+      peek
+      ripgrep
     ];
   };
 
