@@ -5,6 +5,9 @@
 !/assets
 !/extra
 
+# Add Nix modules
+!modules
+
 # Add really .config
 !/.config
 
