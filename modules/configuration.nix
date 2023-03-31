@@ -103,38 +103,6 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      arandr
-      bat
-      betterlockscreen
-      brightnessctl
-      bpytop
-      dunst
-      discord
-      feh
-      firefox-devedition-bin
-      flameshot
-      gimp
-      insomnia
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      kitty
-      lazygit
-      lxappearance
-      gnumake
-      neofetch
-      obsidian
-      pamixer
-      pulsemixer
-      pavucontrol
-      peek
-      ripgrep
-      rofi
-      sublime4
-      tdesktop
-      tokei
-      wakatime
-    ];
   };
 
   fonts.fonts = with pkgs; [
