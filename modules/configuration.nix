@@ -150,7 +150,7 @@
     proggyfonts
   ];
 
-  environment.etc.issue.text = (builtins.readFile ../../extra/issue);
+  environment.etc.issue.text = (builtins.readFile ./../extra/issue);
   environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [
     unstable.catppuccin-papirus-folders
