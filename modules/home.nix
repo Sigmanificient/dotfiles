@@ -10,13 +10,11 @@
 
     packages = with pkgs; [
       arandr
-      bat
       betterlockscreen
       brightnessctl
       bpytop
       dunst
       discord
-      feh
       firefox-devedition-bin
       flameshot
       gimp
@@ -24,7 +22,6 @@
       jetbrains.clion
       jetbrains.pycharm-professional
       kitty
-      lazygit
       lxappearance
       gnumake
       neofetch
@@ -44,6 +41,14 @@
 
   programs = {
     home-manager.enable = true;
+
+    bat = {
+      enable = true;
+      config.theme = "base16";
+    };
+
+    feh.enable = true;
+    lazygit.enable = true;
 
     git = {
       enable = true;
