@@ -126,8 +126,6 @@
     unstable.catppuccin-papirus-folders
     catppuccin-cursors
     catppuccin-gtk
-    direnv 
-    nix-direnv
     git
     htop
     tree

@@ -56,6 +56,12 @@
       config.theme = "base16";
     };
 
+    direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
+      enableZshIntegration = true;
+    };
+
     feh.enable = true;
     git = import ./components/git.nix {};
     lazygit.enable = true;
