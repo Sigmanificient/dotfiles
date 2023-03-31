@@ -16,7 +16,6 @@
       dunst
       discord
       firefox-devedition-bin
-      flameshot
       gimp
       insomnia
       jetbrains.clion
@@ -79,6 +78,20 @@
         ".vscode"
         ".vs"
       ];
+    };
+  };
+
+  services = {
+    betterlockscreen.enable = true;
+
+    flameshot = {
+      enable = true;
+      settings = {
+        General = {
+          savePath = "/home/sigmanificient/pictures/screenshots";
+          uiColor = "#1435c7";
+        };
+      };
     };
   };
 }
