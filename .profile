@@ -1,5 +1,3 @@
-export GTK_THEME="Catppuccin-Dark"
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P00F0F1C"  # black
     echo -en "\e]P1D22942"  # red
