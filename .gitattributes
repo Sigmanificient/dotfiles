@@ -13,4 +13,4 @@
 .config/bpytop/bpytop.conf linguist-language=shell
 
 .profile linguist-language=shell
-.config/gtk-*/*.css linguist-vendored
+.xinitrc linguist-language=shell
