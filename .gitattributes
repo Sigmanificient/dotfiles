@@ -12,4 +12,5 @@
 .config/neofetch/config.conf linguist-language=shell
 .config/bpytop/bpytop.conf linguist-language=shell
 
+.profile linguist-language=shell
 .config/gtk-*/*.css linguist-vendored
