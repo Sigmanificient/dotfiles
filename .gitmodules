@@ -1,7 +1,3 @@
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = git@github.com:ohmyzsh/ohmyzsh.git
-
 [submodule "extra/zsh/plugins/wakatime"]
 	path = extra/zsh/plugins/wakatime
 	url = git@github.com:/sobolevn/wakatime-zsh-plugin.git
