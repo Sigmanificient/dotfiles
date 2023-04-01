@@ -1,4 +1,3 @@
-{ unstable }:
 { config, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
@@ -64,7 +63,7 @@
     };
 
     theme = {
-      name = "Catppuccin";
+      name = "Catppuccin-Dark";
       package = pkgs.catppuccin-gtk;
     };
   };
