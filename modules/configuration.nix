@@ -72,23 +72,7 @@
     pulse.enable = true;
   };
 
-  programs.zsh = {
-    enable = true;
-    ohMyZsh = {
-      enable = true;
-      custom = "$HOME/extra/zsh";
-      plugins = [
-        "git"
-        "ssh-agent"
-        "wakatime"
-        "zsh-autocomplete"
-        "zsh-syntax-highlighting"
-        "zsh-wakatime"
-      ];
-      theme = "sigma";
-    };
-  };
-
+  programs.zsh.enable = true;
   programs.command-not-found.enable = false;
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
