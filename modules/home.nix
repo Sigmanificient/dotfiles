@@ -12,6 +12,12 @@
       EDITOR = pkgs.nano;
     };
 
+    file = {
+      bashrc = { source = ./../.bashrc; target = ".bashrc"; };
+      xinitrc = { source = ./../.xinitrc; target = ".xinitrc"; };
+      profile = { source = ./../.profile; target = ".profile"; };
+    };
+
     packages = with pkgs; [
       # settings
       arandr
