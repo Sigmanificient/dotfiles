@@ -43,9 +43,8 @@
 
         # Home
         home-manager.nixosModules.home-manager {
-          home-manager.users.sigmanificient = (
-            import ./modules/home.nix { inherit unstable; }
-          );
+          home-manager.users.sigmanificient =
+            import ./modules/home.nix;
         }
       ];
     };
