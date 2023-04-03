@@ -33,6 +33,16 @@
        target = ".config";
         recursive = true;
       };
+
+      lockscreen = {
+       source = ./../assets/lockscreen.png;
+       target = "assets/lockscreen.png";
+      };
+
+      wallpaper = {
+       source = ./../assets/wallpaper.png;
+       target = "assets/wallpaper.png";
+      };
     };
 
     packages = with pkgs; [
