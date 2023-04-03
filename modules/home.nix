@@ -13,9 +13,26 @@
     };
 
     file = {
-      bashrc = { source = ./../.bashrc; target = ".bashrc"; };
-      xinitrc = { source = ./../.xinitrc; target = ".xinitrc"; };
-      profile = { source = ./../.profile; target = ".profile"; };
+      bashrc = {
+        source = ./../.bashrc;
+        target = ".bashrc";
+      };
+
+      xinitrc = {
+        source = ./../.xinitrc;
+        target = ".xinitrc";
+      };
+
+      profile = {
+        source = ./../.profile;
+        target = ".profile";
+      };
+
+      conf = {
+       source = ./../.config;
+       target = ".config";
+        recursive = true;
+      };
     };
 
     packages = with pkgs; [
