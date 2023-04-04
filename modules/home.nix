@@ -82,6 +82,7 @@
       insomnia
       jetbrains.clion
       jetbrains.pycharm-professional
+      neovim
       sublime4
       tokei
       wakatime
@@ -136,9 +137,8 @@
 
     feh.enable = true;
     git = import ./components/git.nix {};
-    lazygit.enable = true;
-
     kitty = import ./components/kitty.nix {};
+    lazygit.enable = true;
 
     firefox = {
       enable = true;
