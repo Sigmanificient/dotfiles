@@ -121,48 +121,8 @@
   };
 
   services.picom = {
-    enable = true;
-
-    activeOpacity = 0.99;
-    backend = "glx";
-
-    fade = true;
-    fadeDelta = 5;
-    fadeSteps = [ 0.02 0.05 ];
-
-    settings = {
-      blur = {
-        strengh = 4;
-        deviation = 0.1;
-        background = false;
-        background-frame = false;
-        background-fixed = false;
-        kern = "3x3box";
-        method = "dual_kawase";
-      };
-
-      blur-background-exclude = [
-        "window_type = 'dock'"
-        "window_type = 'desktop'"
-        "_GTK_FRAME_EXTENTS@:c"
-        "QTILE_INTERNAL:32c = 1"
-
-        "class_g = 'jetbrains-idea'"
-        "class_g = 'jetbrains-pycharm'"
-        "class_g = 'jetbrains-webstorm'"
-        "class_g = 'jetbrains-clion'"
-        "class_g = 'Peek'"
-      ];
-    };
-    opacityRules = [
-      "90:class_g = 'jetbrains-idea'"
-      "90:class_g = 'jetbrains-pycharm'"
-      "90:class_g = 'jetbrains-webstorm'"
-      "90:class_g = 'jetbrains-clion'"
-      "90:class_g = 'discord'"
-      "90:class_g = 'kitty'"
-      "90:class_g = 'TelegramDesktop'"
-    ];
+     enable = true;
+     fade = true;
   };
 
   security.polkit.enable = true;
