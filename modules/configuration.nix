@@ -88,7 +88,7 @@
   users.users.sigmanificient = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
   };
 
   fonts.fonts = with pkgs; [
