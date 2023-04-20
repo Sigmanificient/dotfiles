@@ -55,6 +55,7 @@
     useXkbConfig = true;
   };
 
+  services.openssh.enable = true;
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
