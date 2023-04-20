@@ -107,6 +107,9 @@
   environment.etc.issue.text = (builtins.readFile ./../extra/issue);
   environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [
+    libsForQt5.plasma-nm
+    modemmanager
+    networkmanagerapplet
     git
     htop
     tree
