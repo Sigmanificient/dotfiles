@@ -104,6 +104,9 @@
     proggyfonts
   ];
 
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+
   environment.etc.issue.text = (builtins.readFile ./../extra/issue);
   environment.shells = with pkgs; [ zsh ];
   environment.systemPackages = with pkgs; [
@@ -116,6 +119,7 @@
     vim
     vifm
     wget
+    virt-manager
   ];
 
   programs.gnupg.agent = {
