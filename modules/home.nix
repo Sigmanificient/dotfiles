@@ -74,7 +74,7 @@
       pavucontrol
 
       # messaging
-      discord
+      discordcanary
       tdesktop
 
       # dev
