@@ -3,6 +3,14 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  imports =
+    [
+      ../config/zsh/zsh.nix
+      ../config/dunst.nix
+      ../config/git.nix
+      ../config/kitty.nix
+    ];
+
   editorconfig = {
     enable = true;
     settings = {
@@ -139,8 +147,6 @@
     };
 
     feh.enable = true;
-    git = import ./components/git.nix {};
-    kitty = import ./components/kitty.nix {};
     lazygit.enable = true;
 
     firefox = {
@@ -183,14 +189,10 @@
         };
       };
     };
-
-    zsh = import ./components/zsh.nix {};
   };
 
   services = {
     betterlockscreen.enable = true;
-    dunst = import ./components/dunst.nix { inherit pkgs; };
-
     flameshot = {
       enable = true;
       settings = {
