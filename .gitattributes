@@ -9,8 +9,10 @@
 *.md -linguist-documentation
 *.md -linguist-generated
 
-.config/neofetch/config.conf linguist-language=shell
-.config/bpytop/bpytop.conf linguist-language=shell
+config/bpytop/bpytop.conf linguist-language=shell
+config/neofetch/config.conf linguist-language=shell
+config/zsh/sigma.zsh-theme linguist-language=shell
 
+.bashrc linguist-language=shell
 .profile linguist-language=shell
 .xinitrc linguist-language=shell
