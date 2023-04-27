@@ -5,6 +5,7 @@
 *.jpg binary
 
 *.* linguist-detectable
+*.ini -linguist-detectable
 
 *.md -linguist-documentation
 *.md -linguist-generated
