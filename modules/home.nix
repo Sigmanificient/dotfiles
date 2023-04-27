@@ -5,9 +5,19 @@
 
   imports =
     [
+      ../config/bpytop/bpytop.nix
+      ../config/neofetch/neofetch.nix
+      ../config/picom/picom.nix
+      ../config/qtile/qtile.nix
       ../config/zsh/zsh.nix
+
+      ../config/betterlockscreen.nix
       ../config/dunst.nix
+      ../config/extra_files.nix
+      ../config/firefox.nix
+      ../config/flameshot.nix
       ../config/git.nix
+      ../config/gtk.nix
       ../config/kitty.nix
     ];
 
@@ -36,39 +46,6 @@
     stateVersion = "22.11";
     sessionVariables = {
       EDITOR = pkgs.nano;
-    };
-
-    file = {
-      bashrc = {
-        source = ./../.bashrc;
-        target = ".bashrc";
-      };
-
-      xinitrc = {
-        source = ./../.xinitrc;
-        target = ".xinitrc";
-      };
-
-      profile = {
-        source = ./../.profile;
-        target = ".profile";
-      };
-
-      conf = {
-       source = ./../.config;
-       target = ".config";
-        recursive = true;
-      };
-
-      lockscreen = {
-       source = ./../assets/lockscreen.png;
-       target = "assets/lockscreen.png";
-      };
-
-      wallpaper = {
-       source = ./../assets/wallpaper.png;
-       target = "assets/wallpaper.png";
-      };
     };
 
     packages = with pkgs; [
@@ -111,25 +88,6 @@
     ];
   };
 
-  gtk = {
-    enable = true;
-
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark";
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    theme = {
-      name = "Catppuccin-Dark";
-      package = pkgs.catppuccin-gtk;
-    };
-  };
-
   programs = {
     home-manager.enable = true;
 
@@ -148,59 +106,5 @@
 
     feh.enable = true;
     lazygit.enable = true;
-
-    firefox = {
-      enable = true;
-      package = pkgs.wrapFirefox pkgs.firefox-bin-unwrapped {
-        extraPolicies = {
-          CaptivePortal = false;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-          DisableFirefoxAccounts = true;
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-          OfferToSaveLoginsDefault = false;
-          PasswordManagerEnabled = false;
-          FirefoxHome = {
-            Search = true;
-            Pocket = false;
-            Snippets = false;
-            TopSites = false;
-            Highlights = false;
-          };
-          UserMessaging = {
-            ExtensionRecommendations = false;
-            SkipOnboarding = true;
-          };
-        };
-      };
-      profiles = {
-        sigmanificient = {
-          id = 0;
-          name = "sigmanificient";
-          search = {
-            force = true;
-            default = "DuckDuckGo";
-          };
-          settings = {
-            "general.smoothScroll" = true;
-          };
-        };
-      };
-    };
-  };
-
-  services = {
-    betterlockscreen.enable = true;
-    flameshot = {
-      enable = true;
-      settings = {
-        General = {
-          savePath = "/home/sigmanificient/pictures/screenshots";
-          uiColor = "#1435c7";
-        };
-      };
-    };
   };
 }
