@@ -22,8 +22,11 @@
     ...
   } @inputs:
   let
-      system = "x86_64-linux";
-      unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+    system = "x86_64-linux";
+    unstable = import inputs.nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     nixosConfigurations.Sigmachine = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -44,7 +47,7 @@
         # Home
         home-manager.nixosModules.home-manager {
           home-manager.users.sigmanificient =
-            import ./modules/home.nix;
+            (import ./modules/home.nix { inherit unstable; });
         }
       ];
     };

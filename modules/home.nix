@@ -1,3 +1,4 @@
+{ unstable }:
 { config, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
@@ -74,13 +75,14 @@
       pavucontrol
 
       # messaging
-      discordcanary
+      unstable.discord-canary
       tdesktop
 
       # dev
       gnumake
       insomnia
-      jetbrains.clion
+      unstable.jetbrains.jdk
+      unstable.jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
       neovim
