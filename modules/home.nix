@@ -58,6 +58,10 @@
       tokei
       wakatime
 
+      # minecraft
+      minecraft
+      prismlauncher
+
       # misc
       gimp
       neofetch
