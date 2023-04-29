@@ -42,6 +42,7 @@
       pavucontrol
 
       # messaging
+      discord
       unstable.discord-canary
       tdesktop
 
