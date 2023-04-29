@@ -32,8 +32,8 @@
     };
   };
 
-  home.file.zsh_theme = {
+  home.file.omz_zsh_theme = {
     source = ./sigma.zsh-theme;
-    target = "exta/zsh/themes/sigma.zsh-theme";
+    target = "extra/zsh/themes/sigma.zsh-theme";
   };
 }
