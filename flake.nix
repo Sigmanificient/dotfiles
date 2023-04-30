@@ -21,15 +21,28 @@
     hosts,
     ...
   } @inputs:
+
   let
     system = "x86_64-linux";
     unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
-  in {
+
+  in
+  {
+    nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [
+        ./server/hardware-configuration.nix
+        ./server/configuration.nix
+      ];
+    };
+
     nixosConfigurations.Sigmachine = nixpkgs.lib.nixosSystem {
       inherit system;
+
       modules = [
         # Harware
         ./modules/hardware-configuration.nix
