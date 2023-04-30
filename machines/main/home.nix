@@ -5,21 +5,21 @@
 
   imports =
     [
-      ../../config/bpytop/bpytop.nix
-      ../../config/neofetch/neofetch.nix
-      ../../config/picom/picom.nix
-      ../../config/qtile/qtile.nix
-      ../../config/zsh/zsh.nix
-      ../../config/profile.nix
+      ../../config/bpytop
+      ../../config/neofetch
+      ../../config/picom
+      ../../config/qtile
+      ../../config/dunst
+      ../../config/firefox
+      ../../config/zsh
 
       ../../config/betterlockscreen.nix
-      ../../config/dunst.nix
       ../../config/extra_files.nix
-      ../../config/firefox.nix
       ../../config/flameshot.nix
       ../../config/git.nix
       ../../config/gtk.nix
       ../../config/kitty.nix
+      ../../config/profile.nix
     ];
 
   home = {
