@@ -40,13 +40,16 @@
   };
 
   environment.pathsToLink = [ "/share/nix-direnv" ];
-  nixpkgs.overlays = [
-    (self: super: {
-      nix-direnv = super.nix-direnv.override {
-        enableFlakes = true;
-      };
-    })
-  ];
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (self: super: {
+        nix-direnv = super.nix-direnv.override {
+          enableFlakes = true;
+        };
+      })
+    ];
+  };
 
   networking = {
     hostName = "Sigmachine";
@@ -60,36 +63,54 @@
     useXkbConfig = true;
   };
 
-  services.openssh.enable = true;
-  services.xserver = {
-    enable = true;
-    displayManager.startx.enable = true;
-    layout = "fr";
-    libinput.enable = true;
-    windowManager.qtile.enable = true;
-  };
-
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+
+  programs = {
+    command-not-found.enable = false;
+    dconf.enable = true;
+
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+
+    zsh.enable = true;
   };
 
-  programs.zsh.enable = true;
-  programs.command-not-found.enable = false;
-  programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+  services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
+    openssh.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-  virtualisation.docker.enable = true;
+    picom = {
+     enable = true;
+     fade = true;
+    };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    xserver = {
+      enable = true;
+      displayManager.startx.enable = true;
+      layout = "fr";
+      libinput.enable = true;
+      windowManager.qtile.enable = true;
+    };
+  };
 
   users.users.sigmanificient = {
     isNormalUser = true;
@@ -110,34 +131,30 @@
     proggyfonts
   ];
 
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
-
-  environment.etc.issue.text = (builtins.readFile ./../extra/issue);
-  environment.shells = with pkgs; [ zsh ];
-  environment.systemPackages = with pkgs; [
-    libsForQt5.plasma-nm
-    modemmanager
-    networkmanagerapplet
-    git
-    htop
-    tree
-    vim
-    vifm
-    wget
-    virt-manager
-  ];
-
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
   };
 
-  services.picom = {
-     enable = true;
-     fade = true;
+  environment = {
+    etc.issue.text = (builtins.readFile ./../extra/issue);
+    shells = with pkgs; [ zsh ];
+    systemPackages = with pkgs; [
+      libsForQt5.plasma-nm
+      modemmanager
+      networkmanagerapplet
+      git
+      htop
+      tree
+      vim
+      vifm
+      wget
+      virt-manager
+    ];
   };
 
-  system.copySystemConfiguration = false;
-  system.stateVersion = "22.11";
+  system = {
+    copySystemConfiguration = false;
+    stateVersion = "22.11";
+  };
 }
