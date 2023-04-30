@@ -37,6 +37,11 @@
       modules = [
         ./server/hardware-configuration.nix
         ./server/configuration.nix
+
+        home-manager.nixosModules.home-manager {
+          home-manager.users.bacon =
+            (import ./server/home.nix { inherit unstable; });
+        }
       ];
     };
 
