@@ -13,7 +13,7 @@
   };
 
   networking = {
-    hostName = "bacon_server";
+    hostName = "BaconServer";
     firewall.enable = false;
     networkmanager.enable = true;
   };

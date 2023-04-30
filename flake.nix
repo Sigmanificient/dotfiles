@@ -31,7 +31,7 @@
 
   in
   {
-    nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.BaconServer = nixpkgs.lib.nixosSystem {
       inherit system;
 
       modules = [
