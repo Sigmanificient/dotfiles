@@ -14,17 +14,17 @@
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "2d60a47cc407117815a1d7b331ef226aa400a344";
-          sha256 = "1pnxr39cayhsvggxihsfa3rqys8rr2pag3ddil01w96kw84z4id2";
+          rev = "754cefe0181a7acd42fdcb357a67d0217291ac47";
+          sha256 = "kWgPe7QJljERzcv4bYbHteNJIxCehaTu4xU9r64gUM4=";
         };
       }
       {
-        name = "zsh-wakatime";
+        name = "wakatime";
         src = pkgs.fetchFromGitHub {
-          owner = "wbingli";
-          repo = "zsh-wakatime";
-          rev = "7396e143f2eb048a4a6d64dacae81c52e1ad72ab";
-          sha256 = "1pnxr39cayhsvggxihsfa3rqys8rr2pag3ddil01w96kw84z4id2";
+          owner = "sobolevn";
+          repo = "wakatime-zsh-plugin";
+          rev = "69c6028b0c8f72e2afcfa5135b1af29afb49764a";
+          sha256 = "pA1VOkzbHQjmcI2skzB/OP5pXn8CFUz5Ok/GLC6KKXQ=";
         };
       }
       {
@@ -33,7 +33,7 @@
           owner = "marlonrichert";
           repo = "zsh-autocomplete";
           rev = "eee8bbeb717e44dc6337a799ae60eda02d371b73";
-          sha256 = "1pnxr39cayhsvggxihsfa3rqys8rr2pag3ddil01w96kw84z4id2";
+          sha256 = "2qkB8I3GXeg+mH8l12N6dnKtdnaxTeLf5lUHWxA2rNg=";
         };
       }
     ];
