@@ -10,6 +10,7 @@
       ../config/picom/picom.nix
       ../config/qtile/qtile.nix
       ../config/zsh/zsh.nix
+      ../config/profile.nix
 
       ../config/betterlockscreen.nix
       ../config/dunst.nix

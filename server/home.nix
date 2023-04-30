@@ -8,6 +8,7 @@
       ../config/bpytop/bpytop.nix
       ../config/neofetch/neofetch.nix
       ../config/zsh/zsh.nix
+      ../config/profile.nix
 
       ../config/git.nix
       ../config/kitty.nix

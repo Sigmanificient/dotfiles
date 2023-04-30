@@ -48,12 +48,12 @@
       enable = true;
 
       custom = "$HOME/extra/zsh";
+      theme = "sigma";
+
       plugins = [
         "git"
         "ssh-agent"
       ];
-
-      theme = "sigma";
     };
   };
 
