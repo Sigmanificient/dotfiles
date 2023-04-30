@@ -14,8 +14,8 @@
     ];
 
   home = {
-    username = "BaconServer";
-    homeDirectory = "/home/BaconServer";
+    username = "bacon";
+    homeDirectory = "/home/bacon";
 
     stateVersion = "22.11";
     sessionVariables = {
