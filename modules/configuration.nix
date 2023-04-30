@@ -4,6 +4,7 @@
   imports =
     [
       ../config/polkit.nix
+      ../config/issue
     ];
 
   boot = {
@@ -137,7 +138,6 @@
   };
 
   environment = {
-    etc.issue.text = (builtins.readFile ./../extra/issue);
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       libsForQt5.plasma-nm
