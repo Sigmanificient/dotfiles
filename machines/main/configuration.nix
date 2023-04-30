@@ -3,8 +3,8 @@
 {
   imports =
     [
-      ../config/polkit.nix
-      ../config/issue
+      ../../config/polkit.nix
+      ../../config/issue
     ];
 
   boot = {

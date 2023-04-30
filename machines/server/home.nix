@@ -1,22 +1,21 @@
-{ unstable }:
 { config, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports =
     [
-      ../config/bpytop/bpytop.nix
-      ../config/neofetch/neofetch.nix
-      ../config/zsh/zsh.nix
-      ../config/profile.nix
+      ../../config/bpytop/bpytop.nix
+      ../../config/neofetch/neofetch.nix
+      ../../config/zsh/zsh.nix
+      ../../config/profile.nix
 
-      ../config/git.nix
-      ../config/kitty.nix
+      ../../config/git.nix
+      ../../config/kitty.nix
     ];
 
   home = {
-    username = "bacon";
-    homeDirectory = "/home/bacon";
+    username = "BaconServer";
+    homeDirectory = "/home/BaconServer";
 
     stateVersion = "22.11";
     sessionVariables = {
