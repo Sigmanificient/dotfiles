@@ -1,6 +1,6 @@
 { ... }:
 {
-    programs.kitty = {
+  programs.kitty = {
     enable = true;
 
     environment = {

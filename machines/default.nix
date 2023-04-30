@@ -7,7 +7,8 @@
       ./server/hardware-configuration.nix
       ./server/configuration.nix
 
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.users.bacon = import ./server/home.nix;
       }
     ];
@@ -26,12 +27,14 @@
 
       # System
       (import ./main/configuration.nix { inherit unstable; })
-      hosts.nixosModule {
+      hosts.nixosModule
+      {
         networking.stevenBlackHosts.enable = true;
       }
 
       # Home
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.users.sigmanificient =
           (import ./main/home.nix { inherit unstable; });
       }

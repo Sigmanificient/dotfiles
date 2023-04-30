@@ -28,7 +28,18 @@
   environment = {
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
-      bat bpytop git htop kitty neofetch nano ripgrep tree vim wakatime wget
+      bat
+      bpytop
+      git
+      htop
+      kitty
+      neofetch
+      nano
+      ripgrep
+      tree
+      vim
+      wakatime
+      wget
     ];
   };
 

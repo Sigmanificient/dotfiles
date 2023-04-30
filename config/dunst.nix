@@ -12,7 +12,7 @@
         frame_color = "#8AADF4";
         separator_color = "frame";
 
-        icon_path="-";
+        icon_path = "-";
         indicate_hidden = "yes";
 
         mouse_left_click = "close_current";

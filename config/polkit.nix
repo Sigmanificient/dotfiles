@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   pgaa = "polkit-gnome-authentication-agent-1";
-in {
+in
+{
   security.polkit.enable = true;
 
   systemd = {

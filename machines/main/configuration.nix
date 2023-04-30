@@ -93,8 +93,8 @@
     openssh.enable = true;
 
     picom = {
-     enable = true;
-     fade = true;
+      enable = true;
+      fade = true;
     };
 
     pipewire = {

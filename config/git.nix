@@ -1,6 +1,6 @@
 { ... }:
 {
-    programs.git = {
+  programs.git = {
     enable = true;
     userName = "Sigmanificient";
     userEmail = "edhyjox" + "@" + "gmail.com";

@@ -12,34 +12,34 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    nixos-hardware,
-    home-manager,
-    hosts,
-    ...
-  } @inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , nixos-hardware
+    , home-manager
+    , hosts
+    , ...
+    } @inputs:
 
-  let
-    system = "x86_64-linux";
-    unstable = import inputs.nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
+    let
+      system = "x86_64-linux";
+      unstable = import inputs.nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+    in
+    {
+      nixosConfigurations = (import ./machines {
+        inherit home-manager;
+        inherit hosts;
+        inherit nixpkgs;
+        inherit nixpkgs-unstable;
+        inherit nixos-hardware;
+        inherit self;
+        inherit system;
+        inherit unstable;
+      });
     };
-
-  in
-  {
-    nixosConfigurations = (import ./machines {
-      inherit home-manager;
-      inherit hosts;
-      inherit nixpkgs;
-      inherit nixpkgs-unstable;
-      inherit nixos-hardware;
-      inherit self;
-      inherit system;
-      inherit unstable;
-    });
-  };
 }
