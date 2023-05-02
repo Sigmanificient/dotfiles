@@ -45,6 +45,7 @@
       # messaging
       discord
       unstable.discord-canary
+      teams
       tdesktop
 
       # dev
