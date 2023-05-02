@@ -12,7 +12,7 @@
     icon_path = "-";
     indicate_hidden = "yes";
 
-    mouse_left_click = "close_current";
+    mouse_left_click = "do_action, close_current";
     mouse_middle_click = "do_action, close_current";
     mouse_right_click = "close_all";
 
