@@ -11,6 +11,7 @@
       ../../config/qtile
       ../../config/dunst
       ../../config/firefox
+      ../../config/thunar
       ../../config/zsh
 
       ../../config/betterlockscreen.nix
