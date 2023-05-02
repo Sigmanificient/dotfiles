@@ -26,6 +26,15 @@ def arch_logo():
         mouse_callbacks={"Button1": lazy.spawn("rofi -show drun")},
     )
 
+def battery():
+    return widget.Battery(
+        format="⚡{percent:2.0%}",
+        background=Color.BG_DARK.with_alpha(0.7),
+        foreground=Color.TEXT_LIGHT,
+        low_background=Color.RED_DARK.with_alpha(0.7),
+        low_percentage=0.1,
+    )
+
 
 def memory():
     return widget.Memory(
