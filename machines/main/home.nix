@@ -59,7 +59,7 @@
       neovim
       sublime4
       tokei
-      wakatime
+      unstable.wakatime
 
       # minecraft
       minecraft

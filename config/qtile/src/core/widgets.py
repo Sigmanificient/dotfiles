@@ -1,6 +1,8 @@
-from libqtile import widget
-from libqtile.lazy import lazy
+import subprocess
 
+from libqtile import widget, qtile
+from libqtile.lazy import lazy
+from libqtile.widget import base
 from utils import Color
 
 widget_defaults = dict(
@@ -112,10 +114,45 @@ def quick_exit():
 def prompt():
     return widget.Prompt(
         prompt=">",
+        bell_style="visual",
         background=Color.BG_DARK,
         foreground=Color.TEXT_LIGHT,
         padding=8,
     )
+
+
+def wakatime():
+    class Wakatime(base.InLoopPollText):
+        def __init__(self, **config):
+            self.name = "Wakatime widget"
+            self.default_string = ""
+
+            super().__init__(
+                self.default_string, update_interval=600,
+                qtile=qtile, **config
+            )
+
+        def poll(self):
+            try:
+                proc = subprocess.Popen(
+                    ["wakatime-cli", "--today"],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT,
+                )
+
+            except FileNotFoundError:
+                return self.default_string
+
+            stdout, stderr = proc.communicate()
+            if stderr is not None:
+                return self.default_string
+
+            return (
+                " ".join(stdout.decode("utf-8").split())
+                or self.default_string
+            )
+
+    return Wakatime()
 
 
 def chords():

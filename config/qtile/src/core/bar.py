@@ -4,6 +4,7 @@ from utils import Color
 
 from .widgets import (
     prompt,
+    wakatime,
     chords,
     group_box,
     cpu_graph,
@@ -22,6 +23,7 @@ main_bar_widgets = [
     win_name,
     seperator,
     prompt,
+    wakatime,
     chords,
     battery,
     memory,
@@ -34,7 +36,10 @@ main_bar_widgets = [
     quick_exit,
 ]
 
-secondary_bar_widgets = [w for w in main_bar_widgets if w not in (systray, quick_exit)]
+secondary_bar_widgets = [
+    w for w in main_bar_widgets
+    if w not in (systray, quick_exit)
+]
 
 
 def create_bar(secondary=False):
