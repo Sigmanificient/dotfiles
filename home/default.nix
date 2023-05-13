@@ -69,7 +69,7 @@
       obsidian
 
       # utils
-      bpytop
+      btop
       peek
       ripgrep
       dconf

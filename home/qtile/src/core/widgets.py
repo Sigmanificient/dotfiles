@@ -46,7 +46,7 @@ def memory():
                 "kitty"
                 " -o initial_window_width=1720"
                 " -o initial_window_height=860"
-                " -e bpytop"
+                " -e btop"
             )
         },
     )
