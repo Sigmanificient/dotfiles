@@ -3,24 +3,22 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  imports =
-    [
-      ../../config/bpytop
-      ../../config/neofetch
-      ../../config/picom
-      ../../config/qtile
-      ../../config/dunst
-      ../../config/firefox
-      ../../config/thunar
-      ../../config/zsh
+  imports = [
+      ./neofetch
+      ./picom
+      ./qtile
+      ./dunst
+      ./firefox
+      ./thunar
+      ./zsh
 
-      ../../config/betterlockscreen.nix
-      ../../config/extra_files.nix
-      ../../config/flameshot.nix
-      ../../config/git.nix
-      ../../config/gtk.nix
-      ../../config/kitty.nix
-      ../../config/profile.nix
+      ./betterlockscreen.nix
+      ./extra_files.nix
+      ./flameshot.nix
+      ./git.nix
+      ./gtk.nix
+      ./kitty.nix
+      ./profile.nix
     ];
 
   home = {

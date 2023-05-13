@@ -1,10 +1,10 @@
-{ unstable }:
 { config, pkgs, ... }:
 {
   imports =
     [
-      ../../config/polkit.nix
-      ../../config/issue
+      ./issue
+      ./hardware-configuration.nix
+      ./polkit.nix
     ];
 
   boot = {
