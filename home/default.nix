@@ -4,22 +4,22 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-      ./neofetch
-      ./picom
-      ./qtile
-      ./dunst
-      ./firefox
-      ./thunar
-      ./zsh
+    ./neofetch
+    ./picom
+    ./qtile
+    ./dunst
+    ./firefox
+    ./thunar
+    ./zsh
 
-      ./betterlockscreen.nix
-      ./extra_files.nix
-      ./flameshot.nix
-      ./git.nix
-      ./gtk.nix
-      ./kitty.nix
-      ./profile.nix
-    ];
+    ./betterlockscreen.nix
+    ./extra_files.nix
+    ./flameshot.nix
+    ./git.nix
+    ./gtk.nix
+    ./kitty.nix
+    ./profile.nix
+  ];
 
   home = {
     username = "sigmanificient";
