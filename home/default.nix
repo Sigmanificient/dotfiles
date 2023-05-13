@@ -1,4 +1,3 @@
-{ unstable }:
 { config, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
@@ -43,21 +42,21 @@
 
       # messaging
       discord
-      unstable.discord-canary
+      discord-canary
       teams
       tdesktop
 
       # dev
       gnumake
       insomnia
-      unstable.jetbrains.jdk
-      unstable.jetbrains.clion
+      jetbrains.jdk
+      jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
       neovim
       sublime4
       tokei
-      unstable.wakatime
+      wakatime
 
       # minecraft
       minecraft
