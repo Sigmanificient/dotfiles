@@ -7,17 +7,13 @@
       ./polkit.nix
     ];
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelModules = [ "amdgpu" ];
-    loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        gfxmodeEfi = "1920x1080x32";
-      };
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      gfxmodeEfi = "1920x1080x32";
     };
   };
 
