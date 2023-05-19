@@ -47,6 +47,7 @@
       tdesktop
 
       # dev
+      android-studio
       gnumake
       insomnia
       jetbrains.jdk
