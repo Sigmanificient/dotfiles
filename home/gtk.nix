@@ -14,8 +14,13 @@
     };
 
     theme = {
-      name = "Catppuccin-Dark";
-      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Macchiatio-Compact-Blue-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "blue" ];
+        size = "compact";
+        tweaks = [ "rimless" "black" ];
+        variant = "macchiato";
+      };
     };
   };
 }
