@@ -22,32 +22,35 @@
     } @inputs:
     let
       system = "x86_64-linux";
+
+      default_modules = [
+        ./config
+        ./hardware/sigma.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.bacon = import ./home;
+        }
+
+        hosts.nixosModule
+        {
+          networking.stevenBlackHosts.enable = true;
+        }
+      ];
+
     in
     {
       nixosConfigurations = {
         Sigmachine = nixpkgs.lib.nixosSystem {
           inherit system;
 
-          modules = [
-            # Harware
+          modules = default_modules ++ [
             nixos-hardware.nixosModules.asus-battery
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
-
-            # System
-            ./config
-
-            hosts.nixosModule
-            {
-              networking.stevenBlackHosts.enable = true;
-            }
-
-            # Home
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.sigmanificient = import ./home;
-            }
           ];
         };
       };
