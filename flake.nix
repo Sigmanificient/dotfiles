@@ -31,7 +31,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.bacon = import ./home;
+          home-manager.users.sigmanificient = import ./home;
         }
 
         hosts.nixosModule
@@ -43,6 +43,15 @@
     in
     {
       nixosConfigurations = {
+        BaconServer = nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          modules = default_modules ++ [
+            ./config/server
+            ./hardware/bacon.nix
+          ];
+        };
+
         Sigmachine = nixpkgs.lib.nixosSystem {
           inherit system;
 
