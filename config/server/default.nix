@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 {
   services = {
-    xserver.enable = false;
     openssh.enable = true;
 
     minecraft-server = {
