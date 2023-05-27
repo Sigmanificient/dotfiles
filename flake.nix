@@ -25,7 +25,6 @@
 
       default_modules = [
         ./config
-        ./hardware/sigma.nix
 
         home-manager.nixosModules.home-manager
         {
@@ -56,6 +55,8 @@
           inherit system;
 
           modules = default_modules ++ [
+            ./hardware/sigma.nix
+
             nixos-hardware.nixosModules.asus-battery
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-pc
