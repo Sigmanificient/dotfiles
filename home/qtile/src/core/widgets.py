@@ -28,6 +28,7 @@ def arch_logo():
         mouse_callbacks={"Button1": lazy.spawn("rofi -show drun")},
     )
 
+
 def battery():
     return widget.Battery(
         format="⚡{percent:2.0%}",
@@ -87,8 +88,8 @@ def win_name():
         margin=0,
         padding=4,
         txt_floating="",
-        highlight_method = "block",
-        title_width_method = "uniform",
+        highlight_method="block",
+        title_width_method="uniform",
         spacing=8,
         foreground=Color.TEXT_LIGHT,
         background=Color.BG_DARK.with_alpha(0.6),
@@ -128,8 +129,7 @@ def wakatime():
             self.default_string = ""
 
             super().__init__(
-                self.default_string, update_interval=600,
-                qtile=qtile, **config
+                self.default_string, update_interval=600, qtile=qtile, **config
             )
 
         def poll(self):
@@ -147,10 +147,7 @@ def wakatime():
             if stderr is not None:
                 return self.default_string
 
-            return (
-                " ".join(stdout.decode("utf-8").split())
-                or self.default_string
-            )
+            return " ".join(stdout.decode("utf-8").split()) or self.default_string
 
     return Wakatime()
 

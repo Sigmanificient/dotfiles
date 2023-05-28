@@ -36,10 +36,7 @@ main_bar_widgets = [
     quick_exit,
 ]
 
-secondary_bar_widgets = [
-    w for w in main_bar_widgets
-    if w not in (systray, quick_exit)
-]
+secondary_bar_widgets = [w for w in main_bar_widgets if w not in (systray, quick_exit)]
 
 
 def create_bar(secondary=False):
