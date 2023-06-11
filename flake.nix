@@ -1,7 +1,7 @@
 {
   description = "Sigmachine configuration & dotfiles";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     hosts.url = github:StevenBlack/hosts;
     nixos-hardware.url = "github:NixOS/nixos-hardware";
