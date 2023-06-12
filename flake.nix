@@ -1,7 +1,7 @@
 {
   description = "Sigmachine configuration & dotfiles";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     hosts.url = github:StevenBlack/hosts;
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -22,32 +22,45 @@
     } @inputs:
     let
       system = "x86_64-linux";
+
+      default_modules = [
+        ./config
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.sigmanificient = import ./home;
+        }
+
+        hosts.nixosModule
+        {
+          networking.stevenBlackHosts.enable = true;
+        }
+      ];
+
     in
     {
       nixosConfigurations = {
+        BaconServer = nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          modules = default_modules ++ [
+            ./config/server
+            ./hardware/bacon.nix
+          ];
+        };
+
         Sigmachine = nixpkgs.lib.nixosSystem {
           inherit system;
 
-          modules = [
-            # Harware
+          modules = default_modules ++ [
+            ./hardware/sigma.nix
+
             nixos-hardware.nixosModules.asus-battery
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-pc
             nixos-hardware.nixosModules.common-pc-ssd
-
-            # System
-            ./config
-
-            hosts.nixosModule
-            {
-              networking.stevenBlackHosts.enable = true;
-            }
-
-            # Home
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.users.sigmanificient = import ./home;
-            }
           ];
         };
       };

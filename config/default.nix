@@ -3,7 +3,6 @@
   imports =
     [
       ./issue
-      ./hardware-configuration.nix
       ./polkit.nix
     ];
 
@@ -16,8 +15,6 @@
       gfxmodeEfi = "1920x1080x32";
     };
   };
-
-  hardware.cpu.amd.updateMicrocode = true;
 
   nix = {
     gc = {

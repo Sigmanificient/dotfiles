@@ -55,7 +55,6 @@
       jetbrains.pycharm-professional
       jetbrains.webstorm
       neovim
-      sublime4
       tokei
       wakatime
 
