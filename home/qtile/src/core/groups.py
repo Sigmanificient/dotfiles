@@ -17,7 +17,7 @@ group_keys = [
     "agrave",
 ]
 
-for (g, key) in zip(groups, group_keys):
+for g, key in zip(groups, group_keys):
     keys.extend(
         [
             # mod1 + letter of group = switch to group
