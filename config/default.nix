@@ -104,6 +104,8 @@
       libinput.enable = true;
       windowManager.qtile.enable = true;
     };
+
+    upower.enable = true;
   };
 
   users.users.sigmanificient = {
