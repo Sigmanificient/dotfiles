@@ -6,6 +6,10 @@
     userEmail = "edhyjox" + "@" + "gmail.com";
 
     extraConfig.url = {
+      init = {
+        defaultBranch = "main";
+      };
+
       "ssh://git@github.com/" = {
         insteadOf = "https://github.com/";
       };
