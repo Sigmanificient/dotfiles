@@ -1,5 +1,5 @@
 {
-  description = "Sigmachine configuration & dotfiles";
+  description = "Sigma dotfiles";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
@@ -42,11 +42,16 @@
     in
     {
       nixosConfigurations = {
-        BaconServer = nixpkgs.lib.nixosSystem {
+        Bacon = nixpkgs.lib.nixosSystem {
           inherit system;
 
           modules = default_modules ++ [
             ./hardware/bacon.nix
+
+            nixos-hardware.nixosModules.asus-battery
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
           ];
         };
 
@@ -54,12 +59,7 @@
           inherit system;
 
           modules = default_modules ++ [
-            ./hardware/sigma.nix
-
-            nixos-hardware.nixosModules.asus-battery
-            nixos-hardware.nixosModules.common-cpu-amd
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-pc-ssd
+            ./hardware/sigmachine.nix
           ];
         };
       };

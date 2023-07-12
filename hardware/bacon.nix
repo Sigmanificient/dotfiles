@@ -8,39 +8,33 @@
     initrd = {
       kernelModules = [ ];
       availableKernelModules = [
-        "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"
+       "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod"
       ];
     };
 
     extraModulePackages = [ ];
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-amd" ];
   };
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/2c4e0428-4dbb-4e7d-a2ba-27dfc7f72762";
-      fsType = "ext4";
-    };
-
-    "/data" = {
-      device = "/dev/disk/by-uuid/58799c4d-2c8c-4f26-8ee4-1c8ceb796705";
+      device = "/dev/disk/by-uuid/b22002e7-3ba0-4e5d-a643-d4ad8fb73505";
       fsType = "ext4";
     };
 
     "/boot" = {
-      device = "/dev/disk/by-uuid/6838-4F6B";
+      device = "/dev/disk/by-uuid/B255-6CC2";
       fsType = "vfat";
     };
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/41b9c6d5-5ac9-4549-b510-8249ec7c3be8"; }
+    { device = "/dev/disk/by-uuid/c797aedc-1bdb-4f86-bc35-ad5a9688e057"; }
   ];
 
   networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode =
+   lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
