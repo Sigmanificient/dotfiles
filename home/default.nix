@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, username, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -21,8 +21,8 @@
   ];
 
   home = {
-    username = "sigmanificient";
-    homeDirectory = "/home/sigmanificient";
+    username = "${username}";
+    homeDirectory = "/home/${username}";
 
     stateVersion = "22.11";
     sessionVariables = {

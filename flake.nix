@@ -1,5 +1,6 @@
 {
   description = "Sigma dotfiles";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
@@ -21,16 +22,16 @@
     , ...
     } @inputs:
     let
+      username = "sigmanificient";
       system = "x86_64-linux";
 
       default_modules = [
-        ./config
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.sigmanificient = import ./home;
+          home-manager.users.${username} = import ./home;
+          home-manager.extraSpecialArgs = { inherit username; };
         }
 
         hosts.nixosModule
@@ -46,6 +47,7 @@
           inherit system;
 
           modules = default_modules ++ [
+            (import ./config { hostname = "Bacon"; })
             ./hardware/bacon.nix
 
             nixos-hardware.nixosModules.asus-battery
@@ -59,6 +61,7 @@
           inherit system;
 
           modules = default_modules ++ [
+            (import ./config { hostname = "Sigmachine"; })
             ./hardware/sigmachine.nix
           ];
         };

@@ -1,3 +1,4 @@
+{ hostname }:
 { config, pkgs, ... }:
 {
   imports =
@@ -46,7 +47,7 @@
   };
 
   networking = {
-    hostName = "Sigmachine";
+    hostName = "${hostname}";
     networkmanager.enable = true;
   };
 
