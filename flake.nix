@@ -46,7 +46,6 @@
           inherit system;
 
           modules = default_modules ++ [
-            ./config/server
             ./hardware/bacon.nix
           ];
         };
