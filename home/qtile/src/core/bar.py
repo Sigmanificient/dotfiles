@@ -1,3 +1,5 @@
+import os
+
 from libqtile import widget
 from libqtile.bar import Bar, Gap
 from utils import Color
@@ -17,26 +19,33 @@ from .widgets import (
     quick_exit,
 )
 
-main_bar_widgets = [
-    group_box,
-    seperator,
-    win_name,
-    seperator,
-    prompt,
-    wakatime,
-    chords,
-    battery,
-    memory,
-    cpu_graph,
-    seperator,
-    widget.Volume,
-    systray,
-    clock,
-    seperator,
-    quick_exit,
-]
+main_bar_widgets = (
+    [
+        group_box,
+        seperator,
+        win_name,
+        seperator,
+        prompt,
+        wakatime,
+        chords
+    ]
+    + ([battery] if os.uname().nodename == "Bacon" else [])
+    + [
+        memory,
+        cpu_graph,
+        seperator,
+        widget.Volume,
+        systray,
+        clock,
+        seperator,
+        quick_exit,
+    ]
+)
 
-secondary_bar_widgets = [w for w in main_bar_widgets if w not in (systray, quick_exit)]
+secondary_bar_widgets = [
+    w for w in main_bar_widgets
+    if w not in (systray, quick_exit)
+]
 
 
 def create_bar(secondary=False):
