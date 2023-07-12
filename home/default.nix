@@ -67,6 +67,7 @@
       gimp
       neofetch
       obsidian
+      pass
 
       # utils
       peek
