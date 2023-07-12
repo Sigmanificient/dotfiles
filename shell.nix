@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { }, ... }:
 pkgs.mkShell {
-  name = "Nix dotilfes";
+  name = "Nix dotfiles";
   description = "Utils for my dotfiles.";
 
   nativeBuildInputs = with pkgs; [
