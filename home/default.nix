@@ -3,6 +3,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ./btop
     ./neofetch
     ./picom
     ./qtile
@@ -68,7 +69,6 @@
       obsidian
 
       # utils
-      btop
       peek
       ripgrep
       dconf
