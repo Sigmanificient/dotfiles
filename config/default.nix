@@ -133,6 +133,8 @@
     libvirtd.enable = true;
   };
 
+  documentation.dev.enable = true;
+
   environment = {
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
@@ -147,6 +149,9 @@
       vifm
       wget
       virt-manager
+
+      man-pages
+      man-pages-posix
     ];
   };
 
