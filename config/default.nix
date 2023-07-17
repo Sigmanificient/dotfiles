@@ -58,7 +58,6 @@
     useXkbConfig = true;
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
 
   programs = {
@@ -81,6 +80,7 @@
     zsh.enable = true;
   };
 
+  security.rtkit.enable = true;
   services = {
     gvfs.enable = true;
     tumbler.enable = true;
