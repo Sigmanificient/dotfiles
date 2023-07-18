@@ -179,6 +179,7 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  qt.style = "adwaita-dark";
   xdg = {
     portal = {
       enable = true;
