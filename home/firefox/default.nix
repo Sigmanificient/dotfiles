@@ -9,12 +9,17 @@
     profiles = {
       sigmanificient = {
         id = 0;
+
         name = "sigmanificient";
-        search = {
-          force = true;
-          default = "DuckDuckGo";
-        };
+        toolbar = false;
+
+        search = (import ./search.nix { inherit pkgs; });
         settings = {
+          "browser.newtabpage.pinned" = [
+            { title = "NixOS"; url = "https://nixos.org"; }
+            { title = "Gtihub"; url = "https://github.com"; }
+            { title = "YouTube"; url = "https://youtube.com"; }
+          ];
           "general.smoothScroll" = true;
         };
       };

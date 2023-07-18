@@ -147,8 +147,8 @@
   };
 
   documentation.dev.enable = true;
-
   environment = {
+    sessionVariables.MOZ_USE_XINPUT2 = "1";
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       libsForQt5.ark
@@ -177,6 +177,16 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
   };
 
   # Make sure opengl is enabled
