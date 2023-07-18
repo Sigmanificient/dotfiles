@@ -12,7 +12,7 @@
     PasswordManagerEnabled = false;
 
     FirefoxHome = {
-      Search = true;
+      Search = false;
       Pocket = false;
       Snippets = false;
       TopSites = false;

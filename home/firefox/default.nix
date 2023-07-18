@@ -11,8 +11,6 @@
         id = 0;
 
         name = "sigmanificient";
-        toolbar = false;
-
         search = (import ./search.nix { inherit pkgs; });
         settings = {
           "browser.newtabpage.pinned" = [
