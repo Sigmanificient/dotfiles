@@ -13,6 +13,7 @@
     ./zsh
 
     ./betterlockscreen.nix
+    ./cursor.nix
     ./extra_files.nix
     ./flameshot.nix
     ./git.nix
