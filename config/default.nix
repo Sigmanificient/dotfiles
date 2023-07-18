@@ -100,9 +100,14 @@
 
     xserver = {
       enable = true;
+      excludePackages = with pkgs; [ xterm ];
       displayManager.startx.enable = true;
       layout = "fr";
-      libinput.enable = true;
+      libinput = {
+        enable = true;
+        mouse.accelProfile = "flat";
+        touchpad.accelProfile = "flat";
+      };
       windowManager.qtile.enable = true;
     };
 
