@@ -108,7 +108,13 @@
         mouse.accelProfile = "flat";
         touchpad.accelProfile = "flat";
       };
-      windowManager.qtile.enable = true;
+      windowManager.qtile = {
+        enable = true;
+        backend = "x11";
+        extraPackages = python3Packages: with python3Packages; [
+          qtile-extras
+        ];
+      };
     };
 
     upower.enable = true;
