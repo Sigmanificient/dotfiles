@@ -56,9 +56,31 @@
 
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
-    font = "Lat2-Terminus16";
+    earlySetup = true;
     useXkbConfig = true;
+    font = "Lat2-Terminus16";
+    packages = with pkgs; [ terminus_font ];
+    colors = [
+      "0e0e18" # Black
+      "d22942" # red
+      "17b67c" # green
+      "f2a174" # yellow
+      "8c8af1" # blue
+      "d78af1" # magenta
+      "8adef1" # cyan
+      "c9d3f9" # white
+
+      "1a1c31" # light black
+      "de4259" # light red
+      "3fd7a0" # light green
+      "eed49f" # light yellow
+      "a7a5fb" # light blue
+      "e5a5fb" # light magenta
+      "a5ebfb" # light cyan
+      "cad3f5" # light white
+    ];
   };
 
   hardware.pulseaudio.enable = false;
@@ -85,7 +107,6 @@
 
   security.rtkit.enable = true;
   services = {
-    gpm.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;

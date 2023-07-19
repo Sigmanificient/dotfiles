@@ -6,8 +6,6 @@
     enableCompletion = true;
     enableSyntaxHighlighting = true;
 
-    initExtra = "source $HOME/.profile";
-
     plugins = [
       {
         name = "zsh-syntax-highlighting";

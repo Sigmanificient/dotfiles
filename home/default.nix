@@ -19,7 +19,6 @@
     ./git.nix
     ./gtk.nix
     ./kitty.nix
-    ./profile.nix
   ];
 
   home = {
