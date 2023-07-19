@@ -85,6 +85,7 @@
 
   security.rtkit.enable = true;
   services = {
+    gpm.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
