@@ -38,8 +38,8 @@
 
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch --flake . --upgrade";
       dodo = "shutdown now";
+      lz = "lazygit";
     };
 
     oh-my-zsh = {
