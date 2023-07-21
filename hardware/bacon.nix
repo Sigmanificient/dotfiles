@@ -8,7 +8,11 @@
     initrd = {
       kernelModules = [ ];
       availableKernelModules = [
-       "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod"
+        "nvme"
+        "xhci_pci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
       ];
     };
 
@@ -51,5 +55,5 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware.cpu.amd.updateMicrocode =
-   lib.mkDefault config.hardware.enableRedistributableFirmware;
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

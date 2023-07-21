@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-      pkgs.btop
+    pkgs.btop
   ];
 
   home.file.btop_config = {
