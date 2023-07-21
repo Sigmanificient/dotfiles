@@ -5,6 +5,7 @@
   imports = [
     ./btop
     ./neofetch
+    ./nvim
     ./picom
     ./qtile
     ./dunst
@@ -55,7 +56,6 @@
       jetbrains.clion
       jetbrains.pycharm-professional
       jetbrains.webstorm
-      neovim
       tokei
       wakatime
 

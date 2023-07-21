@@ -63,7 +63,7 @@
           modules = default_modules ++ [
             (import ./config { hostname = "Sigmachine"; })
             ./hardware/sigmachine.nix
-            ./config/github_runner.nix
+            # ./config/github_runner.nix
           ];
         };
       };
