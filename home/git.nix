@@ -17,6 +17,8 @@
 
     ignores = [
       # C commons
+      ".cache"
+      "compile_commands.json"
       "*.gc??"
       "vgcore.*"
       # Python
