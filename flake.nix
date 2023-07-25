@@ -7,6 +7,9 @@
     hosts.url = github:StevenBlack/hosts;
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +19,7 @@
   outputs =
     { self
     , nixpkgs
+    , nix-index-database
     , nixos-hardware
     , home-manager
     , hosts
@@ -26,6 +30,8 @@
       system = "x86_64-linux";
 
       default_modules = [
+        nix-index-database.nixosModules.nix-index
+
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
