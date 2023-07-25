@@ -11,6 +11,7 @@
     ./dunst
     ./firefox
     ./thunar
+    ./tmux
     ./zsh
 
     ./betterlockscreen.nix
