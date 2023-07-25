@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  home.file.nvim_conf = {
+    source = ./lua;
+    target = ".config/nvim/lua";
+    recursive = true;
+  };
+
   programs.neovim = {
     enable = true;
 
@@ -12,8 +18,18 @@
     ];
 
     extraPackages = with pkgs; [
-      nil # nix
+      # ↓ Nix
+      nil
+
+      # ↓ Lua
       lua-language-server
+
+      # ↓ Python
+      nodePackages.pyright
+
+      # ↓ C
+      clang-tools
+      llvmPackages_latest.clang
     ];
   };
 }
