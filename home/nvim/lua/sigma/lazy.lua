@@ -12,7 +12,7 @@ return {
         end
     },
     'wakatime/vim-wakatime',
-    -- LSP
+-- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -28,7 +28,7 @@ return {
             require('sigma.plugins.lsp')
         end,
     },
-     -- Lualine
+-- Lualine
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
@@ -36,7 +36,15 @@ return {
             require('sigma.plugins.lualine')
         end,
     },
-        -- Visual Git
+-- Lazygit Term
+    {
+        "akinsho/toggleterm.nvim",
+        tag = '*',
+        config = function()
+            require("sigma.plugins.toggleterm")
+        end
+    },
+-- Visual Git
     {
         'tanvirtin/vgit.nvim',
         version = 'v0.2.1',
@@ -45,11 +53,13 @@ return {
             require('vgit').setup()
         end,
     },
-    -- Syntax Highlighing
+-- Syntax Highlighing
     {
         'nvim-treesitter/nvim-treesitter',
         run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            local ts_update = require(
+              'nvim-treesitter.install'
+            ).update({ with_sync = true })
             ts_update()
         end,
         config = function()

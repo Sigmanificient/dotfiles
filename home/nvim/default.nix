@@ -30,6 +30,9 @@
       # ↓ C
       clang-tools
       llvmPackages_latest.clang
+
+      # ↓ Copilot
+      nodejs
     ];
   };
 }
