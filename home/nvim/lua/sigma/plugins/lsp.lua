@@ -35,19 +35,20 @@ if not configs.ecsls then
     default_config = {
       root_dir = lspconfig.util.root_pattern(".git", "Makefile"),
       cmd = {
-        '/home/sigmanificient/dev/epitech_cs_language_server/.direnv/python-3.11.4/bin/ecsls_run'
+        '/home/sigmanificient/dev/ecsls/.direnv/python-3.11.4/bin/ecsls_run'
       },
       autostart = true,
       name = 'ecsls',
       filetypes = { 'c', 'cpp', 'make' },
       init_options = {
-        path = '/home/sigmanificient/dev/epitech_cs_language_server/'
+        path = '/home/sigmanificient/dev/ecsls/'
       },
     },
   }
 end
+lspconfig.ecsls.setup({
 
-lspconfig.ecsls.setup({})
+})
 --
 
 lsp.on_attach(function(_, bufnr)
