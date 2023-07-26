@@ -103,6 +103,7 @@
     };
 
     zsh.enable = true;
+    noisetorch.enable = true;
   };
 
   security.rtkit.enable = true;
