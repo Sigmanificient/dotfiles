@@ -8,7 +8,6 @@
     ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     consoleLogLevel = 3;
     loader = {
       efi.canTouchEfiVariables = true;
