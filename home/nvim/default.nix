@@ -59,6 +59,9 @@ in {
 
       # ↓ Copilot
       nodejs
+
+      # ↓ Clipboard fix
+      xclip
     ];
   };
 }
