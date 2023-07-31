@@ -14,7 +14,7 @@
     ./tmux
     ./zsh
 
-    ./betterlockscreen.nix
+    ./betterlockscreen
     ./cursor.nix
     ./extra_files.nix
     ./flameshot.nix
