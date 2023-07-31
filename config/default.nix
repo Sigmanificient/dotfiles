@@ -188,6 +188,10 @@
 
       man-pages
       man-pages-posix
+
+      zip
+      unzip
+      ark
     ];
   };
 
