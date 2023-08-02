@@ -45,26 +45,16 @@
 
       # messaging
       discord
-      discord-canary
       teams
       tdesktop
 
       # dev
-      android-studio
       gnumake
-      insomnia
-      jetbrains.jdk
-      jetbrains.clion
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
       tokei
       wakatime
 
-      # minecraft
-      minecraft
-      prismlauncher
-
       # misc
+      spotify
       gimp
       neofetch
       obsidian
