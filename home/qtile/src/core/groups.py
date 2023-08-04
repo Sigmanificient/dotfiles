@@ -41,6 +41,13 @@ for g, key in zip(groups, group_keys):
 groups.append(
     ScratchPad(
         "scratchpad",
-        [DropDown("term", "kitty", x=0.05, y=0.05, opacity=1.0, height=0.9, width=0.9)],
+        [
+            DropDown(
+                "term", "kitty",
+                x=0.05, y=0.05, opacity=1.0,
+                height=0.9, width=0.9,
+                on_focus_lost_hide=False
+            )
+        ],
     )
 )
