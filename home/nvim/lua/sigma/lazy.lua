@@ -11,7 +11,7 @@ return {
             vim.api.nvim_set_hl(0, "Normal", {ctermbg=NONE})
         end
     },
-    'wakatime/vim-wakatime',
+    { "wakatime/vim-wakatime", lazy = false },
 -- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
