@@ -30,6 +30,8 @@
       # Direnv
       ".direnv"
       ".envrc"
+      # Nix buid
+      "result"
       # IDE Folders
       ".idea"
       ".vscode"
