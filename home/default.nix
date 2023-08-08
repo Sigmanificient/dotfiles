@@ -1,11 +1,12 @@
-{ config, pkgs, username, ... }:
+{ pkgs, conf, ecsls, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    (import ./nvim { inherit ecsls; inherit pkgs; inherit conf; })
+
     ./btop
     ./neofetch
-    ./nvim
     ./picom
     ./qtile
     ./dunst
@@ -24,8 +25,8 @@
   ];
 
   home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
+    username = "${conf.username}";
+    homeDirectory = "/home/${conf.username}";
 
     stateVersion = "22.11";
     sessionVariables = {

@@ -1,29 +1,19 @@
-{ pkgs, ... }:
+{ pkgs, ecsls, conf, ... }:
 let
-  vera = pkgs.stdenv.mkDerivation (finalAttrs: {
-    pname = "banana-vera";
-    version = "1.3.0-python3.10";
+  base_pkgs = with pkgs; [
+    nil # Nix
+    lua-language-server
+    nodePackages.pyright
+    clang-tools
+    llvmPackages_latest.clang
+    nodejs # Copilot
+    xclip  # Clipboard fix
+  ];
 
-    src = pkgs.fetchFromGitHub {
-      owner = "Epitech";
-      repo = "banana-vera";
-      rev = "refs/tags/v${finalAttrs.version}";
-      hash = "sha256-1nAKhUltQS1301JNrr0PQQrrf2W9Hj5gk1nbUhN4cXw=";
-    };
-
-    nativeBuildInputs = [ pkgs.cmake ];
-    buildInputs = with pkgs; [
-      python310
-      python310.pkgs.boost
-      tcl
-    ];
-
-    cmakeFlags = [
-      "-DVERA_LUA=OFF"
-      "-DVERA_USE_SYSTEM_BOOST=ON"
-      "-DPANDOC=OFF"
-    ];
-  });
+  extra_pkgs =
+    if conf.ecsls.enable
+    then base_pkgs ++ [ ecsls.packages.${conf.system}.default ]
+    else base_pkgs;
 in
 {
   home.file.nvim_conf = {
@@ -43,28 +33,7 @@ in
       lazy-nvim
     ];
 
-    extraPackages = with pkgs; [
-      vera
-
-      # ↓ Nix
-      nil
-
-      # ↓ Lua
-      lua-language-server
-
-      # ↓ Python
-      nodePackages.pyright
-
-      # ↓ C
-      clang-tools
-      llvmPackages_latest.clang
-
-      # ↓ Copilot
-      nodejs
-
-      # ↓ Clipboard fix
-      xclip
-    ];
+    extraPackages = extra_pkgs;
   };
 }
 

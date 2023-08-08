@@ -4,11 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
-    hosts.url = github:StevenBlack/hosts;
+    hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    ecsls.url = "github:Sigmapitech-meta/ecsls";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -17,14 +19,14 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , nix-index-database
     , nixos-hardware
     , home-manager
     , hosts
+    , ecsls
     , ...
-    } @inputs:
+    }:
     let
       username = "sigmanificient";
       system = "x86_64-linux";
@@ -37,7 +39,14 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./home;
-          home-manager.extraSpecialArgs = { inherit username; };
+          home-manager.extraSpecialArgs = {
+            inherit ecsls;
+            conf = {
+              inherit username;
+              inherit system;
+              ecsls.enable = true;
+            };
+          };
         }
 
         hosts.nixosModule
