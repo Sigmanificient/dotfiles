@@ -78,7 +78,7 @@ return {
     {
         'zbirenbaum/copilot-cmp',
         after = { 'copilot.lua' },
-        config = function ()
+        config = function()
             require('copilot_cmp').setup()
         end,
     },
@@ -88,4 +88,11 @@ return {
             require("sigma.plugins.nvimtree");
         end,
     },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require("sigma.plugins.telescope");
+        end,
+    }
 }
