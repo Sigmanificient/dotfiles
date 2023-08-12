@@ -80,6 +80,12 @@ return {
         after = { 'copilot.lua' },
         config = function ()
             require('copilot_cmp').setup()
-        end
-    }
+        end,
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = function()
+            require("sigma.plugins.nvimtree");
+        end,
+    },
 }
