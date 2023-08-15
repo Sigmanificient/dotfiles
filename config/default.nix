@@ -174,16 +174,20 @@
     sessionVariables.MOZ_USE_XINPUT2 = "1";
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
-      libsForQt5.ark
-      libsForQt5.plasma-nm
+
       modemmanager
       networkmanagerapplet
+      libsForQt5.ark
+      libsForQt5.plasma-nm
+
       git
       htop
       tree
       vim
       vifm
       wget
+
+      libnotify
       virt-manager
 
       man-pages
@@ -191,7 +195,6 @@
 
       zip
       unzip
-      ark
     ];
   };
 
