@@ -12,9 +12,17 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "b", lazy.spawn("firefox")),
     Key([], "Print", lazy.spawn("flameshot gui --clipboard")),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     Key(
-        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+        [mod],
+        "space",
+        lazy.layout.next(),
+        desc="Move window focus to other window",
+    ),
+    Key(
+        [mod, "shift"],
+        "h",
+        lazy.layout.shuffle_left(),
+        desc="Move window to the left",
     ),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key(
@@ -28,7 +36,12 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key(
+        [mod],
+        "r",
+        lazy.spawncmd(),
+        desc="Spawn a command using a prompt widget",
+    ),
     # Backlight
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),

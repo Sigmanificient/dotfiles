@@ -1,10 +1,10 @@
-from .keys import keys, mod
 from .groups import groups
-from .mouse import mouse
 from .hooks import autostart
-from .layouts import layouts, floating_layout
+from .keys import keys, mod
+from .layouts import floating_layout, layouts
+from .mouse import mouse
 from .screens import screens
-from .widgets import widget_defaults, extension_defaults
+from .widgets import extension_defaults, widget_defaults
 
 __all__ = (
     # Keybindings

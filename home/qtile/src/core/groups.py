@@ -1,6 +1,5 @@
-from libqtile.config import Group, Key, ScratchPad, DropDown
+from libqtile.config import DropDown, Group, Key, ScratchPad
 from libqtile.lazy import lazy
-
 
 from .keys import keys, mod
 
@@ -31,9 +30,15 @@ for g, key in zip(groups, group_keys):
                 [mod, "shift"],
                 key,
                 lazy.window.togroup(g.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(g.name),
+                desc="Switch to & move focused window to group {}".format(
+                    g.name
+                ),
             ),
-            Key([mod], "space", lazy.group["scratchpad"].dropdown_toggle("term")),
+            Key(
+                [mod],
+                "space",
+                lazy.group["scratchpad"].dropdown_toggle("term"),
+            ),
         ]
     )
 
@@ -43,10 +48,14 @@ groups.append(
         "scratchpad",
         [
             DropDown(
-                "term", "kitty",
-                x=0.05, y=0.05, opacity=1.0,
-                height=0.9, width=0.9,
-                on_focus_lost_hide=False
+                "term",
+                "kitty",
+                x=0.05,
+                y=0.05,
+                opacity=1.0,
+                height=0.9,
+                width=0.9,
+                on_focus_lost_hide=False,
             )
         ],
     )

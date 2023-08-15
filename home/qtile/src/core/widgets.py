@@ -1,8 +1,9 @@
 import subprocess
 
-from libqtile import widget, qtile
+from libqtile import qtile, widget
 from libqtile.lazy import lazy
 from libqtile.widget import base
+
 from utils import Color
 
 widget_defaults = dict(
@@ -147,7 +148,9 @@ def wakatime():
             if stderr is not None:
                 return self.default_string
 
-            return " ".join(stdout.decode("utf-8").split()) or self.default_string
+            return (
+                " ".join(stdout.decode("utf-8").split()) or self.default_string
+            )
 
     return Wakatime()
 

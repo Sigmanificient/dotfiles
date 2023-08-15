@@ -1,13 +1,13 @@
 from core import (
     autostart,
-    keys,
-    groups,
-    mouse,
-    layouts,
+    extension_defaults,
     floating_layout,
+    groups,
+    keys,
+    layouts,
+    mouse,
     screens,
     widget_defaults,
-    extension_defaults,
 )
 
 dgroups_key_binder = None
