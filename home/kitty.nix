@@ -15,7 +15,6 @@
     settings = {
       # Window
       hide_window_decorations = "yew";
-      background_opacity = "0.88";
       dynamic_background_opacity = "yes";
 
       # Tabs
