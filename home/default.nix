@@ -45,7 +45,11 @@
       pavucontrol
 
       # messaging
-      discord
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
+
       teams
       tdesktop
 
