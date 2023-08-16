@@ -8,8 +8,9 @@
 
 *Configuration files for my GNU+Linux system.*
 
-# 
-<img alt="Qtile has floating window support" src="assets/screenshots/qtile_floating.png" width="900px">
+#
+<img alt="Repository Banner" src="assets/banner.png" width="900px">
+<img alt="Qtile has floating window support" src="assets/screenshots/qtile_base.png" width="900px">
 </div>
 
 ## :wrench: <samp>INSTALLATION</samp>
@@ -54,7 +55,7 @@ sudo nixos-rebuild switch --flake '.'
 
 ## :bookmark_tabs: <samp>DETAILS</samp>
 
-<img alt="Qtile is a tiling window manager" src="assets/screenshots/qtile_base.png" width="400px" align="right"/>
+<img alt="Qtile is a tiling window manager" src="assets/screenshots/qtile_floatting.png" width="400px" align="right"/>
 
 - Linux Kernel: [Xanmod](https://xanmod.org/)
 - Desktop Environment: [Qtile](http://www.qtile.org)
@@ -65,7 +66,7 @@ sudo nixos-rebuild switch --flake '.'
 
 ### <samp>Dev</samp>
 
-<img alt="Qtile is a tiling window manager" src="assets/screenshots/qtile_tiling.png" width="400px" align="right"/>
+<img alt="Qtile is a tiling window manager" src="assets/screenshots/qtile_floatting3.png" width="400px" align="right"/>
 
 - Jetbrains IDE Suite: [PyCharm](https://www.jetbrains.com/pycharm), [CLion](https://www.jetbrains.com/clion), ...
 - GUI Text Editor: [Sublime Text](https://www.sublimetext.com)
@@ -78,13 +79,15 @@ sudo nixos-rebuild switch --flake '.'
 - Resource monitor: [Bpytop](https://github.com/aristocratos/bpytop)
 - screenshot tool: [Flameshot](https://flameshot.org)
 
+<img alt="Qtile is a tiling window manager" src="assets/screenshots/qtile_tiling.png" width="400px" align="right"/>
+
 ## :art: <samp>Colors</samp>
 
 <table align="right">
   <tr>
     <td align="center">
       <samp>
-        This color scheme is inspired from 
+        This color scheme is inspired from
         <a href="https://github.com/catppuccin/catppuccin">Catppuccin Mocha</a>
       </samp>
     </td>
@@ -98,10 +101,12 @@ sudo nixos-rebuild switch --flake '.'
 | `0F0F1C` | `D22942` | `17B67C` | `F2A174` | `8B8AF1` | `D78AF1` | `4FCFEB` | `B4C0EC` |
 | `1A1C31` | `DE4259` | `3FD7A0` | `EEC09F` | `A7A5FB` | `E5A5FB` | `82E3F8` | `CAD3F5` |
 
+<img src="assets/screenshots/qtile_floatting2.png" width="900px">
+
 [^clone_as_home]:
     Cloning as the home directory
     <br>
-    <kbd>I.</kbd> Bare Clone 
+    <kbd>I.</kbd> Bare Clone
     ```bash
     git clone --bare https://github.com/Sigmanificient/dotfiles.git $HOME/.git
     git --git-dir=$HOME/.git --work-tree=$HOME remote set-url origin git@github.com:Sigmanificient/dotfiles
