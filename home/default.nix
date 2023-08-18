@@ -73,6 +73,7 @@
   };
 
   programs = {
+    bash = import ./bash { };
     home-manager.enable = true;
 
     bat = {

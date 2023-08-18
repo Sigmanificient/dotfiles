@@ -1,11 +1,6 @@
 { pkgs, ... }:
 {
   home.file = {
-    bashrc = {
-      source = ./../.bashrc;
-      target = ".bashrc";
-    };
-
     xinitrc = {
       source = ./../.xinitrc;
       target = ".xinitrc";
