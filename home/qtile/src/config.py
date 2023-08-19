@@ -1,14 +1,7 @@
-from core import (
-    autostart,
-    extension_defaults,
-    floating_layout,
-    groups,
-    keys,
-    layouts,
-    mouse,
-    screens,
-    widget_defaults,
-)
+from core import autostart, floating_layout, groups, keys, layouts, mouse, screens
+from widgets import widget_defaults
+
+extension_defaults = widget_defaults.copy()
 
 dgroups_key_binder = None
 dgroups_app_rules = []
