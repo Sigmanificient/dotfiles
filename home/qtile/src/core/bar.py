@@ -1,7 +1,6 @@
 import os
 
-from libqtile import widget
-from libqtile.bar import Bar, Gap
+from libqtile import bar, widget
 
 from utils import Color
 
@@ -20,10 +19,24 @@ from .widgets import (
     win_name,
 )
 
-main_bar_widgets = (
-    [group_box, seperator, win_name, seperator, prompt, wakatime, chords]
-    + ([battery] if os.uname().nodename == "Bacon" else [])
-    + [
+
+class Bar(bar.Bar):
+    instance_count: int = 0
+
+    widgets_checks = {
+        battery: lambda: os.uname().nodename == 'Bacon',
+        systray: lambda: Bar.instance_count == 1
+    }
+
+    widgets = [
+        group_box,
+        seperator,
+        win_name,
+        seperator,
+        prompt,
+        wakatime,
+        chords,
+        battery,
         memory,
         cpu_graph,
         seperator,
@@ -33,26 +46,20 @@ main_bar_widgets = (
         seperator,
         quick_exit,
     ]
-)
 
-secondary_bar_widgets = [
-    w for w in main_bar_widgets if w not in (systray, quick_exit)
-]
+    def __init__(self):
+        super().__init__(
+            widgets=self._build_widgets(),
+            size=24,
+            background=Color.BG_DARK.with_alpha(0.7),
+            margin=[0, 0, 8, 0],
+        )
 
+        self.instance_count += 1
 
-def create_bar(secondary=False):
-    if secondary:
-        bar_widgets = secondary_bar_widgets
-    else:
-        bar_widgets = main_bar_widgets
+    def _build_widgets(self):
+        return [
+            self.widgets_checks.get(widget_builder, lambda: True)
+            for widget_builder in self.widgets
+        ]
 
-    return Bar(
-        widgets=[BarWidget() for BarWidget in bar_widgets],
-        size=24,
-        background=Color.BG_DARK.with_alpha(0.7),
-        margin=[0, 0, 8, 0],
-    )
-
-
-def gap():
-    return Gap(4)
