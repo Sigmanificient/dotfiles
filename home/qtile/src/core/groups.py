@@ -52,7 +52,7 @@ groups.append(
                 "kitty",
                 x=0.05,
                 y=0.05,
-                opacity=1.0,
+                opacity=0.95,
                 height=0.9,
                 width=0.9,
                 on_focus_lost_hide=False,
