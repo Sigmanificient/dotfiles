@@ -174,7 +174,7 @@
     sessionVariables.MOZ_USE_XINPUT2 = "1";
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
-
+      alsa-utils
       modemmanager
       networkmanagerapplet
       libsForQt5.ark
