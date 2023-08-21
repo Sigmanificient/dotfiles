@@ -3,13 +3,11 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
 
-    picom-config = {
-      url = "https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/home/picom/picom.conf";
-      flake = false;
-    };
+    dotfiles.url = "github:Sigmanificient/dotfiles";
+    dotfiles.inputs.qtile.follows = "/";
   };
 
-  outputs = { self, nixpkgs, picom-config, utils }:
+  outputs = { self, nixpkgs, dotfiles, utils }:
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -49,7 +47,7 @@
             sleep 1
 
             echo "Starting Picom"
-            DISPLAY=:1 ${picom} --config ${picom-config}
+            DISPLAY=:1 ${picom} --config ${dotfiles}/home/picom/picom.conf
           '');
 
           default = qtile-reset;
