@@ -26,6 +26,27 @@
             pkill -SIGUSR1 .qtile-wrapped
           '');
 
+          qtile-test = let
+            pkgbin = pkg: bin: "${pkg}/bin/${bin}";
+          in
+          let
+            qtile = pkgbin pkgs.qtile "qtile";
+            xephyr = pkgbin pkgs.xorg.xorgserver "Xephyr";
+            picom = pkgbin pkgs.picom "picom";
+          in (pkgs.writeShellScriptBin "qtile-test" ''
+            echo "Starting Xephyr"
+            ${xephyr} -br -ac -noreset -screen 1280x720 :1 &
+            sleep 1
+
+            echo "Starting Qtile"
+            DISPLAY=:1 ${qtile} start -b x11 --config ./src/config.py &
+            sleep 1
+
+            echo "Starting Picom"
+            DISPLAY=:1 ${picom}
+
+          '');
+
           default = qtile-reset;
         };
       });
