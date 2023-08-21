@@ -15,9 +15,22 @@
         "type": "indirect"
       }
     },
+    "picom-config": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-G3t9Q9e/sDBUM7Z0a1BuTQwLGMsbuFby62QvraOfQNc=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/home/picom/picom.conf"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/home/picom/picom.conf"
+      }
+    },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
+        "picom-config": "picom-config",
         "utils": "utils"
       }
     },
