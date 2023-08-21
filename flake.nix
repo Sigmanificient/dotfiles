@@ -11,6 +11,7 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     ecsls.url = "github:Sigmapitech-meta/ecsls";
+    qtile.url = "github:Sigmanificient/QtileConfig";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
@@ -25,6 +26,7 @@
     , home-manager
     , hosts
     , ecsls
+    , qtile
     , ...
     }:
     let
@@ -42,7 +44,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.${username} = import ./home;
           home-manager.extraSpecialArgs = {
-            inherit ecsls;
+            inherit ecsls qtile;
             conf = {
               inherit username;
               inherit system;

@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ qtile, ... }:
 {
   home.file.qtile_configs = {
-    source = ./src;
+    source = "${qtile}/src";
     target = ".config/qtile";
     recursive = true;
   };
