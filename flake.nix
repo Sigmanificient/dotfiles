@@ -30,7 +30,7 @@
             pkgbin = pkg: bin: "${pkg}/bin/${bin}";
           in
           let
-            src = ./src;
+            repo = ./.;
 
             qtile = pkgbin pkgs.qtile "qtile";
             xephyr = pkgbin pkgs.xorg.xorgserver "Xephyr";
@@ -41,12 +41,11 @@
             sleep 1
 
             echo "Starting Qtile"
-            DISPLAY=:1 ${qtile} start -b x11 --config ${src}/config.py &
+            DISPLAY=:1 ${qtile} start -b x11 --config ${repo}/src/config.py &
             sleep 1
 
             echo "Starting Picom"
             DISPLAY=:1 ${picom}
-
           '');
 
           default = qtile-reset;
