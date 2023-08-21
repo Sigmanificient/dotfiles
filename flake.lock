@@ -7,11 +7,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1691556158,
-        "narHash": "sha256-kdh2GzSEktjR3k+pat7IZtwTxsgm4oU2j+KDBDSoRc0=",
+        "lastModified": 1692629601,
+        "narHash": "sha256-TtFTzPvn02mZzSA5Y0gHDqMoz3WIZhCUilt2W+DAr4A=",
         "owner": "Sigmapitech-meta",
         "repo": "ecsls",
-        "rev": "c294a2fe81986c007c29be88d579e8fa2bebbfaa",
+        "rev": "3e757e4b181419e9275bc194740aa73265f4cffe",
         "type": "github"
       },
       "original": {
@@ -115,11 +115,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1691368598,
-        "narHash": "sha256-ia7li22keBBbj02tEdqjVeLtc7ZlSBuhUk+7XTUFr14=",
+        "lastModified": 1692447944,
+        "narHash": "sha256-fkJGNjEmTPvqBs215EQU4r9ivecV5Qge5cF/QDLVn3U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5a8e9243812ba528000995b294292d3b5e120947",
+        "rev": "d680ded26da5cf104dd2735a51e88d2d8f487b4d",
         "type": "github"
       },
       "original": {
@@ -144,11 +144,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1692414505,
-        "narHash": "sha256-sSTuyR9JYSxmUcYcj0Jvw1hIq1tz/Canw9mK0hEJvnE=",
+        "lastModified": 1692525914,
+        "narHash": "sha256-MUgZ9/9mE/EbEQA6JPdcQHkjoR5fgvaKhpy6UO67uEc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4cdad15f34e6321a2f789b99d42815b9142ac2ba",
+        "rev": "475d5ae2c4cb87b904545bdb547af05681198fcc",
         "type": "github"
       },
       "original": {
@@ -207,11 +207,11 @@
     "ruleset": {
       "flake": false,
       "locked": {
-        "lastModified": 1690358569,
-        "narHash": "sha256-OP1vtLQbTUGhoDQ3FEQip7lO2fclOtJkFKe+vMQRMXU=",
+        "lastModified": 1692627851,
+        "narHash": "sha256-/OJB5+c/rjNbD4SA45wxLJJCBLQE8FB8UUpZo9kA8HE=",
         "ref": "refs/heads/main",
-        "rev": "145b868c951383c8ffc269514b7973bed2471f72",
-        "revCount": 25,
+        "rev": "0ad04a0f63405c09338527736d0961070ca18cf8",
+        "revCount": 28,
         "type": "git",
         "url": "ssh://git@github.com/Epitech/banana-coding-style-checker.git"
       },
