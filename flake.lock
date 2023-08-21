@@ -7,11 +7,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1692629601,
-        "narHash": "sha256-TtFTzPvn02mZzSA5Y0gHDqMoz3WIZhCUilt2W+DAr4A=",
+        "lastModified": 1692698470,
+        "narHash": "sha256-YpF8+YbqhIDubygyiYWJCZcHpIYcNNG5vF1f09Xfv0s=",
         "owner": "Sigmapitech-meta",
         "repo": "ecsls",
-        "rev": "3e757e4b181419e9275bc194740aa73265f4cffe",
+        "rev": "0411bd5a8498e42f3b225eb33f0af2e4d36eeae7",
         "type": "github"
       },
       "original": {
@@ -65,11 +65,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1692298772,
-        "narHash": "sha256-AV1MZIlfgSStmsHL7vJ8f7pBeKs5YfSzSZiWt0uDy84=",
+        "lastModified": 1692653251,
+        "narHash": "sha256-ytWqEcRWZXooOZBdkcX0aCmN86/mWvRBcF/jHOX5T9w=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "03e1e33213c66bd3cf1a690076863b5946fbfdc4",
+        "rev": "ca08e62e5bf457ff12e29e107103bb6445afc654",
         "type": "github"
       },
       "original": {
@@ -130,11 +130,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1692494774,
-        "narHash": "sha256-noGVoOTyZ2Kr5OFglzKYOX48cx3hggdCPbXrYMG2FDw=",
+        "lastModified": 1692557222,
+        "narHash": "sha256-TCOtZaioLf/jTEgfa+nyg0Nwq5Uc610Z+OFV75yUgGw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3476a10478587dec90acb14ec6bde0966c545cc0",
+        "rev": "0b07d4957ee1bd7fd3bdfd12db5f361bd70175a6",
         "type": "github"
       },
       "original": {
