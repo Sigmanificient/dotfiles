@@ -160,11 +160,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1692356644,
-        "narHash": "sha256-AYkPFT+CbCVSBmh0WwIzPpwhEJ4Yy3A7JZvUkGJIg5o=",
+        "lastModified": 1692447944,
+        "narHash": "sha256-fkJGNjEmTPvqBs215EQU4r9ivecV5Qge5cF/QDLVn3U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8ecc900b2f695d74dea35a92f8a9f9b32c8ea33d",
+        "rev": "d680ded26da5cf104dd2735a51e88d2d8f487b4d",
         "type": "github"
       },
       "original": {
@@ -173,30 +173,18 @@
         "type": "indirect"
       }
     },
-    "picom-config": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-G3t9Q9e/sDBUM7Z0a1BuTQwLGMsbuFby62QvraOfQNc=",
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/home/picom/picom.conf"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/Sigmanificient/dotfiles/master/home/picom/picom.conf"
-      }
-    },
     "qtile": {
       "inputs": {
+        "dotfiles": [],
         "nixpkgs": "nixpkgs_4",
-        "picom-config": "picom-config",
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1692618514,
-        "narHash": "sha256-fGnq2Pncl+7dEZa7y7q/m6AVODi6wUyszpD3iPowPp4=",
+        "lastModified": 1692620377,
+        "narHash": "sha256-qIAN8khLp7E2C50DblVYKmoEcByfF9nq5NxiEqI1LFQ=",
         "owner": "Sigmanificient",
         "repo": "QtileConfig",
-        "rev": "065a0200d0168d7ec0c2a2aed8adc31ae8ba7b76",
+        "rev": "4ec294b7b232ef297674b34f6bad10416a0414a9",
         "type": "github"
       },
       "original": {

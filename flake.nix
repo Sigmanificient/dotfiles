@@ -11,7 +11,9 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     ecsls.url = "github:Sigmapitech-meta/ecsls";
+
     qtile.url = "github:Sigmanificient/QtileConfig";
+    qtile.inputs.dotfiles.follows = "/";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
