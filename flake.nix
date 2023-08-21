@@ -31,6 +31,8 @@
       username = "sigmanificient";
       system = "x86_64-linux";
 
+      pkgs = nixpkgs.legacyPackages.${system};
+
       default_modules = [
         nix-index-database.nixosModules.nix-index
 
@@ -57,6 +59,8 @@
 
     in
     {
+      formatter.${system} = pkgs.nixpkgs-fmt;
+
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem {
           inherit system;

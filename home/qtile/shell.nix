@@ -1,4 +1,4 @@
-with import <nixpkgs> {};
+with import <nixpkgs> { };
 mkShell {
   name = "pip-env";
   buildInputs = with python3.pkgs; [

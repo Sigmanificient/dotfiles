@@ -7,7 +7,7 @@ let
     clang-tools
     llvmPackages_latest.clang
     nodejs # Copilot
-    xclip  # Clipboard fix
+    xclip # Clipboard fix
   ];
 
   extra_pkgs =
