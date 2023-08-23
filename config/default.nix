@@ -149,6 +149,7 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
+    initialPassword = "hello";
   };
 
   fonts.fonts = with pkgs; [
