@@ -63,13 +63,13 @@ TaskList = mk_overrides(
     title_width_method="uniform",
     spacing=8,
     foreground=Color.TEXT_LIGHT,
-    background=Color.BG_DARK.with_alpha(0.6),
-    border=Color.BG_DARK.with_alpha(0.5),
+    background=Color.BG_DARK.with_alpha(0.8),
+    border=Color.BG_DARK.with_alpha(0.9),
 )
 
 Separator = mk_overrides(widget.Spacer, length=4)
 Systray = mk_overrides(widget.Systray, padding=4, icon_size=16)
-Clock = mk_overrides(widget.Clock, format="%d/%m %H:%M")
+Clock = mk_overrides(widget.Clock, format="%A, %b %-d %H:%M")
 
 
 QuickExit = mk_overrides(
