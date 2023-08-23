@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   home.file = {
     xinitrc = {

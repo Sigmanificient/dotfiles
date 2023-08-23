@@ -40,7 +40,7 @@
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      (self: super: {
+      (_: super: {
         nix-direnv = super.nix-direnv.override {
           enableFlakes = true;
         };

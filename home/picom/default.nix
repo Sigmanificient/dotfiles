@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   home.file.picom_config = {
     source = ./picom.conf;

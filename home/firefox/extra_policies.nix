@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   extraPolicies = {
     CaptivePortal = false;

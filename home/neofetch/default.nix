@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   home.file.neofetch_config = {
     source = ./config.conf;
