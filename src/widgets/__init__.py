@@ -8,7 +8,6 @@ from .overides import (
     Prompt,
     QuickExit,
     Separator,
-    Systray,
     TaskList,
 )
 from .wakatime import Wakatime
@@ -23,7 +22,6 @@ __all__ = (
     "Prompt",
     "QuickExit",
     "Separator",
-    "Systray",
     "TaskList",
     "Wakatime",
 )

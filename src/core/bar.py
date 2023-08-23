@@ -12,7 +12,6 @@ from widgets import (
     Prompt,
     QuickExit,
     Separator,
-    Systray,
     TaskList,
     Wakatime,
 )
@@ -23,7 +22,6 @@ class Bar(bar.Bar):
 
     widgets_checks = {
         Battery: lambda _: os.uname().nodename == "Bacon",
-        Systray: lambda self: self.id == 1,
     }
 
     _widgets = [
@@ -38,7 +36,6 @@ class Bar(bar.Bar):
         CPUGraph,
         Separator,
         widget.Volume,
-        Systray,
         Clock,
         Separator,
         QuickExit,

@@ -68,7 +68,6 @@ TaskList = mk_overrides(
 )
 
 Separator = mk_overrides(widget.Spacer, length=4)
-Systray = mk_overrides(widget.Systray, padding=4, icon_size=16)
 Clock = mk_overrides(widget.Clock, format="%A, %b %-d %H:%M")
 
 
