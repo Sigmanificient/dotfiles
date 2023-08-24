@@ -23,7 +23,7 @@
   nix = {
     gc = {
       automatic = true;
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 90d";
     };
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -31,7 +31,6 @@
       keep-outputs = true;
       keep-derivations = true;
       auto-optimise-store = true;
-      warn-dirty = false;
     };
     optimise.automatic = true;
   };
