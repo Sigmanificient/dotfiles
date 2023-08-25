@@ -180,11 +180,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1692860347,
-        "narHash": "sha256-ZP+D8awCiQv4AYVrTUBimAJg5hdYXVxX7ZhBPjQ4XxI=",
+        "lastModified": 1692967347,
+        "narHash": "sha256-IRn0bmMYSn4poJqh9Bj/GisTZSZm6z9Tl+DnI30wGcY=",
         "owner": "Sigmanificient",
         "repo": "QtileConfig",
-        "rev": "e2908019e8d0ff8e5f9f340128429c060ef71c4c",
+        "rev": "e25ffedcc585493d3e191c13ffd148f0aad9bef1",
         "type": "github"
       },
       "original": {

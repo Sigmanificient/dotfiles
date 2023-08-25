@@ -66,6 +66,7 @@
       pass
 
       # utils
+      jgmenu
       peek
       ripgrep
       dconf
