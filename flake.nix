@@ -19,7 +19,7 @@
             black
             isort
             qtile
-          ];
+          ] ++ [ pkgs.kitty pkgs.jgmenu ];
         };
 
         formatter = pkgs.nixpkgs-fmt;
