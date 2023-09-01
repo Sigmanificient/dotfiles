@@ -171,7 +171,14 @@
 
   documentation.dev.enable = true;
   environment = {
-    sessionVariables.MOZ_USE_XINPUT2 = "1";
+    sessionVariables = {
+      MOZ_USE_XINPUT2 = "1";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
+      XDG_STATE_HOME = "$HOME/.local/state";
+    };
+
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       alsa-utils
