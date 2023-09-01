@@ -34,6 +34,11 @@
           sha256 = "2qkB8I3GXeg+mH8l12N6dnKtdnaxTeLf5lUHWxA2rNg=";
         };
       }
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
     ];
 
     shellAliases = {
@@ -47,7 +52,7 @@
       enable = true;
 
       custom = "$HOME/extra/zsh";
-      theme = "sigma";
+      theme = "drawbu";
 
       plugins = [
         "git"
@@ -57,7 +62,10 @@
   };
 
   home.file.omz_zsh_theme = {
-    source = ./sigma.zsh-theme;
-    target = "extra/zsh/themes/sigma.zsh-theme";
+    source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/drawbu/dotfiles/main/assets/.p10k.zsh";
+      sha256 = "sha256-s3omNttaZmiiC6BUfdM9ZxbuUGgsN0s0Ue0vULT1MxY=";
+    };
+    target = "extra/zsh/themes/drawbu.zsh-theme";
   };
 }
