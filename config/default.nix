@@ -210,12 +210,6 @@
     stateVersion = "22.11";
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  };
-
   qt.style = "adwaita-dark";
   xdg = {
     portal = {
@@ -226,8 +220,4 @@
       ];
     };
   };
-
-  # Make sure opengl is enabled
-  hardware.opengl.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
 }

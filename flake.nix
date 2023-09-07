@@ -87,6 +87,7 @@
             (import ./config { hostname = "Sigmachine"; })
             ./hardware/sigmachine.nix
             # ./config/github_runner.nix
+            ./config/sigmachine.nix
           ];
         };
       };
