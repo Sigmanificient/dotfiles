@@ -12,6 +12,7 @@ from widgets import (
     Prompt,
     QuickExit,
     Separator,
+    SpotifyNowPlaying,
     TaskList,
     Wakatime,
 )
@@ -30,6 +31,7 @@ class Bar(bar.Bar):
         TaskList,
         Separator,
         Prompt,
+        SpotifyNowPlaying,
         Wakatime,
         Battery,
         Memory,

@@ -186,6 +186,7 @@
       networkmanagerapplet
       libsForQt5.ark
       libsForQt5.plasma-nm
+      playerctl
 
       git
       htop

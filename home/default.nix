@@ -1,16 +1,16 @@
-{ pkgs, conf, ecsls, qtile, ... }:
+{ pkgs, conf, ecsls, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
     (import ./nvim { inherit ecsls pkgs conf; })
-    (import ./qtile { inherit qtile; })
 
     ./btop
     ./neofetch
     ./picom
     ./dunst
     ./firefox
+    ./qtile
     ./thunar
     ./tmux
     ./zsh

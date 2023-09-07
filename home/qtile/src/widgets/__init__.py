@@ -10,6 +10,8 @@ from .overides import (
     Separator,
     TaskList,
 )
+
+from .spotify import SpotifyNowPlaying
 from .wakatime import Wakatime
 
 __all__ = (
@@ -22,6 +24,7 @@ __all__ = (
     "Prompt",
     "QuickExit",
     "Separator",
+    "SpotifyNowPlaying",
     "TaskList",
     "Wakatime",
 )
