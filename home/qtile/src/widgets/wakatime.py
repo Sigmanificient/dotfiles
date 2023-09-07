@@ -1,6 +1,5 @@
-"""Wakatime widget by Drawu."""
+"""Wakatime widget by drawbu."""
 import subprocess
-import sys
 
 from libqtile import qtile
 from libqtile.widget import base
@@ -55,5 +54,4 @@ class Wakatime(base.InLoopPollText):
 
             out.append(f"{ac_name[0]}:{m}")
 
-        print("=>", ' '.join(out))
-        return ' '.join(out) 
+        return ' '.join(out)

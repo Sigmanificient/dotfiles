@@ -1,10 +1,11 @@
-from libqtile import layout
+from libqtile.layout.columns import Columns
+from libqtile.layout.floating import Floating
 from libqtile.config import Match
 
 from utils import Color
 
 layouts = [
-    layout.Columns(
+    Columns(
         border_width=2,
         margin=4,
         border_focus=Color.BLUE_DARK,
@@ -12,12 +13,12 @@ layouts = [
     )
 ]
 
-floating_layout = layout.Floating(
+floating_layout = Floating(
     border_width=2,
     border_focus=Color.BLUE_DARK,
     border_normal=Color.BG_DARK,
     float_rules=[
-        *layout.Floating.default_float_rules,
+        *Floating.default_float_rules,
         Match(wm_class="pavucontrol"),  # gitk
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
