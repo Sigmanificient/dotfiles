@@ -3,50 +3,34 @@ from libqtile.lazy import lazy
 
 from .keys import keys, mod
 
-groups = [Group(f"{i}") for i in "ζδωχλξπσς"]
-group_keys = [
-    "ampersand",
-    "eacute",
-    "quotedbl",
-    "apostrophe",
-    "parenleft",
-    "minus",
-    "egrave",
-    "underscore",
-    "agrave",
-]
 
-for g, key in zip(groups, group_keys):
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                key,
-                lazy.group[g.name].toscreen(),
-                desc="Switch to group {}".format(g.name),
-            ),
-            Key(
-                [mod, "shift"],
-                key,
-                lazy.window.togroup(g.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(
-                    g.name
-                ),
-            ),
-            Key(
-                [mod],
-                "space",
-                lazy.group["scratchpad"].dropdown_toggle("term"),
-            ),
-        ]
-    )
+class _Group(Group):
+
+    def __init__(self, label: str, key: str):
+        self.label = label
+        self.key = key
+
+        super().__init__(label)
+        self.setup_keys()
+
+    def setup_keys(self):
+        move = Key([mod], self.key, lazy.group[self.label].toscreen())
+        switch = Key(
+            [mod, "shift"], self.key,
+            lazy.window.togroup(self.label, switch_group=True),
+        )
+
+        toggle_scratchpad = Key(
+            [mod], "space",
+            lazy.group["scratchpad"].dropdown_toggle("term"),
+        )
+
+        keys.extend((move, switch, toggle_scratchpad))
 
 
-groups.append(
+_scratchpads = [
     ScratchPad(
-        "scratchpad",
-        [
+        "scratchpad", [
             DropDown(
                 "term",
                 "kitty",
@@ -59,4 +43,21 @@ groups.append(
             )
         ],
     )
-)
+]
+
+groups = _scratchpads + [
+    _Group(lb, k) for lb, k in zip(
+        "ζπδωλσς", [
+            "ampersand",
+            "eacute",
+            "quotedbl",
+            "apostrophe",
+            "parenleft",
+            "minus",
+            "egrave",
+            "underscore",
+            "agrave",
+        ]
+    )
+]
+
