@@ -3,15 +3,14 @@
     "ecsls": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "ruleset": "ruleset",
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1694022729,
-        "narHash": "sha256-sycIpThyq8I6Xz7mh96/DPlcfAbsDuj6xd/ug32lB6o=",
+        "lastModified": 1694130694,
+        "narHash": "sha256-E3jMFSsgkGuuw74zGCRwn5jFs/iYat4IqhcIAsYvzgY=",
         "owner": "Sigmapitech-meta",
         "repo": "ecsls",
-        "rev": "aa40c9274f31bc6ce3e1b0633bcbba1c84a173b6",
+        "rev": "cff5e8fab7f08fb48ed34e164835311fc71e0cae",
         "type": "github"
       },
       "original": {
@@ -96,11 +95,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1693844670,
-        "narHash": "sha256-t69F2nBB8DNQUWHD809oJZJVE+23XBrth4QZuVd6IE0=",
+        "lastModified": 1693985761,
+        "narHash": "sha256-K5b+7j7Tt3+AqbWkcw+wMeqOAWyCD1MH26FPZyWXpdo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3c15feef7770eb5500a4b8792623e2d6f598c9c1",
+        "rev": "0bffda19b8af722f8069d09d8b6a24594c80b352",
         "type": "github"
       },
       "original": {
@@ -147,22 +146,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3"
-      }
-    },
-    "ruleset": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1694015476,
-        "narHash": "sha256-6+gXErYIg1e5ymxqsM5ftHx9M0l/ozh9/gRs8lYgwpI=",
-        "ref": "refs/heads/main",
-        "rev": "e88c6f707a19185eee8ed47b94b9ef0d54118767",
-        "revCount": 68,
-        "type": "git",
-        "url": "ssh://git@github.com/Epitech/banana-coding-style-checker.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/Epitech/banana-coding-style-checker.git"
       }
     },
     "systems": {
