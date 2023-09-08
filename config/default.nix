@@ -162,6 +162,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     proggyfonts
+    apl386
   ];
 
   virtualisation = {
@@ -187,6 +188,9 @@
       libsForQt5.ark
       libsForQt5.plasma-nm
       playerctl
+
+      figma-linux
+      gsettings-desktop-schemas # Figma linux fix
 
       git
       htop
