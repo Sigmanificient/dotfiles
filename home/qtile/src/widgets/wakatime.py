@@ -8,28 +8,25 @@ from libqtile.widget import base
 class Wakatime(base.InLoopPollText):
     def __init__(self, **config):
         self.name = "Wakatime widget"
-        super().__init__(
-            update_interval=600, qtile=qtile, **config
-        )
-
+        super().__init__(update_interval=600, qtile=qtile, **config)
         self.default_string = "[:<]"
 
     def poll(self):
         try:
-            proc = subprocess.Popen(
+            proc = subprocess.run(
                 ["wakatime-cli", "--today"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
+                timeout=1
             )
 
-        except FileNotFoundError:
+        except (TimeoutError, FileNotFoundError):
             return self.default_string
 
-        stdout, stderr = proc.communicate()
-        if stderr is not None:
+        if proc.stderr is not None:
             return self.default_string
 
-        raw = stdout.decode("utf-8").strip()
+        raw = proc.stdout.decode("utf-8").strip()
 
         if raw is not None:
             return self.process_string(raw)

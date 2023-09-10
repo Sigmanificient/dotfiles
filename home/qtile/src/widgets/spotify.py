@@ -11,10 +11,17 @@ COVER_PATH = "/tmp/spotify-now-playing.png"
 
 def get_stdout(cmd: List[str]) -> str:
     try:
-        sub = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-    except FileNotFoundError:
+        sub = subprocess.run(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=2
+        )
+    except (TimeoutError, FileNotFoundError):
         return ""
-    return sub.communicate()[0].decode("utf-8").strip()
+    if sub.stderr is not None:
+        return ""
+    return sub.stdout.decode("utf-8").strip()
 
 
 class SpotifyNowPlaying(base.InLoopPollText):
