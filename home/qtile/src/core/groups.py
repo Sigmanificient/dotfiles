@@ -6,18 +6,18 @@ from .keys import keys, mod
 
 class _Group(Group):
 
-    def __init__(self, label: str, key: str):
-        self.label = label
+    def __init__(self, name: str, key: str):
+        self.name = name
         self.key = key
 
-        super().__init__(label)
+        super().__init__(name)
         self.setup_keys()
 
     def setup_keys(self):
-        move = Key([mod], self.key, lazy.group[self.label].toscreen())
+        move = Key([mod], self.key, lazy.group[self.name].toscreen())
         switch = Key(
             [mod, "shift"], self.key,
-            lazy.window.togroup(self.label, switch_group=True),
+            lazy.window.togroup(self.name, switch_group=True),
         )
 
         toggle_scratchpad = Key(
