@@ -5,6 +5,7 @@
   imports = [
     (import ./nvim { inherit ecsls pkgs conf; })
 
+    ./bash
     ./btop
     ./neofetch
     ./picom
@@ -74,7 +75,6 @@
   };
 
   programs = {
-    bash = import ./bash { };
     home-manager.enable = true;
 
     bat = {
