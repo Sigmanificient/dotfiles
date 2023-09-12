@@ -7,6 +7,8 @@
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
+    onelink.url = "github:Sigmanificient/1l.is";
+
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -23,6 +25,7 @@
     , nix-index-database
     , nixos-hardware
     , home-manager
+    , onelink
     , hosts
     , ecsls
     , ...
@@ -84,6 +87,20 @@
             ./hardware/sigmachine.nix
             # ./config/github_runner.nix
             ./config/sigmachine.nix
+          ];
+        };
+
+        Server = nixpkgs.lib.nixosSystem {
+          inherit system;
+
+          modules = [
+            onelink.nixosModules.${system}.default
+            {
+              services.onelink.enable = true;
+            }
+
+            ./server/configuration.nix
+            ./server/hardware-configuration.nix
           ];
         };
       };

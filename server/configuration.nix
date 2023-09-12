@@ -1,8 +1,6 @@
 { ... }: {
   imports = [
     ./hardware-configuration.nix
-
-
   ];
 
   boot.cleanTmpDir = true;
