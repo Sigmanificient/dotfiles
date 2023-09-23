@@ -35,6 +35,7 @@
       system = "x86_64-linux";
 
       pkgs = nixpkgs.legacyPackages.${system};
+      colors = import ./colors.nix;
 
       default_modules = [
         ./config
@@ -48,7 +49,7 @@
             useUserPackages = true;
             users.${username} = import ./home;
             extraSpecialArgs = {
-              inherit username system ecsls;
+              inherit username system ecsls colors;
             };
           };
         }
@@ -68,7 +69,7 @@
           inherit system;
 
           specialArgs = {
-            inherit username;
+            inherit username colors;
             hostname = "Bacon";
           };
 
@@ -86,7 +87,7 @@
           inherit system;
 
           specialArgs = {
-            inherit username;
+            inherit username colors;
             hostname = "Sigmachine";
           };
 

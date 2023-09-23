@@ -1,4 +1,4 @@
-{ ... }:
+{ colors, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -25,35 +25,35 @@
       tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
 
       # colors
-      active_tab_foreground = "#0F0F1C";
-      active_tab_background = "#8B8AF1";
-      inactive_tab_foreground = "#B4C0EC";
-      inactive_tab_background = "#1A1C31";
-      tab_bar_background = "#0F0F1C";
+      active_tab_foreground = colors.dark.black;
+      active_tab_background = colors.light.blue;
+      inactive_tab_foreground = colors.light.white;
+      inactive_tab_background = colors.light.black;
+      tab_bar_background = colors.dark.black;
 
-      foreground = "#CAD3F5";
-      background = "#1A1C31";
-      selection_foreground = "#000000";
-      selection_background = "#A7A5FB";
-      url_color = "#8B8AF1";
-      cursor = "#82E3F8";
+      foreground = colors.light.white;
+      background = colors.light.black;
+      selection_foreground = colors.dark.black;
+      selection_background = colors.light.blue;
+      url_color = colors.light.white;
+      cursor = colors.dark.blue;
 
-      color0 = "#0F0F1C";
-      color1 = "#D22942";
-      color2 = "#17B67C";
-      color3 = "#F2A174";
-      color4 = "#8C8AF1";
-      color5 = "#D78AF1";
-      color6 = "#8ADEF1";
-      color7 = "#CAD3F5";
-      color8 = "#A2B1E8";
-      color9 = "#DE4259";
-      color10 = "#3FD7A0";
-      color11 = "#EED49F";
-      color12 = "#A7A5FB";
-      color13 = "#E5A5FB";
-      color14 = "#A5EBFB";
-      color15 = "#CAD3F5";
+      color0 = colors.dark.black;
+      color1 = colors.dark.red;
+      color2 = colors.dark.green;
+      color3 = colors.dark.yellow;
+      color4 = colors.dark.blue;
+      color5 = colors.dark.magenta;
+      color6 = colors.dark.cyan;
+      color7 = colors.dark.white;
+      color8 = colors.light.black;
+      color9 = colors.light.red;
+      color10 = colors.light.green;
+      color11 = colors.light.yellow;
+      color12 = colors.light.blue;
+      color13 = colors.light.magenta;
+      color14 = colors.light.cyan;
+      color15 = colors.light.white;
 
       # Other
       initial_window_width = 820;
