@@ -1,4 +1,4 @@
-{ pkgs, ecsls, conf, ... }:
+{ pkgs, ecsls, system, ... }:
 {
   home.file.nvim_conf = {
     source = ./lua;
@@ -25,7 +25,7 @@
       llvmPackages_latest.clang
       nodejs # Copilot
       xclip # Clipboard fix
-      ecsls.packages.${conf.system}.default
+      ecsls.packages.${system}.default
     ];
 
   };

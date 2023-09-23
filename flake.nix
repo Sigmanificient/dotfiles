@@ -41,12 +41,13 @@
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${username} = import ./home;
-          home-manager.extraSpecialArgs = {
-            inherit ecsls;
-            conf = { inherit username system; };
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.${username} = import ./home;
+            extraSpecialArgs = {
+              inherit username system ecsls;
+            };
           };
         }
 
@@ -64,8 +65,9 @@
         Bacon = nixpkgs.lib.nixosSystem {
           inherit system;
 
+          specialArgs = { hostname = "Bacon"; };
           modules = default_modules ++ [
-            (import ./config { hostname = "Bacon"; })
+            ./config
             ./hardware/bacon.nix
 
             nixos-hardware.nixosModules.asus-battery
@@ -77,11 +79,11 @@
 
         Sigmachine = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = { hostname = "Sigmachine"; };
 
           modules = default_modules ++ [
-            (import ./config { hostname = "Sigmachine"; })
+            ./config
             ./hardware/sigmachine.nix
-            # ./config/github_runner.nix
             ./config/sigmachine.nix
           ];
         };

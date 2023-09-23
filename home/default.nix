@@ -1,9 +1,9 @@
-{ pkgs, conf, ecsls, ... }:
+{ pkgs, username, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    (import ./nvim { inherit ecsls pkgs conf; })
+    ./nvim
 
     ./bash
     ./btop
@@ -26,15 +26,20 @@
   ];
 
   home = {
-    username = "${conf.username}";
-    homeDirectory = "/home/${conf.username}";
+    inherit username;
+    homeDirectory = "/home/${username}";
 
     stateVersion = "22.11";
     sessionVariables = {
       EDITOR = pkgs.nano;
     };
 
-    packages = with pkgs; [
+    packages = with pkgs; let
+      vencord = (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      });
+    in [
       # settings
       arandr
       brightnessctl
@@ -46,13 +51,9 @@
       pavucontrol
 
       # messaging
-      (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
-
       teams
       tdesktop
+      vencord
 
       # dev
       gnumake
