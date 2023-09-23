@@ -46,11 +46,7 @@
           home-manager.users.${username} = import ./home;
           home-manager.extraSpecialArgs = {
             inherit ecsls;
-            conf = {
-              inherit username;
-              inherit system;
-              ecsls.enable = true;
-            };
+            conf = { inherit username system; };
           };
         }
 
