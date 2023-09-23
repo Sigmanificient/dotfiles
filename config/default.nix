@@ -1,4 +1,4 @@
-{ hostname, pkgs, ... }:
+{ username, hostname, pkgs, ... }:
 {
   imports =
     [
@@ -47,7 +47,7 @@
   };
 
   networking = {
-    hostName = "${hostname}";
+    hostName = hostname;
     networkmanager.enable = true;
     firewall.enable = false;
   };
@@ -144,7 +144,7 @@
     upower.enable = true;
   };
 
-  users.users.sigmanificient = {
+  users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];

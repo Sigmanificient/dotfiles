@@ -37,6 +37,8 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       default_modules = [
+        ./config
+
         nix-index-database.nixosModules.nix-index
 
         home-manager.nixosModules.home-manager
@@ -65,9 +67,12 @@
         Bacon = nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = { hostname = "Bacon"; };
+          specialArgs = {
+            inherit username;
+            hostname = "Bacon";
+          };
+
           modules = default_modules ++ [
-            ./config
             ./hardware/bacon.nix
 
             nixos-hardware.nixosModules.asus-battery
@@ -79,10 +84,13 @@
 
         Sigmachine = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { hostname = "Sigmachine"; };
+
+          specialArgs = {
+            inherit username;
+            hostname = "Sigmachine";
+          };
 
           modules = default_modules ++ [
-            ./config
             ./hardware/sigmachine.nix
             ./config/sigmachine.nix
           ];
