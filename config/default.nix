@@ -7,7 +7,9 @@
     ];
 
   boot = {
-    consoleLogLevel = 3;
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
