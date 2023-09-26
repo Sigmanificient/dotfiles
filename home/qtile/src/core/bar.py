@@ -51,7 +51,7 @@ class Bar(bar.Bar):
         super().__init__(
             widgets=self._build_widgets(),
             size=24,
-            background=Color.BG_DARK.with_alpha(0.7),
+            background=Color.BG_DARK,
             margin=[0, 0, 8, 0],
         )
 
