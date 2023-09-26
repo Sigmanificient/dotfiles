@@ -13,14 +13,13 @@ from widgets import (
     QuickExit,
     Separator,
     SpotifyNowPlaying,
+    Systray,
     TaskList,
     Wakatime,
 )
 
 
 class Bar(bar.Bar):
-    instance_count: int = 0
-
     widgets_checks = {
         Battery: lambda _: os.uname().nodename == "Bacon",
     }
@@ -45,6 +44,9 @@ class Bar(bar.Bar):
 
     def __init__(self, id_):
         self.id = id_
+
+        if self.id == 0:
+            self._widgets.insert(14, Systray)
 
         super().__init__(
             widgets=self._build_widgets(),

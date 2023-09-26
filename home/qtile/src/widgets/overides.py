@@ -83,3 +83,8 @@ Prompt = mk_overrides(
     foreground=Color.TEXT_LIGHT,
     padding=8,
 )
+
+Systray = mk_overrides(
+    widget.Systray,
+    icon_size=12
+)

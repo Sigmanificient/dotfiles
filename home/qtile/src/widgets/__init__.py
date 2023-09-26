@@ -9,6 +9,7 @@ from .overides import (
     QuickExit,
     Separator,
     TaskList,
+    Systray
 )
 
 from .spotify import SpotifyNowPlaying
@@ -26,5 +27,6 @@ __all__ = (
     "Separator",
     "SpotifyNowPlaying",
     "TaskList",
+    "Systray",
     "Wakatime",
 )
