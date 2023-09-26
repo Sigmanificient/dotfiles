@@ -1,10 +1,10 @@
-{ colors, ... }:
+{ ... }:
 {
   services.flameshot = {
     enable = true;
     settings = {
       General = {
-        uiColor = colors.dark.blue;
+        uiColor = "#1435c7";
       };
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs, username, colors, ... }:
+{ pkgs, username, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
