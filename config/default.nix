@@ -227,4 +227,6 @@
       ];
     };
   };
+
+  hardware.opengl.enable = true;
 }
