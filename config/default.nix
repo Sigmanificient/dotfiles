@@ -38,7 +38,11 @@
 
   environment.pathsToLink = [ "/share/nix-direnv" ];
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      pulseaudio = true;
+    };
+
     overlays = [
       (_: super: {
         nix-direnv = super.nix-direnv.override {
@@ -149,7 +153,7 @@
   users.users."${username}" = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "docker" "networkmanager" "libvirtd" "wheel" ];
+    extraGroups = [ "audio" "docker" "networkmanager" "libvirtd" "wheel" ];
     initialPassword = "hello";
   };
 
