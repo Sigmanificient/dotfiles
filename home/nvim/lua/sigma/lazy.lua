@@ -2,6 +2,7 @@ local vim = vim
 local NONE = nil
 
 return {
+    'lukoshkin/highlight-whitespace',
     {
         "catppuccin/nvim",
         name = "catppuccin",
