@@ -21,7 +21,7 @@ class _Group(Group):
         )
 
         toggle_scratchpad = Key(
-            [mod], "space",
+            [mod, "shift"], "space",
             lazy.group["scratchpad"].dropdown_toggle("term"),
         )
 

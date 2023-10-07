@@ -12,7 +12,7 @@ keys = [
     Key([mod], "f", lazy.window.toggle_floating()),
     Key([mod], "b", lazy.spawn("firefox")),
     Key([], "Print", lazy.spawn("flameshot gui --clipboard")),
-    Key([mod, "shift"], "space", lazy.layout.next()),
+    Key([mod], "space", lazy.layout.next()),
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),
     Key([mod], "n", lazy.layout.normalize()),
     Key([mod], "Return", lazy.spawn("kitty")),
