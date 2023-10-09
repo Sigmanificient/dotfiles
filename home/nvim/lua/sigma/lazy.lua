@@ -13,6 +13,7 @@ return {
         end
     },
     { "wakatime/vim-wakatime", lazy = false },
+    { "drawbu/vim-epitech" },
 -- LSP
     {
         'VonHeikemen/lsp-zero.nvim',
