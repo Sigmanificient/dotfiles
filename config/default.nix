@@ -39,6 +39,7 @@
   environment.pathsToLink = [ "/share/nix-direnv" ];
   nixpkgs = {
     config = {
+      permittedInsecurePackages = [ "teams-1.5.00.23861" ];
       allowUnfree = true;
       pulseaudio = true;
     };
