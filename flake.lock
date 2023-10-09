@@ -6,11 +6,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1696879223,
-        "narHash": "sha256-+ElcHcMh9pW6bAGYRw7srcf74fBhoINoqqXdrDrUsW0=",
+        "lastModified": 1696881286,
+        "narHash": "sha256-NYfmHPVnFmPILUiI0W7+TOJJpWzKEs5RNEeEXIXukFo=",
         "owner": "Sigmapitech-meta",
         "repo": "ecsls",
-        "rev": "ad898a1dc8aa2e9388c2e4b8ce2d5c3cc8f667f4",
+        "rev": "f6c91e7e1b241b4cc52ae959b558ca09f3321cea",
         "type": "github"
       },
       "original": {
