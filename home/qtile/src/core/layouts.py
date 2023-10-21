@@ -1,3 +1,5 @@
+import re
+
 from libqtile.layout.columns import Columns
 from libqtile.layout.floating import Floating
 from libqtile.config import Match
@@ -27,6 +29,7 @@ floating_layout = Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="splash"),  # .Idea loader
+        Match(title=re.compile(".*(d|D)iscord.*")),  # Discord
         Match(title="kitty"),
     ],
 )

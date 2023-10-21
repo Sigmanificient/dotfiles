@@ -1,4 +1,6 @@
-from libqtile.config import DropDown, Group, Key, ScratchPad
+import re
+
+from libqtile.config import DropDown, Group, Key, ScratchPad, Match
 from libqtile.lazy import lazy
 
 from .keys import keys, mod
@@ -20,12 +22,17 @@ class _Group(Group):
             lazy.window.togroup(self.name, switch_group=True),
         )
 
-        toggle_scratchpad = Key(
+        toggle_term = Key(
             [mod, "shift"], "space",
             lazy.group["scratchpad"].dropdown_toggle("term"),
         )
 
-        keys.extend((move, switch, toggle_scratchpad))
+        toggle_discord = Key(
+            [mod, "shift"], "d",
+            lazy.group["scratchpad"].dropdown_toggle("discord"),
+        )
+
+        keys.extend((move, switch, toggle_term, toggle_discord))
 
 
 _scratchpads = [
@@ -40,8 +47,19 @@ _scratchpads = [
                 height=0.9,
                 width=0.9,
                 on_focus_lost_hide=False,
+            ),
+            DropDown(
+                "discord",
+                "discord",
+                x=0.05,
+                y=0.05,
+                opacity=0.95,
+                height=0.9,
+                width=0.9,
+                on_focus_lost_hide=False,
+                match=Match(title=re.compile(".*(d|D)iscord.*"))
             )
-        ],
+        ]
     )
 ]
 
