@@ -20,21 +20,6 @@
     kernelModules = [ "kvm-amd" ];
   };
 
-  hardware.nvidia = {
-    open = false;
-    modesetting.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-      amdgpuBusId = "PCI:5:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/b22002e7-3ba0-4e5d-a643-d4ad8fb73505";

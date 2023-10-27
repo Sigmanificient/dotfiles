@@ -74,6 +74,7 @@
 
           modules = default_modules ++ [
             ./hardware/bacon.nix
+            ./config/bacon.nix
 
             nixos-hardware.nixosModules.asus-battery
             nixos-hardware.nixosModules.common-cpu-amd
