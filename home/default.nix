@@ -34,12 +34,7 @@
       EDITOR = pkgs.nano;
     };
 
-    packages = with pkgs; let
-      vencord = (discord.override {
-        withOpenASAR = true;
-        withVencord = true;
-      });
-    in [
+    packages = with pkgs; [
       # settings
       arandr
       brightnessctl
@@ -51,9 +46,9 @@
       pavucontrol
 
       # messaging
+      discord
       teams
       tdesktop
-      vencord
 
       # dev
       gnumake
