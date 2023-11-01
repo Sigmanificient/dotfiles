@@ -39,9 +39,12 @@
   environment.pathsToLink = [ "/share/nix-direnv" ];
   nixpkgs = {
     config = {
-      permittedInsecurePackages = [ "teams-1.5.00.23861" ];
       allowUnfree = true;
       pulseaudio = true;
+      permittedInsecurePackages = [
+        "electron-24.8.6"
+        "teams-1.5.00.23861"
+      ];
     };
 
     overlays = [
