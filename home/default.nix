@@ -47,8 +47,7 @@
 
       # messaging
       discord
-      teams
-      tdesktop
+      teams-for-linux
 
       # dev
       gnumake
@@ -59,7 +58,6 @@
       spotify
       gimp
       neofetch
-      obsidian
       pass
 
       # utils

@@ -41,10 +41,6 @@
     config = {
       allowUnfree = true;
       pulseaudio = true;
-      permittedInsecurePackages = [
-        "electron-24.8.6"
-        "teams-1.5.00.23861"
-      ];
     };
 
     overlays = [
