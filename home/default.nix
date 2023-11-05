@@ -34,11 +34,18 @@
       EDITOR = pkgs.nano;
     };
 
-    packages = with pkgs; [
+    packages = let
+      figma-linux-wrap = pkgs.figma-linux.overrideAttrs(prev: {
+        nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.wrapGAppsHook ];
+      });
+
+    in with pkgs; [
       # settings
       arandr
       brightnessctl
       lxappearance
+
+      figma-linux-wrap
 
       # volume
       pamixer

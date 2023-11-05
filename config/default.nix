@@ -195,9 +195,6 @@
       libsForQt5.plasma-nm
       playerctl
 
-      figma-linux
-      gsettings-desktop-schemas # Figma linux fix
-
       git
       htop
       tree
