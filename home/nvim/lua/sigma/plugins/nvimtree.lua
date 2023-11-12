@@ -6,4 +6,12 @@ local function on_attach(bufnr)
     vim.keymap.set("n", "<leader>f", "<cmd>NvimTreeFocus<CR>")
 end
 
-require("nvim-tree").setup({ on_attach = on_attach })
+require("nvim-tree").setup(
+    {
+        on_attach = on_attach,
+        filters = {
+            git_ignored = false,
+            custom = { '^\\.git' },
+        },
+    }
+)
