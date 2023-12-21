@@ -1,6 +1,3 @@
-local vim = vim
-local NONE = nil
-
 local attach_user_config = function(settings)
   settings["config"] = function()
     require("sigma.plugins." .. settings["_user_conf"])
@@ -24,12 +21,9 @@ return apply_shortcut({
   "lukoshkin/highlight-whitespace",
   {
     "catppuccin/nvim",
+    _user_conf = "colorscheme",
     name = "catppuccin",
     priority = 1000,
-    config = function()
-      vim.cmd('colorscheme catppuccin-macchiato')
-      vim.api.nvim_set_hl(0, "Normal", {ctermbg=NONE})
-    end
   },
   { "wakatime/vim-wakatime", lazy = false },
   "Sigmanificient/vim-epitech",
