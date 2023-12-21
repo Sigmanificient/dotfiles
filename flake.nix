@@ -22,53 +22,9 @@
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
 
-      nixosConfigurations =
-        let
-          username = "sigmanificient";
-        in
-        {
-          Bacon = nixpkgs.lib.nixosSystem {
-            inherit system;
-
-            specialArgs = {
-              inherit username;
-              hostname = "Bacon";
-            };
-
-            modules =
-              let
-                home-manager-conf = {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    users.${username} = import ./home;
-                    extraSpecialArgs = {
-                      inherit username system ecsls;
-                    };
-                  };
-                };
-
-                hosts-conf = {
-                  networking.stevenBlackHosts.enable = true;
-                };
-
-                mod-nixhardware-lst = with nixos-hardware.nixosModules; [
-                  asus-battery
-                  common-cpu-amd
-                  common-pc
-                  common-pc-ssd
-                ];
-              in
-              [
-                ./system
-                ./hardware-configuration.nix
-              ] ++ [
-                home-manager.nixosModules.home-manager
-                home-manager-conf
-                hosts.nixosModule
-                hosts-conf
-              ] ++ mod-nixhardware-lst;
-          };
-        };
+      nixosConfigurations = {
+        Bacon = nixpkgs.lib.nixosSystem
+         (import ./bacon.nix { inherit inputs system; });
+      };
     };
 }

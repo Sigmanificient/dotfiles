@@ -1,4 +1,4 @@
-{ config, username, hostname, pkgs, ... }:
+{ username, hostname, pkgs, ... }:
 {
   imports =
     [
@@ -86,7 +86,10 @@
     ];
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    opengl.enable = true;
+  };
 
   programs = {
     command-not-found.enable = false;
@@ -111,6 +114,21 @@
 
   security.rtkit.enable = true;
   services = {
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
@@ -129,7 +147,6 @@
 
     xserver = {
       enable = true;
-      excludePackages = with pkgs; [ xterm ];
       displayManager.startx.enable = true;
       layout = "fr";
       libinput = {
@@ -140,16 +157,14 @@
       windowManager.qtile = {
         enable = true;
         backend = "x11";
-        extraPackages = python3Packages: with python3Packages; [
-          qtile-extras
-        ];
+        extraPackages = pypkgs: [ pypkgs.qtile-extras ];
       };
     };
 
     upower.enable = true;
   };
 
-  users.users."${username}" = {
+  users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "audio" "docker" "networkmanager" "libvirtd" "wheel" ];
@@ -186,7 +201,7 @@
       XDG_STATE_HOME = "$HOME/.local/state";
     };
 
-    shells = with pkgs; [ zsh ];
+    shells = [ pkgs.zsh ];
     systemPackages = with pkgs; [
       alsa-utils
       modemmanager
@@ -226,35 +241,6 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
-    };
-  };
-
-  hardware.opengl.enable = true;
-  hardware.nvidia = {
-    open = false;
-    modesetting.enable = false;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    prime = {
-      offload = {
-        enable = false;
-        enableOffloadCmd = false;
-      };
-      amdgpuBusId = "PCI:5:0:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-
-    charger = {
-      governor = "performance";
-      turbo = "auto";
     };
   };
 }
