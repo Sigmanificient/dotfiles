@@ -10,7 +10,7 @@ local attach_user_config = function(settings)
 end
 
 return {
-  'lukoshkin/highlight-whitespace',
+  "lukoshkin/highlight-whitespace",
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -21,61 +21,58 @@ return {
     end
   },
   { "wakatime/vim-wakatime", lazy = false },
-  { "Sigmanificient/vim-epitech" },
+  "Sigmanificient/vim-epitech",
   attach_user_config({
-    'VonHeikemen/lsp-zero.nvim',
+    "VonHeikemen/lsp-zero.nvim",
     _user_conf = "lsp",
-    branch = 'v2.x',
+    branch = "v2.x",
     dependencies = {
-      -- LSP Support
-      {'neovim/nvim-lspconfig'},
-      -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'L3MON4D3/LuaSnip'},
+      "neovim/nvim-lspconfig",
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
     },
   }),
   attach_user_config({
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     _user_conf = "lualine",
-    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
   }),
   attach_user_config({
     "akinsho/toggleterm.nvim",
     _user_conf = "toggleterm",
-    tag = '*',
+    tag = "*",
   }),
   {
-    'tanvirtin/vgit.nvim',
-    version = 'v0.2.1',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "tanvirtin/vgit.nvim",
+    version = "v0.2.1",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require('vgit').setup()
+      require("vgit").setup()
     end,
   },
   attach_user_config({
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     _user_conf = "treesitter",
     run = function()
-      local ts_update = require(
-      'nvim-treesitter.install'
-      ).update({ with_sync = true })
+      local ts_update = require("nvim-treesitter.install")
+        .update({ with_sync = true })
       ts_update()
     end,
   }),
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-      require('copilot').setup()
+      require("copilot").setup()
     end,
   },
   {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua' },
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
     config = function()
-      require('copilot_cmp').setup()
+      require("copilot_cmp").setup()
     end,
   },
   attach_user_config({
@@ -85,6 +82,6 @@ return {
   attach_user_config({
     "nvim-telescope/telescope.nvim",
     _user_conf = "telescope",
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { "nvim-lua/plenary.nvim" },
   })
 }
