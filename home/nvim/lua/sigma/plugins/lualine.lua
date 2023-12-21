@@ -6,4 +6,3 @@ catppuccin_theme.normal.c.bg = "#0f0f1c";
 lualine.setup {
   options = { theme = catppuccin_theme },
 }
-
