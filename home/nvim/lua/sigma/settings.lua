@@ -16,3 +16,4 @@ opt.undofile = true
 wo.colorcolumn = '80';
 opt.cursorline = true;
 
+vim.cmd [[ set noswapfile ]]
