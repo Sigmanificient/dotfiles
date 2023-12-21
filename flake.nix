@@ -37,7 +37,7 @@
 
             modules =
               let
-                mod-home-mananger = home-manager.nixosModules.home-manager {
+                home-manager-conf = {
                   home-manager = {
                     useGlobalPkgs = true;
                     useUserPackages = true;
@@ -48,7 +48,7 @@
                   };
                 };
 
-                mod-hosts = hosts.nixosModule {
+                hosts-conf = {
                   networking.stevenBlackHosts.enable = true;
                 };
 
@@ -61,12 +61,14 @@
               in
               [
                 ./config
-                ./hardware-configuration.nix
                 ./config/bacon.nix
-                mod-home-mananger
-                mod-hosts
-              ]
-              ++ mod-nixhardware-lst;
+                ./hardware-configuration.nix
+              ] ++ [
+                home-manager.nixosModules.home-manager
+                home-manager-conf
+                hosts.nixosModule
+                hosts-conf
+              ] ++ mod-nixhardware-lst;
           };
         };
     };
