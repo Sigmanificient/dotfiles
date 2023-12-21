@@ -9,9 +9,7 @@
   programs.neovim = {
     enable = true;
 
-    extraConfig = ''
-      lua require('sigma')
-    '';
+    extraConfig = (builtins.readFile ./.vimrc);
 
     plugins = with pkgs.vimPlugins; [
       lazy-nvim
