@@ -9,7 +9,18 @@ local attach_user_config = function(settings)
   return settings
 end
 
-return {
+local apply_shortcut = function(plugins)
+  for _, plugin in ipairs(plugins) do
+    if type(plugin) == "table" then
+      if plugin._user_conf then
+        attach_user_config(plugin)
+      end
+    end
+  end
+  return plugins
+end
+
+return apply_shortcut({
   "lukoshkin/highlight-whitespace",
   {
     "catppuccin/nvim",
@@ -22,7 +33,7 @@ return {
   },
   { "wakatime/vim-wakatime", lazy = false },
   "Sigmanificient/vim-epitech",
-  attach_user_config({
+  {
     "VonHeikemen/lsp-zero.nvim",
     _user_conf = "lsp",
     branch = "v2.x",
@@ -32,17 +43,17 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
     },
-  }),
-  attach_user_config({
+  },
+  {
     "nvim-lualine/lualine.nvim",
     _user_conf = "lualine",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
-  }),
-  attach_user_config({
+  },
+  {
     "akinsho/toggleterm.nvim",
     _user_conf = "toggleterm",
     tag = "*",
-  }),
+  },
   {
     "tanvirtin/vgit.nvim",
     version = "v0.2.1",
@@ -51,7 +62,7 @@ return {
       require("vgit").setup()
     end,
   },
-  attach_user_config({
+  {
     "nvim-treesitter/nvim-treesitter",
     _user_conf = "treesitter",
     run = function()
@@ -59,7 +70,7 @@ return {
         .update({ with_sync = true })
       ts_update()
     end,
-  }),
+  },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -75,13 +86,13 @@ return {
       require("copilot_cmp").setup()
     end,
   },
-  attach_user_config({
+  {
     _user_conf = "nvimtree",
     "nvim-tree/nvim-tree.lua",
-  }),
-  attach_user_config({
+  },
+  {
     "nvim-telescope/telescope.nvim",
     _user_conf = "telescope",
     dependencies = { "nvim-lua/plenary.nvim" },
-  })
-}
+  }
+})
