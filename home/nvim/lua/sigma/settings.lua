@@ -10,10 +10,10 @@ opt.expandtab = true
 opt.number = true;
 opt.relativenumber = true;
 
-opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
-wo.colorcolumn = '80';
+wo.colorcolumn = "80";
 opt.cursorline = true;
 
 vim.cmd [[ set noswapfile ]]
