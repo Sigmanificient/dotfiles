@@ -1,6 +1,6 @@
 local attach_user_config = function(settings)
   settings["config"] = function()
-    require("sigma.plugins." .. settings["_user_conf"])
+    require("plugins." .. settings["_user_conf"])
   end
 
   return settings
