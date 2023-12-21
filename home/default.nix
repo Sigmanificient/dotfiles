@@ -36,8 +36,8 @@
 
     packages =
       let
-        figma-linux-wrap = pkgs.figma-linux.overrideAttrs (prev: {
-          nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.wrapGAppsHook ];
+        figma-linux-wrap = with pkgs; figma-linux.overrideAttrs (prev: {
+          nativeBuildInputs = prev.nativeBuildInputs ++ [ wrapGAppsHook ];
         });
 
       in

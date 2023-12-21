@@ -41,14 +41,6 @@
       allowUnfree = true;
       pulseaudio = true;
     };
-
-    overlays = [
-      (_: super: {
-        nix-direnv = super.nix-direnv.override {
-          enableFlakes = true;
-        };
-      })
-    ];
   };
 
   networking = {
@@ -157,7 +149,6 @@
       windowManager.qtile = {
         enable = true;
         backend = "x11";
-        extraPackages = pypkgs: [ pypkgs.qtile-extras ];
       };
     };
 
@@ -171,8 +162,11 @@
     initialPassword = "hello";
   };
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  fonts.packages = with pkgs; let
+    jetbrains-mono-nerd-font = (nerdfonts.override
+      { fonts = [ "JetBrainsMono" ]; });
+  in [
+    jetbrains-mono-nerd-font
     dina-font
     fira-code
     fira-code-symbols
@@ -234,13 +228,11 @@
   };
 
   qt.style = "adwaita-dark";
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-kde
+    ];
   };
 }
