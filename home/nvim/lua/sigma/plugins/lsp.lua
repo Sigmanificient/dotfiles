@@ -29,6 +29,7 @@ lspconfig.clangd.setup({
     'clangd',
     '--background-index',
     '--offset-encoding=utf-16',
+    '--header-insertion=never',
     '--clang-tidy',
     '--cross-file-rename',
   }
