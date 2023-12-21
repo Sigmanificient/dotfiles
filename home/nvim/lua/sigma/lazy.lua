@@ -1,6 +1,14 @@
 local vim = vim
 local NONE = nil
 
+local attach_user_config = function(settings)
+  settings["config"] = function()
+    require("sigma.plugins." .. settings["_user_conf"])
+  end
+
+  return settings
+end
+
 return {
     'lukoshkin/highlight-whitespace',
     {
@@ -14,9 +22,9 @@ return {
     },
     { "wakatime/vim-wakatime", lazy = false },
     { "Sigmanificient/vim-epitech" },
--- LSP
-    {
+    attach_user_config({
         'VonHeikemen/lsp-zero.nvim',
+        _user_conf = "lsp",
         branch = 'v2.x',
         dependencies = {
             -- LSP Support
@@ -26,27 +34,17 @@ return {
             {'hrsh7th/cmp-nvim-lsp'},
             {'L3MON4D3/LuaSnip'},
         },
-        config = function()
-            require('sigma.plugins.lsp')
-        end,
-    },
--- Lualine
-    {
+    }),
+    attach_user_config({
         'nvim-lualine/lualine.nvim',
+        _user_conf = "lualine",
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-        config = function()
-            require('sigma.plugins.lualine')
-        end,
-    },
--- Lazygit Term
-    {
-        "akinsho/toggleterm.nvim",
-        tag = '*',
-        config = function()
-            require("sigma.plugins.toggleterm")
-        end
-    },
--- Visual Git
+    }),
+    attach_user_config({
+      "akinsho/toggleterm.nvim",
+      _user_conf = "toggleterm",
+      tag = '*',
+    }),
     {
         'tanvirtin/vgit.nvim',
         version = 'v0.2.1',
@@ -55,20 +53,16 @@ return {
             require('vgit').setup()
         end,
     },
--- Syntax Highlighing
-    {
+    attach_user_config({
         'nvim-treesitter/nvim-treesitter',
+        _user_conf = "treesitter",
         run = function()
             local ts_update = require(
               'nvim-treesitter.install'
             ).update({ with_sync = true })
             ts_update()
         end,
-        config = function()
-           require('sigma.plugins.treesitter')
-        end,
-    },
--- Copilot
+    }),
     {
         'zbirenbaum/copilot.lua',
         cmd = 'Copilot',
@@ -84,17 +78,13 @@ return {
             require('copilot_cmp').setup()
         end,
     },
-    {
+    attach_user_config({
+        _user_conf = "nvimtree",
         "nvim-tree/nvim-tree.lua",
-        config = function()
-            require("sigma.plugins.nvimtree");
-        end,
-    },
-    {
+    }),
+    attach_user_config({
         "nvim-telescope/telescope.nvim",
+        _user_conf = "telescope",
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function()
-            require("sigma.plugins.telescope");
-        end,
-    }
+    })
 }
