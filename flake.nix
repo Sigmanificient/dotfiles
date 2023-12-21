@@ -60,8 +60,7 @@
                 ];
               in
               [
-                ./config
-                ./config/bacon.nix
+                ./system
                 ./hardware-configuration.nix
               ] ++ [
                 home-manager.nixosModules.home-manager
