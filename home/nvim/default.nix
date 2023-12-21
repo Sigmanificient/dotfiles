@@ -10,22 +10,19 @@
     enable = true;
 
     extraConfig = (builtins.readFile ./.vimrc);
+    plugins = [ pkgs.vimPlugins.lazy-nvim ];
 
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
-
-    extraPackages = with pkgs; [
-      nil # Nix
+    extraPackages = with pkgs; let
+      ecsls-pkg = ecsls.packages.${system}.default;
+    in [
+      nil
       lua-language-server
       nodePackages.pyright
       clang-tools
       llvmPackages_latest.clang
-      nodejs # Copilot
-      xclip # Clipboard fix
-      ecsls.packages.${system}.default
+      nodejs
+      xclip
+      ecsls-pkg
     ];
-
   };
 }
-
