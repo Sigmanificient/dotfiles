@@ -70,7 +70,7 @@
           };
 
           modules = default_modules ++ [
-            ./hardware/bacon.nix
+            ./hardware-configuration.nix
             ./config/bacon.nix
 
             nixos-hardware.nixosModules.asus-battery
