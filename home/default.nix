@@ -34,44 +34,46 @@
       EDITOR = pkgs.nano;
     };
 
-    packages = let
-      figma-linux-wrap = pkgs.figma-linux.overrideAttrs(prev: {
-        nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.wrapGAppsHook ];
-      });
+    packages =
+      let
+        figma-linux-wrap = pkgs.figma-linux.overrideAttrs (prev: {
+          nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.wrapGAppsHook ];
+        });
 
-    in with pkgs; [
-      # settings
-      arandr
-      brightnessctl
-      lxappearance
+      in
+      with pkgs; [
+        # settings
+        arandr
+        brightnessctl
+        lxappearance
 
-      figma-linux-wrap
+        figma-linux-wrap
 
-      # volume
-      pamixer
-      pulsemixer
-      pavucontrol
+        # volume
+        pamixer
+        pulsemixer
+        pavucontrol
 
-      # messaging
-      discord
-      teams-for-linux
+        # messaging
+        discord
+        teams-for-linux
 
-      # dev
-      gnumake
-      tokei
-      wakatime
+        # dev
+        gnumake
+        tokei
+        wakatime
 
-      # misc
-      spotify
-      gimp
-      neofetch
-      pass
+        # misc
+        spotify
+        gimp
+        neofetch
+        pass
 
-      # utils
-      peek
-      ripgrep
-      dconf
-    ];
+        # utils
+        peek
+        ripgrep
+        dconf
+      ];
   };
 
   programs = {
