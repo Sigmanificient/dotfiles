@@ -12,8 +12,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "754cefe0181a7acd42fdcb357a67d0217291ac47";
-          sha256 = "kWgPe7QJljERzcv4bYbHteNJIxCehaTu4xU9r64gUM4=";
+          rev = "0.8.0";
+          sha256 = "iJdWopZwHpSyYl5/FQXEW7gl/SrKaYDEtTH9cGP7iPo=";
         };
       }
       {
@@ -30,8 +30,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "marlonrichert";
           repo = "zsh-autocomplete";
-          rev = "eee8bbeb717e44dc6337a799ae60eda02d371b73";
-          sha256 = "2qkB8I3GXeg+mH8l12N6dnKtdnaxTeLf5lUHWxA2rNg=";
+          rev = "23.07.13";
+          sha256 = "0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
         };
       }
     ];
