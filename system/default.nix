@@ -7,7 +7,10 @@
 
   boot = {
     consoleLogLevel = 0;
-    initrd.verbose = false;
+    initrd = {
+      verbose = false;
+      kernelModules = [ "amdgpu" ];
+    };
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -63,7 +66,7 @@
   console = {
     earlySetup = true;
     useXkbConfig = true;
-    font = "Lat2-Terminus16";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-116n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     colors = [
       "11111E" # Black
