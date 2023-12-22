@@ -58,23 +58,23 @@
     font = "Lat2-Terminus16";
     packages = with pkgs; [ terminus_font ];
     colors = [
-      "0e0e18" # Black
-      "d22942" # red
-      "17b67c" # green
-      "f2a174" # yellow
-      "8c8af1" # blue
-      "d78af1" # magenta
-      "8adef1" # cyan
-      "c9d3f9" # white
+      "11111E" # Black
+      "E12541" # red
+      "14C67B" # green
+      "FFAC7D" # yellow
+      "7270FF" # blue
+      "FD8DFF" # magenta
+      "75DFED" # cyan
+      "A4B1E3" # white
 
-      "1a1c31" # light black
-      "de4259" # light red
-      "3fd7a0" # light green
-      "eed49f" # light yellow
-      "a7a5fb" # light blue
-      "e5a5fb" # light magenta
-      "a5ebfb" # light cyan
-      "cad3f5" # light white
+      "474B77" # light black
+      "DE6876" # light red
+      "63D961" # light green
+      "FFDA8D" # light yellow
+      "AAA9FA" # light blue
+      "E5A5FB" # light magenta
+      "BEEDF8" # light cyan
+      "DBE2FB" # light white
     ];
   };
 
