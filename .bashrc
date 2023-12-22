@@ -1,6 +1,10 @@
 # ~/.bashrc
 #
 
+if [ $TERM = "linux" ]; then
+  setfont ter-116n
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
