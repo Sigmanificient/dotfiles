@@ -1,9 +1,21 @@
 { pkgs, ecsls, system, ... }:
 {
-  home.file.nvim_conf = {
-    source = ./lua;
-    target = ".config/nvim/lua";
-    recursive = true;
+  home.file = {
+    nvim_conf = {
+      source = ./lua;
+      target = ".config/nvim/lua";
+      recursive = true;
+    };
+
+    clang_tidy = {
+      source = ./.clang-tidy;
+      target = ".clang-tidy";
+    };
+
+    clangd = {
+      source = ./.clangd;
+      target = ".clangd";
+    };
   };
 
   programs.neovim = {
