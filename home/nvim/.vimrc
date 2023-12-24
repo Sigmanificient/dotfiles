@@ -18,3 +18,6 @@ set colorcolumn=80
 set cursorline
 
 lua require("init")
+
+highlight Visual ctermfg=white ctermbg=blue cterm=bold
+
