@@ -26,7 +26,8 @@
 
     extraPackages = with pkgs; let
       ecsls-pkg = ecsls.packages.${system}.default;
-    in [
+    in
+    [
       nil
       lua-language-server
       nodePackages.pyright

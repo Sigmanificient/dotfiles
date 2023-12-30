@@ -24,7 +24,7 @@
 
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem
-         (import ./bacon.nix { inherit inputs system; });
+          (import ./bacon.nix { inherit inputs system; });
       };
     };
 }
