@@ -168,7 +168,8 @@
   fonts.packages = with pkgs; let
     jetbrains-mono-nerd-font = (nerdfonts.override
       { fonts = [ "JetBrainsMono" ]; });
-  in [
+  in
+  [
     jetbrains-mono-nerd-font
     dina-font
     fira-code

@@ -1,7 +1,8 @@
 { inputs, system }: with inputs;
 let
   username = "sigmanificient";
-in {
+in
+{
   inherit system;
 
   specialArgs = {
@@ -11,33 +12,33 @@ in {
 
   modules =
     let
-    home-manager-conf = {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        users.${username} = import ./home;
-        extraSpecialArgs = {
-          inherit username system ecsls;
+      home-manager-conf = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${username} = import ./home;
+          extraSpecialArgs = {
+            inherit username system ecsls;
+          };
         };
       };
-    };
 
-  hosts-conf = {
-    networking.stevenBlackHosts.enable = true;
-  };
+      hosts-conf = {
+        networking.stevenBlackHosts.enable = true;
+      };
 
-  mod-nixhardware-lst = with nixos-hardware.nixosModules; [
-    asus-battery
-      common-cpu-amd
-      common-pc
-      common-pc-ssd
-  ];
-  in
+      mod-nixhardware-lst = with nixos-hardware.nixosModules; [
+        asus-battery
+        common-pc-laptop
+        common-cpu-amd
+        common-pc-ssd
+      ];
+    in
     [
-    ./system
+      ./system
       ./hardware-configuration.nix
     ] ++ [
-    home-manager.nixosModules.home-manager
+      home-manager.nixosModules.home-manager
       home-manager-conf
       hosts.nixosModule
       hosts-conf
