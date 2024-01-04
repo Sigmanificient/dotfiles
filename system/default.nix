@@ -19,6 +19,7 @@
         efiSupport = true;
         device = "nodev";
         gfxmodeEfi = "1920x1080x32";
+        useOSProber = true;
       };
     };
   };
@@ -214,6 +215,10 @@
       vim
       vifm
       wget
+
+      gcc
+      glibc
+      gnumake
 
       libnotify
       virt-manager

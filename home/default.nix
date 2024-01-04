@@ -59,7 +59,6 @@
         teams-for-linux
 
         # dev
-        gnumake
         tokei
         wakatime
 

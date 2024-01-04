@@ -1,5 +1,5 @@
 {
-  description = "Sigma dotfiles";
+  description = "Ciznia dotfiles";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -25,8 +25,8 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system; });
+        cizchine = nixpkgs.lib.nixosSystem
+          (import ./cizchine.nix { inherit inputs system; });
       };
     };
 }
