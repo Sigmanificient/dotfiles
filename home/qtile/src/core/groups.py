@@ -15,6 +15,15 @@ class _Group(Group):
         super().__init__(name)
         self.setup_keys()
 
+    @classmethod
+    def setup_single_keys(cls):
+        toggle_term = Key(
+            [mod, "shift"], "space",
+            lazy.group["scratchpad"].dropdown_toggle("term"),
+        )
+
+        keys.append(toggle_term)
+
     def setup_keys(self):
         move = Key([mod], self.key, lazy.group[self.name].toscreen())
         switch = Key(
@@ -22,17 +31,7 @@ class _Group(Group):
             lazy.window.togroup(self.name, switch_group=True),
         )
 
-        toggle_term = Key(
-            [mod, "shift"], "space",
-            lazy.group["scratchpad"].dropdown_toggle("term"),
-        )
-
-        toggle_discord = Key(
-            [mod, "shift"], "d",
-            lazy.group["scratchpad"].dropdown_toggle("discord"),
-        )
-
-        keys.extend((move, switch, toggle_term, toggle_discord))
+        keys.extend((move, switch))
 
 
 _scratchpads = [
@@ -63,6 +62,7 @@ _scratchpads = [
     )
 ]
 
+_Group.setup_single_keys()
 groups = _scratchpads + [
     _Group(lb, k) for lb, k in zip(
         "ζπδωλσς", [
@@ -78,4 +78,3 @@ groups = _scratchpads + [
         ]
     )
 ]
-
