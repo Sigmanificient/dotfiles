@@ -1,7 +1,30 @@
+import os
+
 from libqtile.config import Key
 from libqtile.lazy import lazy
+from libqtile.log_utils import logger
 
 mod = "mod4"
+
+def _toggle(device: int, control: int):
+    def wrapper(func):
+        state: bool = False
+
+
+        def wrapped(_):
+            nonlocal state
+
+            state = not state
+            func(device, control, state)
+
+        return wrapped
+    return wrapper
+
+
+@_toggle(device=12, control=150)
+def toggle_keypad(device: int, control: int, state: bool):
+    os.system(f"xinput set-prop {device} {control} {int(state)}")
+
 
 keys = [
     Key([mod], "e", lazy.spawn("thunar")),
@@ -21,6 +44,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
+    Key([], "XF86TouchpadToggle", lazy.function(toggle_keypad)),
     # Backlight
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
