@@ -23,6 +23,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
+lsp.hls.setup({})
 lspconfig.nil_ls.setup({})
 lspconfig.clangd.setup({
   cmd = {

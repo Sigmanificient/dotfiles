@@ -38,6 +38,7 @@
       xclip
       ecsls-pkg
       ehcsls-pkg
+      haskellPackages.haskell-language-server
     ];
   };
 }
