@@ -1,13 +1,13 @@
 { inputs, system }: with inputs;
 let
-  username = "sigmanificient";
+  username = "cizniarova";
 in
 {
   inherit system;
 
   specialArgs = {
     inherit username;
-    hostname = "Bacon";
+    hostname = "cizchine";
   };
 
   modules =
