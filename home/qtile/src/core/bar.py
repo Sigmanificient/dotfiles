@@ -20,10 +20,6 @@ from widgets import (
 
 
 class Bar(bar.Bar):
-    widgets_checks = {
-        Battery: lambda _: os.uname().nodename == "Bacon",
-    }
-
     _widgets = [
         GroupBox,
         Separator,
@@ -56,8 +52,4 @@ class Bar(bar.Bar):
         )
 
     def _build_widgets(self):
-        return [
-            widget_builder()
-            for widget_builder in self._widgets
-            if self.widgets_checks.get(widget_builder, bool)(self)
-        ]
+        return [widget_builder() for widget_builder in self._widgets]

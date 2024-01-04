@@ -18,6 +18,7 @@ Battery = mk_overrides(
     foreground=Color.TEXT_LIGHT,
     low_background=Color.RED_DARK.with_alpha(0.7),
     low_percentage=0.1,
+    battery="BAT1"
 )
 
 CPUGraph = mk_overrides(
