@@ -15,7 +15,7 @@
         settings = {
           "browser.newtabpage.pinned" = [
             { title = "NixOS"; url = "https://nixos.org"; }
-            { title = "Gtihub"; url = "https://github.com"; }
+            { title = "Github"; url = "https://github.com"; }
             { title = "YouTube"; url = "https://youtube.com"; }
           ];
           "general.smoothScroll" = true;
