@@ -1,4 +1,4 @@
-{ pkgs, ecsls, ehcsls, system, ... }:
+{ pkgs, ecsls, system, ... }:
 {
   home.file = {
     nvim_conf = {
@@ -26,7 +26,6 @@
 
     extraPackages = with pkgs; let
       ecsls-pkg = ecsls.packages.${system}.default;
-      ehcsls-pkg = ehcsls.packages.${system}.default;
     in
     [
       nil
@@ -37,7 +36,6 @@
       nodejs
       xclip
       ecsls-pkg
-      ehcsls-pkg
     ];
   };
 }

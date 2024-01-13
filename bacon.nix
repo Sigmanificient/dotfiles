@@ -18,7 +18,7 @@ in
           useUserPackages = true;
           users.${username} = import ./home;
           extraSpecialArgs = {
-            inherit username system ecsls ehcsls;
+            inherit username system ecsls;
           };
         };
       };
