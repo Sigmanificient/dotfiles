@@ -2,8 +2,8 @@ local function on_attach(bufnr)
   local api = require("nvim-tree.api")
 
   api.config.mappings.default_on_attach(bufnr)
-  vim.keymap.set("n", "<leader>t", "<cmd>NvimTreeToggle<CR>")
   vim.keymap.set("n", "<leader>f", "<cmd>NvimTreeFocus<CR>")
+  vim.keymap.set("n", "m", api.tree.change_root_to_node, { buffer = bufnr })
 end
 
 local is_vt_tty = vim.fn.expand("$TERM") == "linux"
