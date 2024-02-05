@@ -129,6 +129,13 @@
 
     zsh.enable = true;
     noisetorch.enable = true;
+
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+          glibc
+      ];
+    };
   };
 
   security.rtkit.enable = true;
