@@ -46,7 +46,7 @@ fi
 
 # ↓ Wm startup
 picom -f &
-setxkbmap fr &
+#setxkbmap fr &
 flameshot &
 dunst &
 exec qtile start

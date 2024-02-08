@@ -25,9 +25,14 @@
     ./kitty.nix
   ];
 
+  xdg.configFile."xkb/symbols/us_qwerty-fr".source =
+    "${pkgs.callPackage ./../system/qwerty-fr.nix {}}"
+    + "/usr/share/X11/xkb/symbols/us_qwerty-fr";
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
+
+    keyboard = null;
 
     stateVersion = "22.11";
     sessionVariables = {

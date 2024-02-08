@@ -133,7 +133,7 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
-          glibc
+        glibc
       ];
     };
   };
@@ -174,12 +174,24 @@
     xserver = {
       enable = true;
       displayManager.startx.enable = true;
-      layout = "fr";
+      layout = "custom";
+
+      extraLayouts.custom = {
+        description = "oui oui baguette";
+        languages = [ "eng" ];
+        symbolsFile =
+        let
+          ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
+        in
+        "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
+      };
+
       libinput = {
         enable = true;
         mouse.accelProfile = "flat";
         touchpad.accelProfile = "flat";
       };
+
       windowManager.qtile = {
         enable = true;
         backend = "x11";
