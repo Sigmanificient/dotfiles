@@ -65,16 +65,6 @@ _scratchpads = [
 _Group.setup_single_keys()
 groups = _scratchpads + [
     _Group(lb, k) for lb, k in zip(
-        "ζπδωλσς", [
-            "ampersand",
-            "eacute",
-            "quotedbl",
-            "apostrophe",
-            "parenleft",
-            "minus",
-            "egrave",
-            "underscore",
-            "agrave",
-        ]
+        "ζπδωλσς", "1234567"
     )
 ]
