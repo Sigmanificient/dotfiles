@@ -50,13 +50,8 @@
         # settings
         arandr
         brightnessctl
-        lxappearance
-
-        figma-linux-wrap
 
         # volume
-        pamixer
-        pulsemixer
         pavucontrol
 
         # messaging
