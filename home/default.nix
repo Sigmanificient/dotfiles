@@ -94,5 +94,9 @@
 
     feh.enable = true;
     lazygit.enable = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
