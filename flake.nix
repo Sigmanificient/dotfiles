@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     ecsls.url = "github:Sigmapitech/ecsls";
     hosts.url = "github:StevenBlack/hosts";
@@ -18,13 +19,14 @@
     with inputs; let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-unstable = nixpkgs.legacyPackages.${system};
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system; });
+          (import ./bacon.nix { inherit inputs system pkgs-unstable; });
       };
     };
 }
