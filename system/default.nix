@@ -1,4 +1,4 @@
-{ config, username, hostname, pkgs, ... }:
+{ config, username, hostname, pkgs, pkgs-unstable, ... }:
 {
   imports =
     [
@@ -224,7 +224,11 @@
   ];
 
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      package = pkgs-unstable.docker;
+    };
+
     libvirtd.enable = true;
   };
 

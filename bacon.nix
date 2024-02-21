@@ -1,4 +1,4 @@
-{ inputs, system }: with inputs;
+{ inputs, system, pkgs-unstable }: with inputs;
 let
   username = "sigmanificient";
 in
@@ -6,7 +6,7 @@ in
   inherit system;
 
   specialArgs = {
-    inherit username;
+    inherit username pkgs-unstable;
     hostname = "Bacon";
   };
 
