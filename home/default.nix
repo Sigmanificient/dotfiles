@@ -36,7 +36,7 @@
 
     stateVersion = "22.11";
     sessionVariables = {
-      EDITOR = pkgs.nano;
+      EDITOR = "${pkgs.nano}/bin/nano";
     };
 
     packages =
