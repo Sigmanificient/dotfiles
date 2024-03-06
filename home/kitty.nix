@@ -61,6 +61,7 @@
       remember_window_size = "no";
 
       window_padding_width = 5;
+      scrollback_pager_history_size = 100;
 
       # Aaaaaaaaaaaaaaaah the bell
       enable_audio_bell = false;
