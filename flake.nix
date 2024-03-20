@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     ecsls.url = "github:Sigmapitech/ecsls";
     hosts.url = "github:StevenBlack/hosts";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -20,7 +22,13 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, pre-commit-hooks, ... } @ inputs:
+  outputs =
+    { nixpkgs
+    , nixpkgs-unstable
+    , flake-utils
+    , pre-commit-hooks
+    , ...
+    } @ inputs:
     let
       system = "x86_64-linux";
 
@@ -37,10 +45,15 @@
         ];
       });
     in
-    rec {
-      formatter.${system} = pkgs.nixpkgs-fmt;
+    {
+      nixosConfigurations = {
+        Bacon = nixpkgs.lib.nixosSystem
+          (import ./bacon.nix { inherit inputs system pkgs; });
+      };
+    } // flake-utils.lib.eachSystem [ system ] (system: rec {
+      formatter = pkgs.nixpkgs-fmt;
 
-      checks.${system}.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
           nixpkgs-fmt = {
@@ -50,13 +63,8 @@
         };
       };
 
-      devShells.${system}.default = pkgs.mkShell {
-        inherit (checks.${system}.pre-commit-check) shellHook;
+      devShells.default = pkgs.mkShell {
+        inherit (checks.pre-commit-check) shellHook;
       };
-
-      nixosConfigurations = {
-        Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system pkgs; });
-      };
-    };
+    });
 }
