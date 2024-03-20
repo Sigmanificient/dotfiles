@@ -172,10 +172,10 @@
         description = "oui oui baguette";
         languages = [ "eng" ];
         symbolsFile =
-        let
-          ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
-        in
-        "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
+          let
+            ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
+          in
+          "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
       };
 
       libinput = {
