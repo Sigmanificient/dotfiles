@@ -15,18 +15,29 @@
     };
   };
 
-  outputs = inputs:
-    with inputs; let
+  outputs = { nixpkgs, nixpkgs-unstable, ... } @ inputs:
+    let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-unstable = nixpkgs.legacyPackages.${system};
+
+      pkgs-settings = {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
+      pkgs = import nixpkgs (pkgs-settings // {
+        overlays = [
+          (_: _: {
+            unstable = import nixpkgs-unstable pkgs-settings;
+          })
+        ];
+      });
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
         Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system pkgs-unstable; });
+          (import ./bacon.nix { inherit inputs system pkgs; });
       };
     };
 }
