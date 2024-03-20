@@ -7,8 +7,30 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    ecsls.url = "github:Sigmapitech/ecsls";
-    hosts.url = "github:StevenBlack/hosts";
+    vera-clang = {
+      url = "github:Sigmapitech/vera-clang";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
+    };
+
+    ecsls = {
+      url = "github:Sigmapitech/ecsls";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "flake-utils";
+        # Cannot use nested vera-clang.inputs.nixpkgs.follows
+        # See https://github.com/NixOS/nix/issues/5790
+        vera-clang.follows = "vera-clang";
+      };
+    };
+
+    hosts = {
+      url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -18,7 +40,10 @@
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
   };
 
