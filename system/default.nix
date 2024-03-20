@@ -44,14 +44,6 @@
       allowUnfree = true;
       pulseaudio = true;
     };
-
-    overlays = [
-      (_: super: {
-        nix-direnv = super.nix-direnv.override {
-          enableFlakes = true;
-        };
-      })
-    ];
   };
 
   networking = {
@@ -195,7 +187,6 @@
       windowManager.qtile = {
         enable = true;
         backend = "x11";
-        extraPackages = pypkgs: [ pypkgs.qtile-extras ];
       };
     };
 
@@ -209,7 +200,7 @@
     initialPassword = "hello";
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     dina-font
     fira-code
@@ -279,6 +270,7 @@
   xdg = {
     portal = {
       enable = true;
+      config.common.default = "*";
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk

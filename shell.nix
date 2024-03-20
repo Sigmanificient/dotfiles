@@ -5,7 +5,7 @@ let
     pkgs = pkgs.python311Packages;
 
     deps = rec {
-      prod = with py.pkgs; [ qtile qtile-extras ];
+      prod = with py.pkgs; [ qtile ];
       dev = with py.pkgs; [ black isort vulture ];
       all = prod ++ dev;
     };
