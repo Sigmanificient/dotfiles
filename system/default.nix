@@ -1,9 +1,6 @@
 { config, username, hostname, pkgs, ... }:
 {
-  imports =
-    [
-      ./polkit.nix
-    ];
+  imports = [ ./polkit.nix ];
 
   boot = {
     consoleLogLevel = 0;
@@ -28,6 +25,7 @@
       automatic = true;
       options = "--delete-older-than 90d";
     };
+    optimise.automatic = true;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "@wheel" ];
@@ -35,16 +33,9 @@
       keep-derivations = true;
       auto-optimise-store = true;
     };
-    optimise.automatic = true;
   };
 
-  environment.pathsToLink = [ "/share/nix-direnv" ];
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      pulseaudio = true;
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   networking = {
     hostName = hostname;
@@ -124,9 +115,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [
-        glibc
-      ];
+      libraries = [ pkgs.glibc ];
     };
   };
 
@@ -226,6 +215,7 @@
   documentation.dev.enable = true;
   environment = {
     etc.issue.text = (builtins.readFile ./issuerc);
+    pathsToLink = [ "/share/nix-direnv" ];
     sessionVariables = {
       MOZ_USE_XINPUT2 = "1";
       XDG_CACHE_HOME = "$HOME/.cache";
@@ -239,8 +229,6 @@
       alsa-utils
       modemmanager
       networkmanagerapplet
-      libsForQt5.ark
-      libsForQt5.plasma-nm
       playerctl
 
       git
