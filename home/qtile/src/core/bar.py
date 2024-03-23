@@ -1,5 +1,3 @@
-import os
-
 from libqtile import bar, widget
 
 from utils import Color
@@ -15,15 +13,10 @@ from widgets import (
     SpotifyNowPlaying,
     Systray,
     TaskList,
-    Wakatime,
 )
 
 
 class Bar(bar.Bar):
-    widgets_checks = {
-        Battery: lambda _: os.uname().nodename == "Bacon",
-    }
-
     _widgets = [
         GroupBox,
         Separator,
@@ -31,7 +24,6 @@ class Bar(bar.Bar):
         Separator,
         Prompt,
         SpotifyNowPlaying,
-        Wakatime,
         Battery,
         Memory,
         CPUGraph,
@@ -46,7 +38,7 @@ class Bar(bar.Bar):
         self.id = id_
 
         if self.id == 0:
-            self._widgets.insert(14, Systray)
+            self._widgets.insert(13, Systray)
 
         super().__init__(
             widgets=self._build_widgets(),
@@ -59,5 +51,4 @@ class Bar(bar.Bar):
         return [
             widget_builder()
             for widget_builder in self._widgets
-            if self.widgets_checks.get(widget_builder, bool)(self)
         ]
