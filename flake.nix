@@ -90,6 +90,7 @@
 
       devShells.default = pkgs.mkShell {
         inherit (checks.pre-commit-check) shellHook;
+        packages = [ pkgs.unstable.qtile ];
       };
     });
 }
