@@ -1,9 +1,6 @@
-{ config, username, hostname, pkgs, pkgs-unstable, ... }:
+{ config, username, hostname, pkgs, ... }:
 {
-  imports =
-    [
-      ./polkit.nix
-    ];
+  imports = [ ./polkit.nix ];
 
   boot = {
     consoleLogLevel = 0;
@@ -28,6 +25,7 @@
       automatic = true;
       options = "--delete-older-than 90d";
     };
+    optimise.automatic = true;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "@wheel" ];
@@ -35,24 +33,9 @@
       keep-derivations = true;
       auto-optimise-store = true;
     };
-    optimise.automatic = true;
   };
 
-  environment.pathsToLink = [ "/share/nix-direnv" ];
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      pulseaudio = true;
-    };
-
-    overlays = [
-      (_: super: {
-        nix-direnv = super.nix-direnv.override {
-          enableFlakes = true;
-        };
-      })
-    ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   networking = {
     hostName = hostname;
@@ -132,9 +115,7 @@
 
     nix-ld = {
       enable = true;
-      libraries = with pkgs; [
-        glibc
-      ];
+      libraries = [ pkgs.glibc ];
     };
   };
 
@@ -180,10 +161,10 @@
         description = "oui oui baguette";
         languages = [ "eng" ];
         symbolsFile =
-        let
-          ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
-        in
-        "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
+          let
+            ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
+          in
+          "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
       };
 
       libinput = {
@@ -195,7 +176,6 @@
       windowManager.qtile = {
         enable = true;
         backend = "x11";
-        extraPackages = pypkgs: [ pypkgs.qtile-extras ];
       };
     };
 
@@ -209,7 +189,7 @@
     initialPassword = "hello";
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     dina-font
     fira-code
@@ -226,7 +206,7 @@
   virtualisation = {
     docker = {
       enable = true;
-      package = pkgs-unstable.docker;
+      package = pkgs.unstable.docker;
     };
 
     libvirtd.enable = true;
@@ -235,6 +215,7 @@
   documentation.dev.enable = true;
   environment = {
     etc.issue.text = (builtins.readFile ./issuerc);
+    pathsToLink = [ "/share/nix-direnv" ];
     sessionVariables = {
       MOZ_USE_XINPUT2 = "1";
       XDG_CACHE_HOME = "$HOME/.cache";
@@ -248,8 +229,6 @@
       alsa-utils
       modemmanager
       networkmanagerapplet
-      libsForQt5.ark
-      libsForQt5.plasma-nm
       playerctl
 
       git
@@ -279,6 +258,7 @@
   xdg = {
     portal = {
       enable = true;
+      config.common.default = "*";
       extraPortals = with pkgs; [
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk

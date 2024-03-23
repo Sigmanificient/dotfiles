@@ -13,7 +13,6 @@ from .overides import (
 )
 
 from .spotify import SpotifyNowPlaying
-from .wakatime import Wakatime
 
 __all__ = (
     "widget_defaults",
@@ -28,5 +27,4 @@ __all__ = (
     "SpotifyNowPlaying",
     "TaskList",
     "Systray",
-    "Wakatime",
 )

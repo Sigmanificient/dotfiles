@@ -1,29 +1,37 @@
+import re
 import os
+
+import subprocess
 
 from libqtile.config import Key
 from libqtile.lazy import lazy
-from libqtile.log_utils import logger
 
 mod = "mod4"
 
-def _toggle(device: int, control: int):
+def _toggle(*args, **kwargs):
     def wrapper(func):
         state: bool = False
-
 
         def wrapped(_):
             nonlocal state
 
             state = not state
-            func(device, control, state)
+            func(*args, **kwargs, state=state)
 
         return wrapped
     return wrapper
 
 
-@_toggle(device=12, control=150)
-def toggle_keypad(device: int, control: int, state: bool):
-    os.system(f"xinput set-prop {device} {control} {int(state)}")
+@_toggle(control=150)
+def toggle_keypad(control: int, state: bool):
+    proc = subprocess.run("xinput list | grep Touchpad",
+        text=True, capture_output=True)
+
+    id_ = re.search(r"id=(\d+)", proc.stdout)
+    if id_ is None:
+        return
+
+    os.system(f"xinput set-prop {id_} {control} {int(state)}")
 
 
 keys = [

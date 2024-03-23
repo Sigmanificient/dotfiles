@@ -1,2 +1,5 @@
+# Pre-commit config
+.pre-commit-config.yaml
+
 # Virtual Machines Disks
 *.qcow2

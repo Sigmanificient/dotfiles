@@ -13,7 +13,6 @@
     ./firefox
     ./qtile
     ./thunar
-    ./tmux
     ./zsh
 
     ./betterlockscreen
@@ -39,43 +38,38 @@
       EDITOR = "${pkgs.nano}/bin/nano";
     };
 
-    packages =
-      let
-        figma-linux-wrap = pkgs.figma-linux.overrideAttrs (prev: {
-          nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.wrapGAppsHook ];
-        });
+    packages = with pkgs; [
+      # settings
+      arandr
+      brightnessctl
 
-      in
-      with pkgs; [
-        # settings
-        arandr
-        brightnessctl
+      # volume
+      pavucontrol
 
-        # volume
-        pavucontrol
+      # messaging
+      discord
+      teams-for-linux
 
-        # messaging
-        discord
-        teams-for-linux
+      # dev
+      gnumake
+      tokei
+      wakatime
 
-        # dev
-        gnumake
-        tokei
-        wakatime
+      # misc
+      spotify
+      gimp
+      neofetch
+      pass
 
-        # misc
-        spotify
-        gimp
-        neofetch
-        pass
-
-        # utils
-        peek
-        ripgrep
-        dconf
-      ];
+      # utils
+      peek
+      ripgrep
+      dconf
+      mtm # minimalistic multiplexer
+    ];
   };
 
+  manual.manpages.enable = false;
   programs = {
     home-manager.enable = true;
 
