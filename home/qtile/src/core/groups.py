@@ -1,6 +1,4 @@
-import re
-
-from libqtile.config import DropDown, Group, Key, ScratchPad, Match
+from libqtile.config import DropDown, Group, Key, ScratchPad
 from libqtile.lazy import lazy
 
 from .keys import keys, mod
@@ -33,38 +31,21 @@ class _Group(Group):
 
         keys.extend((move, switch))
 
+_scratchpad_defaults = dict(
+    x=0.05,
+    y=0.05,
+    opacity=0.95,
+    height=0.9,
+    width=0.9,
+    on_focus_lost_hide=False
+)
 
 _scratchpads = [
     ScratchPad(
-        "scratchpad", [
-            DropDown(
-                "term",
-                "kitty",
-                x=0.05,
-                y=0.05,
-                opacity=0.95,
-                height=0.9,
-                width=0.9,
-                on_focus_lost_hide=False,
-            ),
-            DropDown(
-                "discord",
-                "discord",
-                x=0.05,
-                y=0.05,
-                opacity=0.95,
-                height=0.9,
-                width=0.9,
-                on_focus_lost_hide=False,
-                match=Match(title=re.compile(".*(d|D)iscord.*"))
-            )
-        ]
+        "scratchpad",
+        [DropDown("term", "kitty", **_scratchpad_defaults)]
     )
 ]
 
 _Group.setup_single_keys()
-groups = _scratchpads + [
-    _Group(lb, k) for lb, k in zip(
-        "ζπδωλσς", "1234567"
-    )
-]
+groups = _scratchpads + [_Group(lb, k) for lb, k in zip("ζπδωλσς", "1234567")]

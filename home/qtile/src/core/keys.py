@@ -12,7 +12,6 @@ def _toggle(*args, **kwargs):
     def wrapper(func):
         state: bool = False
 
-
         def wrapped(_):
             nonlocal state
 

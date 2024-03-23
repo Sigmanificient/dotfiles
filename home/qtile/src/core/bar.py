@@ -40,16 +40,13 @@ class Bar(bar.Bar):
             widgets=self._build_widgets(),
             size=24,
             background=Color.BG_DARK,
-            margin=[0, 0, 8, 0],
+            margin=[0, 0, 8, 0]
         )
 
     def _build_widgets(self):
-        widgets_copy = [
-            widget_builder()
-            for widget_builder in self._widgets]
+        widgets_copy = [widget_cls() for widget_cls in self._widgets]
 
         if self.id == 0:
             widgets_copy.insert(13, Systray())
-
         return widgets_copy
 
