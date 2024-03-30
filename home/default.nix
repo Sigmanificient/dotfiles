@@ -13,6 +13,7 @@
     ./firefox
     ./qtile
     ./thunar
+    ./tmux
     ./zsh
 
     ./betterlockscreen
@@ -72,6 +73,7 @@
   manual.manpages.enable = false;
   programs = {
     home-manager.enable = true;
+    tmux.enable = true;
 
     bat = {
       enable = true;
