@@ -13,13 +13,11 @@ in
   modules =
     let
       home-manager-conf = {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.${username} = import ./home;
-          extraSpecialArgs = {
-            inherit username system ecsls;
-          };
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users.${username} = import ./home;
+        extraSpecialArgs = {
+          inherit username system ecsls;
         };
       };
 
@@ -39,7 +37,7 @@ in
       ./hardware-configuration.nix
     ] ++ [
       home-manager.nixosModules.home-manager
-      home-manager-conf
+      { home-manager = home-manager-conf; }
       hosts.nixosModule
       hosts-conf
     ] ++ mod-nixhardware-lst;
