@@ -74,7 +74,44 @@
 
   hardware = {
     pulseaudio.enable = false;
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+
+      driSupport = true;
+      driSupport32Bit = true;
+
+      extraPackages = with pkgs; [
+        amdvlk
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+        vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        vaapiVdpau
+        vulkan-validation-layers
+      ];
+
+    };
+
+    nvidia = {
+      modesetting.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+
+      open = false;
+      nvidiaSettings = true;
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+
+        amdgpuBusId = "PCI:5:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
   };
 
   programs = {
@@ -141,6 +178,7 @@
       enable = true;
       displayManager.startx.enable = true;
       layout = "custom";
+      videoDrivers = [ "nvidia" ];
 
       extraLayouts.custom = {
         description = "oui oui baguette";
