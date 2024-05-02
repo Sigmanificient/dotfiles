@@ -269,6 +269,7 @@
 
       zip
       unzip
+      prismlauncher
     ];
   };
 
