@@ -20,17 +20,6 @@ in
           inherit username system ecsls;
         };
       };
-
-      hosts-conf = {
-        networking.stevenBlackHosts.enable = true;
-      };
-
-      mod-nixhardware-lst = with nixos-hardware.nixosModules; [
-        asus-battery
-        common-pc-laptop
-        common-cpu-amd
-        common-pc-ssd
-      ];
     in
     [
       ./system
@@ -39,6 +28,13 @@ in
       home-manager.nixosModules.home-manager
       { home-manager = home-manager-conf; }
       hosts.nixosModule
-      hosts-conf
-    ] ++ mod-nixhardware-lst;
+      ({
+        networking.stevenBlackHosts.enable = true;
+      })
+    ] ++ (with nixos-hardware.nixosModules; [
+      asus-battery
+      common-pc-laptop
+      common-cpu-amd
+      common-pc-ssd
+    ]);
 }
