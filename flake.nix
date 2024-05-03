@@ -81,11 +81,9 @@
 
         checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
-          hooks = {
-            nixpkgs-fmt = {
-              enable = true;
-              name = pkgs.lib.mkForce "Nix files format";
-            };
+          hooks.nixpkgs-fmt = {
+            enable = true;
+            name = pkgs.lib.mkForce "Nix files format";
           };
         };
 
