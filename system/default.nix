@@ -211,7 +211,7 @@
     initialPassword = "hello";
   };
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with pkgs.unstable; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     dina-font
     fira-code

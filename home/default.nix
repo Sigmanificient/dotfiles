@@ -53,6 +53,7 @@
 
       # dev
       gnumake
+      unstable.lazygit
       tokei
       wakatime
 
@@ -89,7 +90,6 @@
     };
 
     feh.enable = true;
-    lazygit.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;
