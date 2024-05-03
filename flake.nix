@@ -50,11 +50,16 @@
   outputs =
     { nixpkgs
     , nixpkgs-unstable
+    , home-manager
+    , nixos-hardware
     , flake-utils
     , pre-commit-hooks
+    , hosts
+    , ecsls
     , ...
-    } @ inputs:
+    }:
     let
+      username = "sigmanificient";
       system = "x86_64-linux";
 
       pkgs-settings = {
@@ -70,27 +75,60 @@
         ];
       });
     in
-    {
-      nixosConfigurations = {
-        Bacon = nixpkgs.lib.nixosSystem
-          (import ./bacon.nix { inherit inputs system pkgs; });
-      };
-    } // flake-utils.lib.eachSystem [ system ] (system: rec {
-      formatter = pkgs.nixpkgs-fmt;
+    flake-utils.lib.eachSystem [ system ]
+      (system: rec {
+        formatter = pkgs.nixpkgs-fmt;
 
-      checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          nixpkgs-fmt = {
-            enable = true;
-            name = pkgs.lib.mkForce "Nix files format";
+        checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixpkgs-fmt = {
+              enable = true;
+              name = pkgs.lib.mkForce "Nix files format";
+            };
           };
         };
-      };
 
-      devShells.default = pkgs.mkShell {
-        inherit (checks.pre-commit-check) shellHook;
-        packages = [ pkgs.unstable.qtile ];
+        devShells.default = pkgs.mkShell {
+          inherit (checks.pre-commit-check) shellHook;
+          packages = [ pkgs.unstable.qtile ];
+        };
+      })
+    // {
+      nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit username pkgs;
+          hostname = "Bacon";
+        };
+
+        modules = [
+          ./system
+          ./hardware-configuration.nix
+        ] ++ [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${username} = import ./home;
+              extraSpecialArgs = {
+                inherit username system ecsls;
+              };
+            };
+          }
+        ] ++ [
+          hosts.nixosModule
+          ({
+            networking.stevenBlackHosts.enable = true;
+          })
+        ] ++ (with nixos-hardware.nixosModules; [
+          asus-battery
+          common-pc-laptop
+          common-cpu-amd
+          common-pc-ssd
+        ]);
       };
-    });
+    };
 }
