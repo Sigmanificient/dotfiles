@@ -98,12 +98,13 @@
 
         specialArgs = {
           inherit username pkgs;
-          hostname = "Bacon";
         };
 
         modules = [
           ./system
           ./hardware-configuration.nix
+        ] ++ [
+          { networking.hostName = "Bacon"; }
         ] ++ [
           home-manager.nixosModules.home-manager
           {

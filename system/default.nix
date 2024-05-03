@@ -1,4 +1,4 @@
-{ config, username, hostname, pkgs, ... }:
+{ config, username, pkgs, ... }:
 {
   imports = [ ./polkit.nix ];
 
@@ -38,7 +38,6 @@
   nixpkgs.config.allowUnfree = true;
 
   networking = {
-    hostName = hostname;
     networkmanager.enable = true;
     firewall.enable = false;
   };
