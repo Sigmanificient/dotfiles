@@ -10,7 +10,6 @@
     ./neofetch
     ./picom
     ./dunst
-    ./firefox
     ./qtile
     ./thunar
     ./tmux
@@ -50,6 +49,7 @@
       # messaging
       discord
       teams-for-linux
+      floorp
 
       # dev
       gnumake
