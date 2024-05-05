@@ -74,6 +74,18 @@
           })
         ];
       });
+
+      home-manager-config = {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${username} = import ./home;
+          extraSpecialArgs = {
+            inherit username system ecsls pkgs;
+          };
+        };
+      };
+
     in
     flake-utils.lib.eachSystem [ system ]
       (system: rec {
@@ -91,6 +103,11 @@
           inherit (checks.pre-commit-check) shellHook;
           packages = [ pkgs.unstable.qtile ];
         };
+
+        packages.screenshot-system = import ./screenshot.nix {
+          inherit nixpkgs pkgs home-manager-config;
+          inherit (home-manager.nixosModules) home-manager;
+        };
       })
     // {
       nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
@@ -107,16 +124,7 @@
           { networking.hostName = "Bacon"; }
         ] ++ [
           home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${username} = import ./home;
-              extraSpecialArgs = {
-                inherit username system ecsls;
-              };
-            };
-          }
+          home-manager-config
         ] ++ [
           hosts.nixosModule
           ({
