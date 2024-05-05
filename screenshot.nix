@@ -18,11 +18,34 @@ let
       ];
 
       boot.consoleLogLevel = lib.mkForce 7;
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = with pkgs; let
+        auto-cbonsai = (pkgs.writeShellScriptBin "auto_cbonsai" ''
+          xdotool getactivewindow windowmove 80 80
+          xdotool getactivewindow windowsize 400 400
+
+          sleep 1
+          cbonsai --seed=4 -p
+        '');
+
+        auto-neofetch = (pkgs.writeShellScriptBin "auto_neofetch" ''
+          picom -f & disown
+          xdotool getactivewindow windowmove 1080 600
+
+          neofetch
+        '');
+      in
+      [
+        cbonsai
+        neofetch
+      ] ++ [
         kitty
         libnotify
         picom
+        xdotool
         xorg.xrandr
+      ] ++ [
+        auto-cbonsai
+        auto-neofetch
       ];
 
       users.users.${username} = {
@@ -53,12 +76,6 @@ let
     };
 
   testScript = ''
-    def send_command(text: str) -> None:
-        for char in text:
-            machine.send_key(char)
-        machine.send_key("ret")
-        machine.sleep(1)
-
     with subtest("ensure x starts"):
         machine.wait_for_x()
         machine.wait_for_file("/home/sigmanificient/.Xauthority")
@@ -68,17 +85,30 @@ let
         machine.succeed("qtile --version")
 
     with subtest("ensure we can open a new terminal"):
-        machine.sleep(2)
+        machine.sleep(4)
+
+        machine.send_key("meta_l-ret")
+        machine.wait_for_window("~", timeout=5)
+
+        machine.shell_interact()
+        machine.sleep(1)
+
+        for key in "auto_cbonsai":
+          machine.send_key(key)
+        machine.send_key("ret")
+
+        machine.sleep(4)
         machine.send_key("meta_l-ret")
         machine.sleep(4)
 
         machine.shell_interact()
+        machine.sleep(1)
 
-        send_command("picom -f &")
-        send_command("clear")
-        send_command("neofetch")
+        for key in "auto_neofetch":
+          machine.send_key(key)
+        machine.send_key("ret")
 
-        machine.sleep(2)
+        machine.sleep(6)
         machine.screenshot("terminal")
   '';
 in
