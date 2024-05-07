@@ -111,8 +111,6 @@
       })
     // {
       nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
-        inherit system;
-
         specialArgs = {
           inherit username pkgs;
         };
@@ -122,6 +120,7 @@
           ./hardware-configuration.nix
         ] ++ [
           { networking.hostName = "Bacon"; }
+          { nixpkgs.hostSystem = system; }
         ] ++ [
           home-manager.nixosModules.home-manager
           home-manager-config
