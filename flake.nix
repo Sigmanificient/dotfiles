@@ -2,8 +2,7 @@
   description = "Sigma dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -49,7 +48,6 @@
 
   outputs =
     { nixpkgs
-    , nixpkgs-unstable
     , home-manager
     , nixos-hardware
     , flake-utils
@@ -62,17 +60,9 @@
       username = "sigmanificient";
       system = "x86_64-linux";
 
-      pkgs-settings = {
+      pkgs = import nixpkgs ({
         inherit system;
         config.allowUnfree = true;
-      };
-
-      pkgs = import nixpkgs (pkgs-settings // {
-        overlays = [
-          (_: _: {
-            unstable = import nixpkgs-unstable pkgs-settings;
-          })
-        ];
       });
 
       home-manager-config = {
@@ -101,7 +91,7 @@
 
         devShells.default = pkgs.mkShell {
           inherit (checks.pre-commit-check) shellHook;
-          packages = [ pkgs.unstable.qtile ];
+          packages = [ pkgs.qtile ];
         };
 
         packages.screenshot-system = import ./screenshot.nix {
@@ -120,7 +110,7 @@
           ./hardware-configuration.nix
         ] ++ [
           { networking.hostName = "Bacon"; }
-          { nixpkgs.hostSystem = system; }
+          { nixpkgs.hostPlatform = system; }
         ] ++ [
           home-manager.nixosModules.home-manager
           home-manager-config

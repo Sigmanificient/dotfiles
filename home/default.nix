@@ -53,7 +53,7 @@
 
       # dev
       gnumake
-      unstable.lazygit
+      lazygit
       tokei
       wakatime
 

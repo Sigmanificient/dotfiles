@@ -211,7 +211,7 @@
     initialPassword = "hello";
   };
 
-  fonts.packages = with pkgs.unstable; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     dina-font
     fira-code
@@ -228,7 +228,7 @@
   virtualisation = {
     docker = {
       enable = true;
-      package = pkgs.unstable.docker;
+      package = pkgs.docker;
     };
 
     libvirtd.enable = true;
