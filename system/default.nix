@@ -157,6 +157,12 @@
       };
     };
 
+    libinput = {
+      enable = true;
+      mouse.accelProfile = "flat";
+      touchpad.accelProfile = "flat";
+    };
+
     gvfs.enable = true;
     tumbler.enable = true;
     openssh.enable = true;
@@ -176,24 +182,19 @@
     xserver = {
       enable = true;
       displayManager.startx.enable = true;
-      layout = "custom";
+      xkb = {
+        layout = "custom";
+        extraLayouts.custom = {
+          description = "oui oui baguette";
+          languages = [ "eng" ];
+          symbolsFile =
+            let
+              ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
+            in
+            "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
+        };
+      };
       videoDrivers = [ "nvidia" ];
-
-      extraLayouts.custom = {
-        description = "oui oui baguette";
-        languages = [ "eng" ];
-        symbolsFile =
-          let
-            ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
-          in
-          "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
-      };
-
-      libinput = {
-        enable = true;
-        mouse.accelProfile = "flat";
-        touchpad.accelProfile = "flat";
-      };
 
       windowManager.qtile = {
         enable = true;
