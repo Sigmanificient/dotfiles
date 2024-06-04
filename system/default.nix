@@ -131,6 +131,8 @@
       ];
     };
 
+    thunderbird.enable = true;
+
     zsh.enable = true;
     noisetorch.enable = true;
 
