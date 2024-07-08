@@ -289,4 +289,6 @@
       xdg-desktop-portal-gtk
     ];
   };
+
+  zramSwap.enable = true;
 }
