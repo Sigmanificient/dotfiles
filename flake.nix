@@ -93,9 +93,13 @@
           packages = [ pkgs.qtile ];
         };
 
-        packages.screenshot-system = import ./screenshot.nix {
-          inherit nixpkgs pkgs home-manager-config;
-          inherit (home-manager.nixosModules) home-manager;
+        packages = {
+          screenshot-system = import ./screenshot.nix {
+            inherit nixpkgs pkgs home-manager-config;
+            inherit (home-manager.nixosModules) home-manager;
+          };
+
+          qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
         };
       })
     // {
