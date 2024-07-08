@@ -73,11 +73,8 @@
 
   hardware = {
     pulseaudio.enable = false;
-    opengl = {
+    graphics = {
       enable = true;
-
-      driSupport = true;
-      driSupport32Bit = true;
 
       extraPackages = with pkgs; [
         amdvlk
@@ -193,15 +190,12 @@
             let
               ouioui = (pkgs.callPackage ./qwerty-fr.nix { });
             in
-            "${ouioui}/usr/share/X11/xkb/symbols/us_qwerty-fr";
+            "${ouioui}/share/X11/xkb/symbols/us_qwerty-fr";
         };
       };
-      videoDrivers = [ "nvidia" ];
 
-      windowManager.qtile = {
-        enable = true;
-        backend = "x11";
-      };
+      videoDrivers = [ "nvidia" ];
+      windowManager.qtile.enable = true;
     };
 
     upower.enable = true;

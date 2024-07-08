@@ -90,7 +90,7 @@
 
         devShells.default = pkgs.mkShell {
           inherit (checks.pre-commit-check) shellHook;
-          packages = [ pkgs.qtile ];
+          packages = [ pkgs.python312Packages.qtile ];
         };
 
         packages = {
