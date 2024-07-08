@@ -19,7 +19,6 @@ end
 
 return apply_shortcut({
   "lukoshkin/highlight-whitespace",
-  "mfussenegger/nvim-jdtls",
   {
     "catppuccin/nvim",
     _user_conf = "colorscheme",

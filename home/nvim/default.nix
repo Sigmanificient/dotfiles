@@ -35,7 +35,6 @@
       llvmPackages_latest.clang
       nodejs
       xclip
-      jdt-language-server
       ecsls-pkg
     ];
   };

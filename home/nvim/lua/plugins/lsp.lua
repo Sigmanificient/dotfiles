@@ -23,8 +23,6 @@ lspconfig.lua_ls.setup {
   },
 }
 
-lspconfig.jdtls.setup({ single_file_support = true; })
-
 lspconfig.nil_ls.setup({})
 lspconfig.clangd.setup({
   cmd = {
