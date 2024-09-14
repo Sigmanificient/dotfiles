@@ -31,27 +31,25 @@
     inherit username;
     homeDirectory = "/home/${username}";
 
-    keyboard = null;
+    keyboard = null; # using custom layout
 
     stateVersion = "22.11";
-    sessionVariables = {
-      EDITOR = "${pkgs.nano}/bin/nano";
-    };
+    sessionVariables.EDITOR = "nvim";
 
     packages = with pkgs; [
       # settings
       arandr
       brightnessctl
-
-      # volume
+      pamixer
       pavucontrol
 
       # messaging
       discord
-      teams-for-linux
       floorp
+      teams-for-linux
 
       # dev
+      nix-output-monitor
       gnumake
       lazygit
       tokei
@@ -67,20 +65,13 @@
       peek
       ripgrep
       dconf
-      mtm # minimalistic multiplexer
+      zip
+      unzip
     ];
   };
 
   manual.manpages.enable = false;
   programs = {
-    home-manager.enable = true;
-    tmux.enable = true;
-
-    bat = {
-      enable = true;
-      config.theme = "base16";
-    };
-
     dircolors.enable = true;
 
     direnv = {
@@ -90,6 +81,7 @@
     };
 
     feh.enable = true;
+    home-manager.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;

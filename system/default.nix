@@ -197,7 +197,6 @@
       htop
       tree
       vim
-      vifm
       wget
 
       libnotify
@@ -205,10 +204,6 @@
 
       man-pages
       man-pages-posix
-
-      zip
-      unzip
-      prismlauncher
     ];
   };
 
