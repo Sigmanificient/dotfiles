@@ -38,6 +38,12 @@ GroupBox = mk_overrides(
     active=Color.TEXT_LIGHT,
 )
 
+Mpris2 = mk_overrides(
+    widget.Mpris2,
+    objname="org.mpris.MediaPlayer2.spotify",
+    format='{xesam:title} - {xesam:artist}',
+)
+
 Memory = mk_overrides(
     widget.Memory,
     format="{MemUsed: .3f}Mb",

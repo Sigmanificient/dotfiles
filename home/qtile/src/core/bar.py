@@ -10,10 +10,10 @@ from widgets import (
     CPUGraph,
     GroupBox,
     Memory,
+    Mpris2,
     Prompt,
     QuickExit,
     Separator,
-    SpotifyNowPlaying,
     Systray,
     TaskList,
 )
@@ -26,7 +26,7 @@ class Bar(bar.Bar):
         TaskList,
         Separator,
         Prompt,
-        SpotifyNowPlaying,
+        Mpris2,
         Battery,
         Memory,
         CPUGraph,
@@ -46,7 +46,7 @@ class Bar(bar.Bar):
             margin=[0, 0, 8, 0]
         )
 
-    def is_desktop(self) -> bool:
+    def is_desktop(self):
         machine_info = subprocess.check_output(
             ["hostnamectl", "status"], universal_newlines=True)
         m = re.search(r"Chassis: (\w+)\s.*\n", machine_info)

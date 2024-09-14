@@ -4,6 +4,7 @@ from .overides import (
     Clock,
     CPUGraph,
     GroupBox,
+    Mpris2,
     Memory,
     Prompt,
     QuickExit,
@@ -12,19 +13,17 @@ from .overides import (
     Systray
 )
 
-from .spotify import SpotifyNowPlaying
-
 __all__ = (
     "widget_defaults",
     "Battery",
     "Clock",
     "CPUGraph",
     "GroupBox",
+    "Mpris2",
     "Memory",
     "Prompt",
     "QuickExit",
     "Separator",
-    "SpotifyNowPlaying",
     "TaskList",
     "Systray",
 )
