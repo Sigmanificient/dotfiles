@@ -127,6 +127,29 @@
           ]);
         };
 
+        Bacon = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit username pkgs;
+          };
+
+          modules = [
+            ./system
+            ./system/_bacon.nix
+            ./hardware/bacon.hardware-configuration.nix
+          ] ++ [
+            { networking.hostName = "Bacon"; }
+            { nixpkgs.hostPlatform = system; }
+          ] ++ [
+            home-manager.nixosModules.home-manager
+            home-manager-config
+          ] ++ [
+            hosts.nixosModule
+            ({ networking.stevenBlackHosts.enable = true; })
+          ] ++ (with nixos-hardware.nixosModules; [
+            common-cpu-intel
+            common-pc-ssd
+          ]);
+        };
       };
     };
 }
