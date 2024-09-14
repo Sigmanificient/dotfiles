@@ -4,10 +4,7 @@
 
   boot = {
     consoleLogLevel = 0;
-    initrd = {
-      verbose = false;
-      kernelModules = [ "amdgpu" ];
-    };
+    initrd.verbose = false;
 
     loader = {
       efi.canTouchEfiVariables = true;
@@ -73,38 +70,6 @@
 
   hardware = {
     pulseaudio.enable = false;
-    graphics = {
-      enable = true;
-
-      extraPackages = with pkgs; [
-        amdvlk
-        libvdpau-va-gl
-        nvidia-vaapi-driver
-        vaapiVdpau
-        vulkan-validation-layers
-      ];
-    };
-
-    nvidia = {
-      modesetting.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-
-      open = false;
-      nvidiaSettings = true;
-
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-
-        amdgpuBusId = "PCI:5:0:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
-    };
   };
 
   programs = {
@@ -190,8 +155,6 @@
             "${ouioui}/share/X11/xkb/symbols/us_qwerty-fr";
         };
       };
-
-      videoDrivers = [ "nvidia" ];
       windowManager.qtile.enable = true;
     };
 
@@ -264,11 +227,6 @@
       unzip
       prismlauncher
     ];
-  };
-
-  system = {
-    copySystemConfiguration = false;
-    stateVersion = "22.11";
   };
 
   qt.style = "adwaita-dark";

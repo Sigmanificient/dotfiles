@@ -100,31 +100,33 @@
         };
       })
     // {
-      nixosConfigurations.Bacon = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit username pkgs;
+      nixosConfigurations = {
+        Sigmachine = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit username pkgs;
+          };
+
+          modules = [
+            ./system
+            ./system/_sigmachine.nix
+            ./hardware/sigmachine.hardware-configuration.nix
+          ] ++ [
+            { networking.hostName = "Sigmachine"; }
+            { nixpkgs.hostPlatform = system; }
+          ] ++ [
+            home-manager.nixosModules.home-manager
+            home-manager-config
+          ] ++ [
+            hosts.nixosModule
+            ({ networking.stevenBlackHosts.enable = true; })
+          ] ++ (with nixos-hardware.nixosModules; [
+            asus-battery
+            common-pc-laptop
+            common-cpu-amd
+            common-pc-ssd
+          ]);
         };
 
-        modules = [
-          ./system
-          ./hardware-configuration.nix
-        ] ++ [
-          { networking.hostName = "Bacon"; }
-          { nixpkgs.hostPlatform = system; }
-        ] ++ [
-          home-manager.nixosModules.home-manager
-          home-manager-config
-        ] ++ [
-          hosts.nixosModule
-          ({
-            networking.stevenBlackHosts.enable = true;
-          })
-        ] ++ (with nixos-hardware.nixosModules; [
-          asus-battery
-          common-pc-laptop
-          common-cpu-amd
-          common-pc-ssd
-        ]);
       };
     };
 }
