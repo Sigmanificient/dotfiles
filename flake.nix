@@ -13,6 +13,12 @@
       };
     };
 
+    catppuccin = {
+      type = "github";
+      owner = "catppuccin";
+      repo = "nix";
+    };
+
     ecsls = {
       url = "github:Sigmapitech/ecsls";
       inputs = {
@@ -50,6 +56,7 @@
     , pre-commit-hooks
     , hosts
     , ecsls
+    , catppuccin
     , ...
     }:
     let
@@ -65,9 +72,13 @@
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.${username} = import ./home;
+          users.${username}.imports = [
+            catppuccin.homeManagerModules.catppuccin
+            ./home
+          ];
+
           extraSpecialArgs = {
-            inherit username system ecsls pkgs;
+            inherit catppuccin username system ecsls pkgs;
           };
         };
       };
@@ -104,7 +115,7 @@
         mk-system = hostname: specific-modules:
           nixpkgs.lib.nixosSystem {
             specialArgs = {
-              inherit username pkgs;
+              inherit catppuccin username pkgs;
             };
 
             modules = [
@@ -112,6 +123,7 @@
               { networking.hostName = hostname; }
               { nixpkgs.hostPlatform = system; }
             ] ++ [
+              catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
               home-manager-config
             ] ++ [

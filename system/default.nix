@@ -1,6 +1,13 @@
-{ config, username, pkgs, ... }:
+{ username, pkgs, ... }:
 {
-  imports = [ ./polkit.nix ];
+  imports = [
+    ./polkit.nix
+  ];
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
+  };
 
   boot = {
     consoleLogLevel = 0;

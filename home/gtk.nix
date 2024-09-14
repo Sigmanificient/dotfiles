@@ -11,6 +11,11 @@
 
   gtk = {
     enable = true;
+    catppuccin = {
+      enable = true;
+      size = "compact";
+      tweaks = [ "rimless" ];
+    };
 
     cursorTheme = {
       name = "Catppuccin-Macchiato-Dark";
@@ -21,20 +26,11 @@
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
-
-    theme = {
-      name = "Catppuccin-Macchiato-Compact-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "blue" ];
-        size = "compact";
-        tweaks = [ "rimless" ];
-        variant = "macchiato";
-      };
-    };
   };
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk";
+    platformTheme.name = "kvantum";
+    style.name = "kvantum";
   };
 }
