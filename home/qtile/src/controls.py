@@ -1,38 +1,21 @@
-import re
-import os
-
-import subprocess
-
-from libqtile.config import Key
+from libqtile.config import Click, Drag, Key
 from libqtile.lazy import lazy
 
 mod = "mod4"
 
-def _toggle(*args, **kwargs):
-    def wrapper(func):
-        state: bool = False
-
-        def wrapped(_):
-            nonlocal state
-
-            state = not state
-            func(*args, **kwargs, state=state)
-
-        return wrapped
-    return wrapper
-
-
-@_toggle(control=150)
-def toggle_keypad(control: int, state: bool):
-    proc = subprocess.run("xinput list | grep Touchpad",
-        text=True, capture_output=True)
-
-    id_ = re.search(r"id=(\d+)", proc.stdout)
-    if id_ is None:
-        return
-
-    os.system(f"xinput set-prop {id_} {control} {int(state)}")
-
+mouse = [
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position()),
+    Drag(
+        [mod],
+        "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front()),
+]
 
 keys = [
     Key([mod], "e", lazy.spawn("thunar")),
@@ -52,7 +35,6 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config()),
     Key([mod, "control"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawncmd()),
-    Key([], "XF86TouchpadToggle", lazy.function(toggle_keypad)),
     # Backlight
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
