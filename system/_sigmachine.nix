@@ -1,8 +1,6 @@
 { config, pkgs, ... }: {
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware = {
     nvidia = {
       modesetting.enable = true;
@@ -36,6 +34,26 @@
         vulkan-validation-layers
       ];
     };
+  };
+
+  services = {
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+
+    xserver.videoDrivers = [ "nvidia" ];
+    upower.enable = true;
   };
 
   system = {

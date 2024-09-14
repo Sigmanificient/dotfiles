@@ -103,21 +103,6 @@
 
   security.rtkit.enable = true;
   services = {
-    auto-cpufreq = {
-      enable = true;
-      settings = {
-        battery = {
-          governor = "powersave";
-          turbo = "never";
-        };
-
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
-      };
-    };
-
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
@@ -157,8 +142,6 @@
       };
       windowManager.qtile.enable = true;
     };
-
-    upower.enable = true;
   };
 
   users.users.${username} = {
