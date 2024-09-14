@@ -1,3 +1,6 @@
+import re
+import subprocess
+
 from libqtile import bar, widget
 
 from utils import Color
@@ -43,10 +46,21 @@ class Bar(bar.Bar):
             margin=[0, 0, 8, 0]
         )
 
-    def _build_widgets(self):
-        widgets_copy = [widget_cls() for widget_cls in self._widgets]
+    def is_desktop(self) -> bool:
+        machine_info = subprocess.check_output(
+            ["hostnamectl", "status"], universal_newlines=True)
+        m = re.search(r"Chassis: (\w+)\s.*\n", machine_info)
+        chassis_type = "desktop" if m is None else m.group(1)
 
+        return chassis_type == "desktop"
+
+    def _build_widgets(self):
+        if self.is_desktop():
+            self._widgets = [w for w in self._widgets if w != Battery]
+
+        widgets = [widget_cls() for widget_cls in self._widgets]
         if self.id == 0:
-            widgets_copy.insert(13, Systray())
-        return widgets_copy
+            widgets.insert(13, Systray())
+
+        return widgets
 
