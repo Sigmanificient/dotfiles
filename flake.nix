@@ -99,57 +99,47 @@
           qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
         };
       })
-    // {
-      nixosConfigurations = {
-        Sigmachine = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit username pkgs;
-          };
+    // (
+      let
+        mk-system = hostname: specific-modules:
+          nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit username pkgs;
+            };
 
-          modules = [
-            ./system
+            modules = [
+              ./system
+              { networking.hostName = hostname; }
+              { nixpkgs.hostPlatform = system; }
+            ] ++ [
+              home-manager.nixosModules.home-manager
+              home-manager-config
+            ] ++ [
+              hosts.nixosModule
+              ({ networking.stevenBlackHosts.enable = true; })
+            ] ++ specific-modules;
+          };
+      in
+      {
+        nixosConfigurations = {
+          Sigmachine = mk-system "Sigmachine" ([
             ./system/_sigmachine.nix
-            ./hardware/sigmachine.hardware-configuration.nix
-          ] ++ [
-            { networking.hostName = "Sigmachine"; }
-            { nixpkgs.hostPlatform = system; }
-          ] ++ [
-            home-manager.nixosModules.home-manager
-            home-manager-config
-          ] ++ [
-            hosts.nixosModule
-            ({ networking.stevenBlackHosts.enable = true; })
+            ./system/sigmachine.hardware-configuration.nix
           ] ++ (with nixos-hardware.nixosModules; [
             asus-battery
             common-pc-laptop
             common-cpu-amd
             common-pc-ssd
-          ]);
-        };
+          ]));
 
-        Bacon = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit username pkgs;
-          };
-
-          modules = [
-            ./system
+          Bacon = mk-system "Bacon" ([
             ./system/_bacon.nix
             ./hardware/bacon.hardware-configuration.nix
-          ] ++ [
-            { networking.hostName = "Bacon"; }
-            { nixpkgs.hostPlatform = system; }
-          ] ++ [
-            home-manager.nixosModules.home-manager
-            home-manager-config
-          ] ++ [
-            hosts.nixosModule
-            ({ networking.stevenBlackHosts.enable = true; })
           ] ++ (with nixos-hardware.nixosModules; [
             common-cpu-intel
             common-pc-ssd
-          ]);
+          ]));
         };
-      };
-    };
+      }
+    );
 }
