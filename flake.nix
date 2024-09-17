@@ -136,7 +136,7 @@
         nixosConfigurations = {
           Sigmachine = mk-system "Sigmachine" ([
             ./system/_sigmachine.nix
-            ./system/sigmachine.hardware-configuration.nix
+            ./hardware/sigmachine.hardware-configuration.nix
           ] ++ (with nixos-hardware.nixosModules; [
             asus-battery
             common-pc-laptop
