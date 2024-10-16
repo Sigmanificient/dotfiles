@@ -152,6 +152,6 @@ class Bar(bar.Bar):
 
         widgets = [widget_cls() for widget_cls in self._widgets]
         if self.id == 0:
-            widgets.insert(13, Systray())
+            widgets.insert(12, Systray())
 
         return widgets
