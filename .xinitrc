@@ -45,7 +45,7 @@ fi
 
 
 # ↓ Wm startup
-picom -f &
+picom -f --backend xrender&
 flameshot &
 dunst &
 exec qtile start
