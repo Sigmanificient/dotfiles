@@ -46,11 +46,9 @@ return apply_shortcut({
   {
     "akinsho/toggleterm.nvim",
     _user_conf = "toggleterm",
-    tag = "*",
   },
   {
     "tanvirtin/vgit.nvim",
-    version = "v0.2.1",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("vgit").setup()
