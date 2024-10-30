@@ -112,14 +112,23 @@
       })
     // (
       let
+        nhw-mod = nixos-hardware.nixosModules;
+
+        mk-base-paths = hostname: let
+          key = pkgs.lib.toLower hostname;
+        in [
+           ./system/_${key}.nix
+           ./hardware/${key}.hardware-configuration.nix
+        ];
+
+
         mk-system = hostname: specific-modules:
           nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit catppuccin username pkgs;
             };
 
-            modules = [
-              ./system
+            modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
               { networking.hostName = hostname; }
               { nixpkgs.hostPlatform = system; }
             ] ++ [
@@ -134,28 +143,19 @@
       in
       {
         nixosConfigurations = {
-          Sigmachine = mk-system "Sigmachine" ([
-            ./system/_sigmachine.nix
-            ./hardware/sigmachine.hardware-configuration.nix
-          ] ++ (with nixos-hardware.nixosModules; [
+          Sigmachine = mk-system "Sigmachine" (with nhw-mod; [
             asus-battery
             common-pc-laptop
             common-cpu-amd
             common-pc-ssd
-          ]));
+          ]);
 
-          Bacon = mk-system "Bacon" ([
-            ./system/_bacon.nix
-            ./hardware/bacon.hardware-configuration.nix
-          ] ++ (with nixos-hardware.nixosModules; [
+          Bacon = mk-system "Bacon" (with nhw-mod; [
             common-cpu-intel
             common-pc-ssd
-          ]));
+          ]);
 
-          Toaster = mk-system "Toaster" [
-            ./system/_toaster.nix
-            ./hardware/toaster.hardware-configuration.nix
-          ];
+          Toaster = mk-system "Toaster" [ ];
         };
       }
     );
