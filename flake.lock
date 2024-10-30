@@ -116,26 +116,6 @@
         "type": "github"
       }
     },
-    "hosts": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1729997266,
-        "narHash": "sha256-85d3cDtmblTrTyCQJUgQgIh2KCAuQRZhBVuo7BXsJLQ=",
-        "owner": "StevenBlack",
-        "repo": "hosts",
-        "rev": "1ade68a9248666c6cc863db406b3c339a16f9376",
-        "type": "github"
-      },
-      "original": {
-        "owner": "StevenBlack",
-        "repo": "hosts",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1730068391,
@@ -212,7 +192,6 @@
         "ecsls": "ecsls",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "hosts": "hosts",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "pre-commit-hooks": "pre-commit-hooks",

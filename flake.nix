@@ -30,11 +30,6 @@
       };
     };
 
-    hosts = {
-      url = "github:StevenBlack/hosts";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -54,7 +49,6 @@
     , nixos-hardware
     , flake-utils
     , pre-commit-hooks
-    , hosts
     , ecsls
     , catppuccin
     , ...
@@ -135,9 +129,6 @@
               catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
               home-manager-config
-            ] ++ [
-              hosts.nixosModule
-              ({ networking.stevenBlackHosts.enable = true; })
             ] ++ specific-modules;
           };
       in
