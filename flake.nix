@@ -151,6 +151,11 @@
             common-cpu-intel
             common-pc-ssd
           ]));
+
+          Toaster = mk-system "Toaster" [
+            ./system/_toaster.nix
+            ./hardware/toaster.hardware-configuration.nix
+          ];
         };
       }
     );
