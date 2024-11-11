@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, osConfig, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -46,8 +46,6 @@
       # settings
       arandr
       brightnessctl
-      pamixer
-      pavucontrol
 
       # messaging
       discord
@@ -62,7 +60,11 @@
       wakatime
 
       # misc
+    ] ++ (if osConfig.services.pipewire.enable then [
       spotify
+      pamixer
+      pavucontrol
+    ] else [ ]) ++ [
       gimp
       neofetch
       pass
