@@ -27,11 +27,15 @@ def mk_overrides(cls, **conf):
 
 Battery = mk_overrides(
     widget.Battery,
-    format="⚡{percent:2.0%}",
+    charge_char="⚡",
+    discharge_char="🔋",
+    empty_char="🪫",
+    format="{char}{percent:2.0%}",
     background=colors.BG_DARK.with_alpha(0.7),
     foreground=colors.TEXT_LIGHT,
     low_background=colors.RED_DARK.with_alpha(0.7),
     low_percentage=0.1,
+    update_interval=5
 )
 
 CPUGraph = mk_overrides(
