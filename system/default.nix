@@ -120,11 +120,6 @@
     tumbler.enable = true;
     openssh.enable = true;
 
-    picom = {
-      enable = true;
-      fade = true;
-    };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -211,6 +206,8 @@
 
       man-pages
       man-pages-posix
+
+      picom-pijulius
     ];
   };
 
