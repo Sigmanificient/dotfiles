@@ -30,6 +30,7 @@ Battery = mk_overrides(
     charge_char="⚡",
     discharge_char="🔋",
     empty_char="🪫",
+    not_charging_char="⚡",
     format="{char}{percent:2.0%}",
     background=colors.BG_DARK.with_alpha(0.7),
     foreground=colors.TEXT_LIGHT,
