@@ -27,15 +27,28 @@ def mk_overrides(cls, **conf):
 
 Battery = mk_overrides(
     widget.Battery,
-    format="⚡{percent:2.0%}",
+    charge_char="⚡",
+    discharge_char="🔋",
+    empty_char="🪫",
+    not_charging_char="⚡",
+    format="{char}{percent:2.0%}",
     background=colors.BG_DARK.with_alpha(0.7),
     foreground=colors.TEXT_LIGHT,
     low_background=colors.RED_DARK.with_alpha(0.7),
     low_percentage=0.1,
+    update_interval=5
 )
 
 CPUGraph = mk_overrides(
     widget.CPUGraph, type="line", line_width=1, border_width=0
+)
+
+MemoryGraph = mk_overrides(
+    widget.MemoryGraph, type="line", graph_color="8B8AF1", line_width=1, border_width=0
+)
+
+Net = mk_overrides(
+    widget.Net, use_bits=True, format="{down:6.2f}{down_suffix:<2}↓↑{up:6.2f}{up_suffix:<2}"
 )
 
 GroupBox = mk_overrides(
@@ -88,8 +101,8 @@ TaskList = mk_overrides(
 )
 
 Separator = mk_overrides(widget.Spacer, length=4)
-Clock = mk_overrides(widget.Clock, format="%A, %b %-d %H:%M")
 
+Clock = mk_overrides(widget.Clock, format="%A, %b %-d %H:%M:%S")
 
 QuickExit = mk_overrides(
     widget.QuickExit, default_text="⏻", countdown_format="{}"
@@ -120,7 +133,9 @@ class Bar(bar.Bar):
         Prompt,
         Mpris2,
         Battery,
+        Net,
         Memory,
+        MemoryGraph,
         CPUGraph,
         Separator,
         widget.Volume,
