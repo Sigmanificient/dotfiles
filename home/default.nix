@@ -45,6 +45,7 @@
       # settings
       arandr
       brightnessctl
+      python3Packages.iwlib
 
       # messaging
       discord

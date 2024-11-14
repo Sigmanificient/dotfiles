@@ -40,15 +40,32 @@ Battery = mk_overrides(
 )
 
 CPUGraph = mk_overrides(
-    widget.CPUGraph, type="line", line_width=1, border_width=0
+    widget.CPUGraph,
+    type="line",
+    line_width=1,
+    border_width=0
 )
 
 MemoryGraph = mk_overrides(
-    widget.MemoryGraph, type="line", graph_color="8B8AF1", line_width=1, border_width=0
+    widget.MemoryGraph,
+    type="line",
+    graph_color="8B8AF1",
+    line_width=1,
+    border_width=0
 )
 
 Net = mk_overrides(
-    widget.Net, use_bits=True, format="{down:6.2f}{down_suffix:<2}↓↑{up:6.2f}{up_suffix:<2}"
+    widget.Net,
+    use_bits=True,
+    format="{down:6.2f}{down_suffix:<2}↓↑{up:6.2f}{up_suffix:<2}"
+)
+
+# ip a | grep -oP '\d+:\s+w\w+(?=.*\sUP\s)'
+# TODO: make it device agnostic
+WifiQuality = mk_overrides(
+    widget.Wlan,
+    interface="wlp1s0",
+    format='{percent:2.0%}'
 )
 
 GroupBox = mk_overrides(
@@ -134,6 +151,7 @@ class Bar(bar.Bar):
         Mpris2,
         Battery,
         Net,
+        WifiQuality,
         Memory,
         MemoryGraph,
         CPUGraph,
