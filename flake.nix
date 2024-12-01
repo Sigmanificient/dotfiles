@@ -135,10 +135,7 @@
       {
         nixosConfigurations = {
           Sigmachine = mk-system "Sigmachine" (with nhw-mod; [
-            asus-battery
             common-pc-laptop
-            common-cpu-amd
-            common-pc-ssd
           ]);
 
           Bacon = mk-system "Bacon" (with nhw-mod; [
