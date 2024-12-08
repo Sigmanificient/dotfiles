@@ -3,3 +3,6 @@
 
 # Virtual Machines Disks
 *.qcow2
+
+# nix-visualize
+graph.png
