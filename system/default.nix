@@ -19,7 +19,7 @@
         enable = true;
         efiSupport = true;
         device = "nodev";
-        gfxmodeEfi = "1920x1080x32";
+        gfxmodeEfi = "1920x1280x32";
       };
     };
   };
@@ -88,11 +88,8 @@
       enableSSHSupport = true;
     };
 
-    steam.enable = true;
     thunderbird.enable = true;
-
     zsh.enable = true;
-    noisetorch.enable = true;
 
     nix-ld = {
       enable = true;
@@ -110,7 +107,6 @@
 
     gvfs.enable = true;
     tumbler.enable = true;
-    openssh.enable = true;
 
     pipewire = {
       enable = true;
@@ -146,27 +142,16 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    dina-font
+    nerd-fonts.jetbrains-mono
     fira-code
     fira-code-symbols
     liberation_ttf
-    mplus-outline-fonts.githubRelease
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
     proggyfonts
     apl386
   ];
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      package = pkgs.docker;
-    };
-
-    libvirtd.enable = true;
-  };
 
   documentation.dev.enable = true;
   environment = {
@@ -188,7 +173,6 @@
       playerctl
 
       git
-      htop
       tree
       vim
       wget
