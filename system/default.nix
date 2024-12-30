@@ -13,6 +13,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
 
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -95,6 +96,8 @@
       enable = true;
       libraries = [ pkgs.glibc ];
     };
+
+    steam.enable = true;
   };
 
   security.rtkit.enable = true;
