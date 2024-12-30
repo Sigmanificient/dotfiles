@@ -26,7 +26,6 @@ return apply_shortcut({
     priority = 1000,
   },
   { "wakatime/vim-wakatime", lazy = false },
-  "Sigmanificient/vim-epitech",
   {
     "VonHeikemen/lsp-zero.nvim",
     _user_conf = "lsp",

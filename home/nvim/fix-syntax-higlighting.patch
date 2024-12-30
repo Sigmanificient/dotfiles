@@ -1,0 +1,23 @@
+diff --git a/src/usecase/tui/ui.rs b/src/usecase/tui/ui.rs
+index 8016872..c2fd518 100644
+--- a/src/usecase/tui/ui.rs
++++ b/src/usecase/tui/ui.rs
+@@ -98,11 +98,13 @@ fn render_preview_block(model: &SelectCommandState, f: &mut Frame, chunk: ratatu
+         match (selecting_command, start_index_and_end_index, command_row_index) {
+             (Some(_), Some((start_index, _)), Some(command_row_index)) => {
+                 let ss = SyntaxSet::load_defaults_newlines();
+-                // HACK: `ml` is specified intentionally because it highlights `Makefile` and `json` files in a good way.(No unnecessary background color)
+-                // lua, hs: `-- .*` is highlighted (but URL is highlighted with background color))
+-                // md: no background color, but highlighted words are not so many
+-                let syntax = ss.find_syntax_by_extension("ml").unwrap();
+-                let theme = &mut ThemeSet::load_defaults().themes["base16-ocean.dark"].clone();
++
++                let mut ts = ThemeSet::load_defaults();
++                ts.add_from_folder("./").unwrap();
++                // dbg!(&ts.themes);
++
++                let theme = &mut ts.themes["OneHalfDark"].clone();
++                let syntax = ss.find_syntax_by_extension("mk").unwrap();
+
+                 let mut lines = vec![];
+                 for (index, line) in source_lines.iter().enumerate() {

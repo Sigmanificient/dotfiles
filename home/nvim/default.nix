@@ -36,6 +36,7 @@
       nodejs
       xclip
       ecsls-pkg
+      (pkgs.callPackage ./fzf-make.nix { })
     ];
   };
 }
