@@ -10,5 +10,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "efbfed0567ef4bfac3ce630524a0f6c8451c5534" },
   "plenary.nvim": { "branch": "master", "commit": "267282a9ce242bbb0c5dc31445b6d353bed978bb" },
   "vgit.nvim": { "branch": "main", "commit": "99626283f972c597073e6f79b3461417e296eea9" },
+  "vim-epitech": { "branch": "master", "commit": "67807a5e240e75b2b3d6d6363921e2fabb78b52e" },
   "vim-wakatime": { "branch": "master", "commit": "018fa9a80c27ccf2a8967b9e27890372e5c2fb4f" }
 }

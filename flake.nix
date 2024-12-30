@@ -30,6 +30,7 @@
       };
     };
 
+    ehcsls.url = "github:Sigmapitech/ehcsls";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -50,6 +51,7 @@
     , flake-utils
     , pre-commit-hooks
     , ecsls
+    , ehcsls
     , catppuccin
     , ...
     }:
@@ -72,7 +74,7 @@
           ];
 
           extraSpecialArgs = {
-            inherit catppuccin username system ecsls pkgs;
+            inherit catppuccin username system ecsls ehcsls pkgs;
           };
         };
       };
