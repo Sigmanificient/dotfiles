@@ -39,6 +39,7 @@
       xclip
       ecsls-pkg
       ehcsls-pkg
+      haskell-language-server
       (pkgs.callPackage ./fzf-make.nix { })
     ];
   };

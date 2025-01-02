@@ -76,4 +76,15 @@ return apply_shortcut({
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+  {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function ()
+      require("lsp_lines").setup()
+    end
+  },
 })
