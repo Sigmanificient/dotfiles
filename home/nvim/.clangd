@@ -2,3 +2,12 @@ CompileFlags:
   Add: -Wno-unknown-warning-option
   Add: -Wno-compare-distinct-pointer-types
   Remove: [-m*, -f*]
+FileExtensions:
+  - Pattern: "*.c"
+    Language: C
+  - Pattern: "*.h"
+    Language: C
+  - Pattern: "*.cpp"
+    Language: C++
+  - Pattern: "*.hpp"
+    Language: C++

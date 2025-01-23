@@ -1,6 +1,7 @@
 Checks: "-*,
   bugprone-*,
   -bugprone-easily-swappable-parameters,
+  -bugprone-multi-level-implicit-pointer-conversion,
   misc-*,
   -misc-no-recursion,
   performance-*,
