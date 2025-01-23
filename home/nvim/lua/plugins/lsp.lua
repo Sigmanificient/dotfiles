@@ -31,8 +31,9 @@ lspconfig.clangd.setup({
     "--offset-encoding=utf-16",
     "--header-insertion=never",
     "--clang-tidy",
-    "--cross-file-rename",
-  }
+  },
+  init_options = {
+  },
 })
 lspconfig.pyright.setup({})
 
@@ -64,6 +65,8 @@ if not configs.ehcsls then
   }
 end
 lspconfig.ehcsls.setup({})
+
+lspconfig.ts_ls.setup({})
 --
 
 lsp.on_attach(function(_, bufnr)
@@ -79,4 +82,3 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 lsp.setup()
-
