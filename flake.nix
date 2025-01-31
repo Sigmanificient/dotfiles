@@ -121,7 +121,7 @@
         mk-system = hostname: specific-modules:
           nixpkgs.lib.nixosSystem {
             specialArgs = {
-              inherit catppuccin username pkgs;
+              inherit catppuccin username;
             };
 
             modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
