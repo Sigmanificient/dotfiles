@@ -34,12 +34,13 @@
       lua-language-server
       pyright
       clang-tools
-      llvmPackages_latest.clang
+      llvmPackages.clang
+      llvmPackages.clang-tools
       nodejs
       xclip
       ecsls-pkg
       ehcsls-pkg
-      haskell-language-server
+      haskell.packages.ghc984.haskell-language-server
       (pkgs.callPackage ./fzf-make.nix { })
     ];
   };
