@@ -65,8 +65,6 @@ if not configs.ehcsls then
   }
 end
 lspconfig.ehcsls.setup({})
-
-lspconfig.ts_ls.setup({})
 --
 
 lsp.on_attach(function(_, bufnr)
