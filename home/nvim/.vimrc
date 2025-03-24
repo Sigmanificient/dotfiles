@@ -21,6 +21,25 @@ lua require("init")
 
 highlight Visual ctermfg=white ctermbg=blue cterm=bold
 
+function! DebugMsg(msg) abort
+    if !exists("g:DebugMessages")
+        let g:DebugMessages = []
+    endif
+    call add(g:DebugMessages, a:msg)
+endfunction
+
+function! PrintDebugMsgs() abort
+  if empty(get(g:, "DebugMessages", []))
+    echo "No debug messages."
+    return
+  endif
+  for ln in g:DebugMessages
+    echo "- " . ln
+  endfor
+endfunction
+
+command DebugStatus call PrintDebugMsgs()
+
 function! LoadProjectLanguages()
   let l:project_root = finddir('.git', '.;')
 
@@ -33,22 +52,26 @@ function! LoadProjectLanguages()
   endif
 
   let l:project_root = substitute(l:project_root, '/\.git$', '', '')
-  let l:lang_dir = l:project_root . '/languages'
-
-  if isdirectory(l:lang_dir)
-    execute 'set runtimepath+=' . l:lang_dir
+  if isdirectory(l:project_root)
     execute 'set runtimepath+=' . l:project_root
-
-    " project/languages
-    for f in split(glob(l:lang_dir . '/*.vim'), '\n')
-      execute 'source ' . f
-    endfor
 
     " project/
     for f in split(glob(l:project_root . '/*.vim'), '\n')
       execute 'source ' . f
     endfor
   endif
+
+
+  let l:lang_dir = l:project_root . '/languages'
+  if isdirectory(l:lang_dir)
+    execute 'set runtimepath+=' . l:lang_dir
+
+    " project/languages
+    for f in split(glob(l:lang_dir . '/*.vim'), '\n')
+      execute 'source ' . f
+    endfor
+  endif
+
 endfunction
 
 
