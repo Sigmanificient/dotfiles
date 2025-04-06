@@ -42,6 +42,8 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    jtojnar-nixpkgs.url = "github:jtojnar/nixpkgs/fa4992dd39f48279eb33db114c623abccae09384";
   };
 
   outputs =
@@ -53,6 +55,7 @@
     , ecsls
     , ehcsls
     , catppuccin
+    , jtojnar-nixpkgs
     , ...
     }:
     let
@@ -74,7 +77,7 @@
           ];
 
           extraSpecialArgs = {
-            inherit catppuccin username system ecsls ehcsls pkgs;
+            inherit catppuccin username system ecsls ehcsls pkgs jtojnar-nixpkgs;
           };
         };
       };

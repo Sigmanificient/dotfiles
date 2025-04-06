@@ -1,4 +1,4 @@
-{ pkgs, username, osConfig, ... }:
+{ pkgs, username, osConfig, jtojnar-nixpkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -32,7 +32,11 @@
   xdg.configFile."xkb/symbols/us_qwerty-fr".source =
     "${pkgs.callPackage ./../system/qwerty-fr.nix {}}"
     + "/usr/share/X11/xkb/symbols/us_qwerty-fr";
-  home = {
+
+  home = let
+    pkgs' = jtojnar-nixpkgs.legacyPackages.${pkgs.system};
+
+  in {
     inherit username;
     homeDirectory = "/home/${username}";
 
@@ -65,7 +69,9 @@
       pamixer
       pavucontrol
     ] else [ ]) ++ [
-      gimp
+      /* gimp */
+      (pkgs'.gimp3)
+
       neofetch
       pass
 

@@ -176,6 +176,22 @@
         "type": "github"
       }
     },
+    "jtojnar-nixpkgs": {
+      "locked": {
+        "lastModified": 1743550502,
+        "narHash": "sha256-+n8Odooi32fHtpW0MbbP0sXH2UYYGl3C2QuOiuLps2c=",
+        "owner": "jtojnar",
+        "repo": "nixpkgs",
+        "rev": "fa4992dd39f48279eb33db114c623abccae09384",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jtojnar",
+        "repo": "nixpkgs",
+        "rev": "fa4992dd39f48279eb33db114c623abccae09384",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1743420942,
@@ -283,6 +299,7 @@
         "ehcsls": "ehcsls",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
+        "jtojnar-nixpkgs": "jtojnar-nixpkgs",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "pre-commit-hooks": "pre-commit-hooks",
