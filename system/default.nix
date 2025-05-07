@@ -187,6 +187,7 @@
       man-pages-posix
 
       picom-pijulius
+      bagels
     ];
   };
 
