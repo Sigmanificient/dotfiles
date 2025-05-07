@@ -41,7 +41,7 @@
       ecsls-pkg
       ehcsls-pkg
       haskell.packages.ghc984.haskell-language-server
-      (pkgs.callPackage ./fzf-make.nix { })
+      fzf-make
     ];
   };
 }
