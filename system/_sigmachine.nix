@@ -1,5 +1,7 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   boot.loader.grub.gfxmodeEfi = lib.mkForce "1920x1200x32";
+  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   system = {
     copySystemConfiguration = false;
@@ -11,16 +13,16 @@
   hardware.graphics = {
     enable = true;
 
-      extraPackages = with pkgs; [
-        amdvlk
-        intel-media-driver
-        libvdpau-va-gl
-        nvidia-vaapi-driver
-        vaapiIntel
-        vaapiVdpau
-        vulkan-validation-layers
-        mesa.drivers
-      ];
+    extraPackages = with pkgs; [
+      amdvlk
+      intel-media-driver
+      libvdpau-va-gl
+      nvidia-vaapi-driver
+      vaapiIntel
+      vaapiVdpau
+      vulkan-validation-layers
+      mesa.drivers
+    ];
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -31,17 +33,11 @@
 
     nvidiaSettings = true;
     prime = {
-      reverseSync.enable = true;
-      allowExternalGpu = false;
-
-     intelBusId = "PCI:0:02:0";
-     nvidiaBusId = "PCI:3:0:0";
-    };
-
-    prime = {
+      offload.enableOffloadCmd = true;
       offload.enable = true;
-      offload.enableOffloadCmd = true; # install `nvidia-offload`
     };
+
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
 
   services.sshd.enable = true;

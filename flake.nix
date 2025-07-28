@@ -110,12 +110,14 @@
       let
         nhw-mod = nixos-hardware.nixosModules;
 
-        mk-base-paths = hostname: let
-          key = pkgs.lib.toLower hostname;
-        in [
-           ./system/_${key}.nix
-           ./hardware/${key}.hardware-configuration.nix
-        ];
+        mk-base-paths = hostname:
+          let
+            key = pkgs.lib.toLower hostname;
+          in
+          [
+            ./system/_${key}.nix
+            ./hardware/${key}.hardware-configuration.nix
+          ];
 
 
         mk-system = hostname: specific-modules:
@@ -137,9 +139,7 @@
       {
         nixosConfigurations = {
           Sigmachine = mk-system "Sigmachine" (with nhw-mod; [
-            common-pc-laptop
-            common-cpu-intel
-            common-pc-ssd
+            lenovo-thinkpad-p16s-intel-gen2
           ]);
 
           Bacon = mk-system "Bacon" (with nhw-mod; [
