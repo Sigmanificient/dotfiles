@@ -1,4 +1,4 @@
-{ pkgs, username, osConfig, ... }:
+{ pkgs, username, osConfig, spicePkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -61,7 +61,6 @@
 
       # misc
     ] ++ (if osConfig.services.pipewire.enable then [
-      spotify
       pamixer
       pavucontrol
     ] else [ ]) ++ [
@@ -94,5 +93,18 @@
       enable = true;
       enableZshIntegration = true;
     };
+  };
+
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "mocha";
+    enabledExtensions = [
+      spicePkgs.extensions.fullAppDisplay
+      spicePkgs.extensions.hidePodcasts
+      spicePkgs.extensions.playNext
+      spicePkgs.extensions.adblock
+      spicePkgs.extensions.wikify
+    ];
   };
 }
