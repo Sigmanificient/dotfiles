@@ -42,6 +42,8 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
@@ -53,6 +55,7 @@
     , ecsls
     , ehcsls
     , catppuccin
+    , spicetify-nix
     , ...
     }:
     let
@@ -70,11 +73,14 @@
           useUserPackages = true;
           users.${username}.imports = [
             catppuccin.homeManagerModules.catppuccin
+            spicetify-nix.homeManagerModules.spicetify
             ./home
           ];
 
           extraSpecialArgs = {
             inherit catppuccin username system ecsls ehcsls pkgs;
+
+            spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
           };
         };
       };
