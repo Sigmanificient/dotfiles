@@ -26,7 +26,7 @@ keys = [
     Key([mod, "shift"], "v", lazy.spawn("pavucontrol")),
     Key([mod], "l", lazy.spawn("betterlockscreen -l")),
     Key([mod], "f", lazy.window.toggle_floating()),
-    Key([mod], "b", lazy.spawn("floorp")),
+    Key([mod], "b", lazy.spawn("firefox")),
     Key([], "Print", lazy.spawn("flameshot gui --clipboard")),
     Key([mod], "space", lazy.layout.next()),
     Key([mod, "shift"], "h", lazy.layout.shuffle_left()),

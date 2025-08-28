@@ -48,8 +48,8 @@
       python3Packages.iwlib
 
       # messaging
-      discord
-      floorp
+      vesktop
+      firefox
       teams-for-linux
 
       # dev
