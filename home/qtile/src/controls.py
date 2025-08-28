@@ -1,4 +1,4 @@
-from libqtile.config import Click, Drag, Key
+from libqtile.config import Click, Drag, Key, KeyChord, EzKey
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -18,6 +18,9 @@ mouse = [
 ]
 
 keys = [
+    KeyChord([mod], "i", [EzKey("M-i", lazy.ungrab_all_chords())], mode=True, name="Vm Mode"),
+    Key([mod], "o", lazy.window.toggle_fullscreen()),
+
     Key([mod], "v", lazy.spawn("kitty -e pulsemixer")),
     Key([mod], "h", lazy.spawn("kitty -e nmtui")),
     Key([mod, "shift"], "v", lazy.spawn("pavucontrol")),
