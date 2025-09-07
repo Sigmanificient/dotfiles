@@ -37,6 +37,8 @@ lspconfig.clangd.setup({
 })
 lspconfig.pyright.setup({})
 
+lspconfig.ts_ls.setup({})
+
 -- ↓ Epitech CS
 local configs = require("lspconfig.configs")
 

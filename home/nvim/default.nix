@@ -42,6 +42,7 @@
       ehcsls-pkg
       haskell.packages.ghc984.haskell-language-server
       fzf-make
+      typescript-language-server
     ];
   };
 }

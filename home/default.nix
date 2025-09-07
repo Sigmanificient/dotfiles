@@ -58,6 +58,7 @@
       lazygit
       tokei
       wakatime
+      prismlauncher
 
       # misc
     ] ++ (if osConfig.services.pipewire.enable then [
