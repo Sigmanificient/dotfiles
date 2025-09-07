@@ -11,21 +11,21 @@
 
   gtk = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      size = "compact";
-      tweaks = [ "rimless" ];
-    };
+    # catppuccin = {
+    #  enable = true;
+    #  size = "compact";
+    #  tweaks = [ "rimless" ];
+    # };
 
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark";
-      package = pkgs.catppuccin-cursors.macchiatoDark;
-    };
+    # cursorTheme = {
+    #  name = "Catppuccin-Macchiato-Dark";
+    #  package = pkgs.catppuccin-cursors.macchiatoDark;
+    # };
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
+    # iconTheme = {
+    #  name = "Papirus-Dark";
+    #  package = pkgs.papirus-icon-theme;
+    # };
   };
 
   qt = {
