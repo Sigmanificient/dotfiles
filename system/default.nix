@@ -118,6 +118,11 @@
       pulse.enable = true;
     };
 
+    printing = {
+      enable = true;
+      drivers = [ pkgs.cups-toshiba-estudio ];
+    };
+
     xserver = {
       enable = true;
       displayManager.startx.enable = true;
