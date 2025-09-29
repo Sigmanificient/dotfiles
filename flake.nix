@@ -58,6 +58,8 @@
     , ...
     }:
     let
+      inherit (nixpkgs) lib;
+
       username = "sigmanificient";
       system = "x86_64-linux";
 
@@ -77,9 +79,9 @@
           ];
 
           extraSpecialArgs = {
-            inherit catppuccin username system ecsls ehcsls pkgs;
+            inherit catppuccin username system ecsls ehcsls;
 
-            spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+            spicePkgs = spicetify-nix.legacyPackages.${system};
           };
         };
       };
@@ -93,7 +95,7 @@
           src = ./.;
           hooks.nixpkgs-fmt = {
             enable = true;
-            name = pkgs.lib.mkForce "Nix files format";
+            name = lib.mkForce "Nix files format";
           };
         };
 
@@ -117,16 +119,15 @@
 
         mk-base-paths = hostname:
           let
-            key = pkgs.lib.toLower hostname;
+            key = lib.toLower hostname;
           in
           [
             ./system/_${key}.nix
             ./hardware/${key}.hardware-configuration.nix
           ];
 
-
         mk-system = hostname: specific-modules:
-          nixpkgs.lib.nixosSystem {
+          lib.nixosSystem {
             specialArgs = {
               inherit catppuccin username;
             };
@@ -134,6 +135,7 @@
             modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
               { networking.hostName = hostname; }
               { nixpkgs.hostPlatform = system; }
+              { nixpkgs.pkgs = pkgs; }
             ] ++ [
               catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
