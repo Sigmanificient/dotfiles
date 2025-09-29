@@ -19,7 +19,7 @@ jobs:
 
       - name: Get screenshot
         run: |
-          nix build .\#screenshot-system.passthru.tests.qtile \
+          nix build .\#screenshot-system \
             --print-build-logs -v \
             --extra-experimental-features 'nix-command flakes'
 

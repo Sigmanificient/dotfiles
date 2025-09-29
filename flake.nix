@@ -46,7 +46,8 @@
   };
 
   outputs =
-    { nixpkgs
+    { self
+    , nixpkgs
     , home-manager
     , nixos-hardware
     , flake-utils
@@ -106,8 +107,8 @@
 
         packages = {
           screenshot-system = import ./screenshot.nix {
-            inherit nixpkgs pkgs home-manager-config;
-            inherit (home-manager.nixosModules) home-manager;
+            inherit (self.nixosConfigurations) Sigmachine;
+            inherit pkgs username;
           };
 
           qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
@@ -127,21 +128,24 @@
           ];
 
         mk-system = hostname: specific-modules:
-          lib.nixosSystem {
-            specialArgs = {
-              inherit catppuccin username;
-            };
+          let
+            conf = {
+              specialArgs = {
+                inherit catppuccin username;
+              };
 
-            modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
-              { networking.hostName = hostname; }
-              { nixpkgs.hostPlatform = system; }
-              { nixpkgs.pkgs = pkgs; }
-            ] ++ [
-              catppuccin.nixosModules.catppuccin
-              home-manager.nixosModules.home-manager
-              home-manager-config
-            ] ++ specific-modules;
-          };
+              modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
+                { networking.hostName = hostname; }
+                { nixpkgs.hostPlatform = system; }
+                { nixpkgs.pkgs = pkgs; }
+              ] ++ [
+                catppuccin.nixosModules.catppuccin
+                home-manager.nixosModules.home-manager
+                home-manager-config
+              ] ++ specific-modules;
+            };
+          in
+          (lib.nixosSystem conf) // { inherit conf; };
       in
       {
         nixosConfigurations = {

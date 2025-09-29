@@ -1,36 +1,25 @@
-{ nixpkgs
-, home-manager-config
-, home-manager
-, pkgs
-}:
+{ pkgs, Sigmachine, username }:
 let
   vm-config = { config, lib, ... }:
-    let
-      username = "sigmanificient";
-      sysconf = (import ./system { inherit config pkgs username; });
-    in
     {
-      inherit (sysconf) fonts programs time nixpkgs;
-
-      imports = [
-        home-manager
-        home-manager-config
-      ];
-
       boot.consoleLogLevel = lib.mkForce 7;
+
       environment.systemPackages = with pkgs; let
         auto-cbonsai = (pkgs.writeShellScriptBin "auto_cbonsai" ''
           xdotool getactivewindow windowmove 80 80
           xdotool getactivewindow windowsize 400 400
 
+          clear
           sleep 1
-          cbonsai --seed=4 -p
+
+          cbonsai --seed=4
         '');
 
         auto-neofetch = (pkgs.writeShellScriptBin "auto_neofetch" ''
-          picom -f & disown
-          xdotool getactivewindow windowmove 1080 600
+          clear
+          sleep 1
 
+          xdotool getactivewindow windowmove 1080 600
           neofetch
         '');
       in
@@ -39,10 +28,8 @@ let
         neofetch
       ] ++ [
         kitty
-        libnotify
         picom
         xdotool
-        xorg.xrandr
       ] ++ [
         auto-cbonsai
         auto-neofetch
@@ -50,17 +37,14 @@ let
 
       users.users.${username} = {
         isNormalUser = true;
-        password = "foobar";
         uid = 1000;
       };
 
       services = {
         xserver = {
-          inherit (sysconf.services.xserver) windowManager;
-
           enable = true;
           displayManager = {
-            startx.enable = false;
+            startx.enable = lib.mkForce false;
             autoLogin = {
               enable = true;
               user = username;
@@ -74,6 +58,22 @@ let
         y = 1080;
       };
     };
+in
+pkgs.testers.runNixOSTest {
+  name = "screenshot-system";
+
+  node = {
+    inherit pkgs;
+
+    specialArgs = Sigmachine.conf.specialArgs;
+    pkgsReadOnly = false;
+  };
+
+  nodes = {
+    machine.imports =
+      Sigmachine.conf.modules
+      ++ [ vm-config ];
+  };
 
   testScript = ''
     with subtest("ensure x starts"):
@@ -81,58 +81,31 @@ let
         machine.wait_for_file("/home/sigmanificient/.Xauthority")
         machine.succeed("xauth merge ~sigmanificient/.Xauthority")
 
-    with subtest("ensure client is available"):
-        machine.succeed("qtile --version")
-
     with subtest("ensure we can open a new terminal"):
-        machine.sleep(4)
+        machine.sleep(2)
 
         machine.send_key("meta_l-ret")
-        machine.wait_for_window("~", timeout=5)
+        machine.wait_for_window("zsh", timeout=5)
 
         machine.shell_interact()
-        machine.sleep(1)
+        machine.sleep(2)
 
         for key in "auto_cbonsai":
           machine.send_key(key)
         machine.send_key("ret")
+        machine.sleep(15)
 
-        machine.sleep(4)
         machine.send_key("meta_l-ret")
-        machine.sleep(4)
+        machine.sleep(2)
 
         machine.shell_interact()
-        machine.sleep(1)
+        machine.sleep(2)
 
         for key in "auto_neofetch":
           machine.send_key(key)
         machine.send_key("ret")
 
-        machine.sleep(6)
+        machine.sleep(30)
         machine.screenshot("terminal")
   '';
-in
-pkgs.stdenvNoCC.mkDerivation {
-  name = "screenshot-system";
-  version = "1.0.0";
-
-  src = ./.;
-  dontUnpack = true;
-  dontBuild = true;
-
-  installPhase = ''
-    cp -r $src $out
-  '';
-
-  passthru.tests.qtile =
-    let
-      nixos-lib = import (nixpkgs + "/nixos/lib") { };
-    in
-    nixos-lib.runTest {
-      inherit testScript;
-
-      name = "test";
-      nodes.machine = vm-config;
-      hostPkgs = pkgs;
-    };
 }
