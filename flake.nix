@@ -69,14 +69,14 @@
         config.allowUnfree = true;
       });
 
-      home-manager-config = {
+      home-manager-config = home-base: {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${username}.imports = [
             catppuccin.homeModules.catppuccin
             spicetify-nix.homeManagerModules.spicetify
-            ./home
+            home-base
           ];
 
           extraSpecialArgs = {
@@ -107,8 +107,10 @@
 
         packages = {
           screenshot-system = import ./screenshot.nix {
-            inherit (self.nixosConfigurations) Sigmachine;
             inherit pkgs username;
+
+            # lets use the lightest one
+            nixos-system = self.nixosConfigurations.Gha;
           };
 
           qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
@@ -127,21 +129,29 @@
             ./hardware/${key}.hardware-configuration.nix
           ];
 
-        mk-system = hostname: specific-modules:
+        mk-system =
+          { hostname
+          , hasHostSpecific ? true
+          , specific-modules ? [ ]
+          , base ? ./system
+          , home-base ? ./home
+          }:
           let
             conf = {
               specialArgs = {
                 inherit catppuccin username;
               };
 
-              modules = [ ./system ] ++ (mk-base-paths hostname) ++ [
+              modules = [ base ]
+              ++ (lib.optionals hasHostSpecific (mk-base-paths hostname))
+              ++ [
                 { networking.hostName = hostname; }
                 { nixpkgs.hostPlatform = system; }
                 { nixpkgs.pkgs = pkgs; }
               ] ++ [
                 catppuccin.nixosModules.catppuccin
                 home-manager.nixosModules.home-manager
-                home-manager-config
+                (home-manager-config home-base)
               ] ++ specific-modules;
             };
           in
@@ -149,16 +159,43 @@
       in
       {
         nixosConfigurations = {
-          Sigmachine = mk-system "Sigmachine" (with nhw-mod; [
-            lenovo-thinkpad-p16s-intel-gen2
-          ]);
+          Sigmachine = mk-system {
+            hostname = "Sigmachine";
 
-          Bacon = mk-system "Bacon" (with nhw-mod; [
-            common-cpu-intel
-            common-pc-ssd
-          ]);
+            specific-modules = (with nhw-mod; [
+              lenovo-thinkpad-p16s-intel-gen2
+            ]);
+          };
 
-          Toaster = mk-system "Toaster" [ ];
+          Bacon = mk-system {
+            hostname = "Bacon";
+
+            specific-modules = (with nhw-mod; [
+              common-cpu-intel
+              common-pc-ssd
+            ]);
+          };
+
+          Toaster = mk-system {
+            hostname = "Toaster";
+          };
+
+          Gha = mk-system {
+            hostname = "Gha";
+            hasHostSpecific = false;
+
+            base = ./system/minimal.nix;
+            home-base = ./home/minimal.nix;
+
+            specific-modules = [
+              {
+                system.stateVersion = "25.05";
+                fileSystems."/" = {
+                  device = "nodev";
+                };
+              }
+            ];
+          };
         };
       }
     );

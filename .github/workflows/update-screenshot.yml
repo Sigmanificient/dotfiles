@@ -24,7 +24,7 @@ jobs:
       - name: Get screenshot
         run: |
           nix build .\#screenshot-system \
-            --print-build-logs -v \
+            --print-build-logs \
             --extra-experimental-features 'nix-command flakes'
 
       - name: Push in gist

@@ -1,4 +1,4 @@
-{ pkgs, Sigmachine, username }:
+{ pkgs, nixos-system, username }:
 let
   vm-config = { config, lib, ... }:
     {
@@ -65,27 +65,28 @@ pkgs.testers.runNixOSTest {
   node = {
     inherit pkgs;
 
-    specialArgs = Sigmachine.conf.specialArgs;
+    specialArgs = nixos-system.conf.specialArgs;
     pkgsReadOnly = false;
   };
 
   nodes = {
     machine.imports =
-      Sigmachine.conf.modules
+      nixos-system.conf.modules
       ++ [ vm-config ];
   };
 
   testScript = ''
     with subtest("ensure x starts"):
         machine.wait_for_x()
-        machine.wait_for_file("/home/sigmanificient/.Xauthority")
-        machine.succeed("xauth merge ~sigmanificient/.Xauthority")
+        machine.wait_for_file("/home/${username}/.Xauthority")
+        machine.succeed("xauth merge ~${username}/.Xauthority")
+
+    # it might take some time to boot up the session...
+    machine.sleep(10)
 
     with subtest("ensure we can open a new terminal"):
-        machine.sleep(2)
-
         machine.send_key("meta_l-ret")
-        machine.wait_for_window("zsh", timeout=5)
+        machine.wait_for_window("zsh", timeout=10)
 
         machine.shell_interact()
         machine.sleep(2)
@@ -105,7 +106,7 @@ pkgs.testers.runNixOSTest {
           machine.send_key(key)
         machine.send_key("ret")
 
-        machine.sleep(30)
+        machine.sleep(20)
         machine.screenshot("terminal")
   '';
 }
