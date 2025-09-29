@@ -5,4 +5,4 @@
 *.qcow2
 
 # nix-visualize
-graph.png
+frame.png

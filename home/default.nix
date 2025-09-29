@@ -1,7 +1,5 @@
 { pkgs, username, osConfig, spicePkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
-
   catppuccin = {
     enable = true;
     flavor = "macchiato";

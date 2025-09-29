@@ -21,7 +21,7 @@
       vaapiIntel
       vaapiVdpau
       vulkan-validation-layers
-      mesa.drivers
+      mesa
     ];
   };
 

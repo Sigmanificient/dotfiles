@@ -76,10 +76,6 @@
     ];
   };
 
-  hardware = {
-    pulseaudio.enable = false;
-  };
-
   programs = {
     command-not-found.enable = false;
     dconf.enable = true;

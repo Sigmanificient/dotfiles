@@ -23,7 +23,6 @@
       url = "github:Sigmapitech/ecsls";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
         # Cannot use nested vera-clang.inputs.nixpkgs.follows
         # See https://github.com/NixOS/nix/issues/5790
         vera-clang.follows = "vera-clang";
@@ -72,7 +71,7 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           users.${username}.imports = [
-            catppuccin.homeManagerModules.catppuccin
+            catppuccin.homeModules.catppuccin
             spicetify-nix.homeManagerModules.spicetify
             ./home
           ];
