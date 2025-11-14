@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
 
     catppuccin = {
@@ -29,6 +31,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-stable
     , home-manager
     , nixos-hardware
     , flake-utils
@@ -48,6 +51,8 @@
         config.allowUnfree = true;
       });
 
+      pkgs-stable = import nixpkgs-stable { inherit system; };
+
       home-manager-config = home-base: {
         home-manager = {
           useGlobalPkgs = true;
@@ -59,7 +64,7 @@
           ];
 
           extraSpecialArgs = {
-            inherit catppuccin username system;
+            inherit catppuccin username system pkgs-stable;
 
             spicePkgs = spicetify-nix.legacyPackages.${system};
           };

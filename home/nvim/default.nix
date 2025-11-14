@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
+let
+  hls = pkgs-stable.haskell.packages.ghc984.haskell-language-server;
+in
 {
   home.file = {
     nvim_conf = {
@@ -33,9 +36,9 @@
       llvmPackages.clang-tools
       nodejs
       xclip
-      haskell.packages.ghc984.haskell-language-server
       fzf-make
       typescript-language-server
+      hls
     ];
   };
 }
