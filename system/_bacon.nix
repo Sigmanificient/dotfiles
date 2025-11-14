@@ -5,12 +5,11 @@
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-        amdvlk
         intel-media-driver
         libvdpau-va-gl
         nvidia-vaapi-driver
-        vaapiIntel
-        vaapiVdpau
+        intel-vaapi-driver
+        libva-vdpau-driver
         vulkan-validation-layers
       ];
     };
