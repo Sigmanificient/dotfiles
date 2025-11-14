@@ -5,31 +5,12 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
-    vera-clang = {
-      url = "github:Sigmapitech/vera-clang";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
     catppuccin = {
       type = "github";
       owner = "catppuccin";
       repo = "nix";
     };
 
-    ecsls = {
-      url = "github:Sigmapitech/ecsls";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        # Cannot use nested vera-clang.inputs.nixpkgs.follows
-        # See https://github.com/NixOS/nix/issues/5790
-        vera-clang.follows = "vera-clang";
-      };
-    };
-
-    ehcsls.url = "github:Sigmapitech/ehcsls";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -52,8 +33,6 @@
     , nixos-hardware
     , flake-utils
     , pre-commit-hooks
-    , ecsls
-    , ehcsls
     , catppuccin
     , spicetify-nix
     , ...
@@ -80,7 +59,7 @@
           ];
 
           extraSpecialArgs = {
-            inherit catppuccin username system ecsls ehcsls;
+            inherit catppuccin username system;
 
             spicePkgs = spicetify-nix.legacyPackages.${system};
           };
