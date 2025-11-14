@@ -55,7 +55,7 @@
       gnumake
       lazygit
       tokei
-      wakatime
+      wakatime-cli
       prismlauncher
 
       # misc

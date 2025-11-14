@@ -150,7 +150,7 @@
     liberation_ttf
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     proggyfonts
     apl386
   ];
