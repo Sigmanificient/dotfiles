@@ -2,16 +2,21 @@
 {
   programs.git = {
     enable = true;
-    userName = "Sigmanificient";
-    userEmail = "edhyjox" + "@" + "gmail.com";
 
-    extraConfig.url = {
-      init = {
-        defaultBranch = "main";
+    settings = {
+      user = {
+        name = "Sigmanificient";
+        email = "edhyjox" + "@" + "gmail.com";
       };
 
-      "ssh://git@github.com/" = {
-        insteadOf = "https://github.com/";
+      url = {
+        init = {
+          defaultBranch = "main";
+        };
+
+        "ssh://git@github.com/" = {
+          insteadOf = "https://github.com/";
+        };
       };
     };
 
