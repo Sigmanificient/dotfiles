@@ -139,7 +139,14 @@
   users.users.${username} = {
     isNormalUser = true;
     shell = pkgs.zsh;
-    extraGroups = [ "audio" "docker" "networkmanager" "libvirtd" "wheel" ];
+    extraGroups = [
+      "audio"
+      "docker"
+      "networkmanager"
+      "libvirtd"
+      "wheel"
+      "dialout"
+    ];
     initialPassword = "hello";
   };
 
