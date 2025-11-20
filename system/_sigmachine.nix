@@ -10,6 +10,7 @@
 
   virtualisation.docker.enable = true;
 
+  hardware.bluetooth.enable = true;
   hardware.graphics = {
     enable = true;
 
