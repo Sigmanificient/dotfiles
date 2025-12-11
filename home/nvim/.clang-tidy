@@ -2,36 +2,41 @@ Checks: "-*,
   bugprone-*,
   -bugprone-easily-swappable-parameters,
   -bugprone-multi-level-implicit-pointer-conversion,
+  -bugprone-narrowing-conversions,
   misc-*,
   -misc-no-recursion,
+  -misc-non-private-member-variables-in-classes,
+  -misc-use-anonymous-namespace,
   performance-*,
   portability-*,
   readability-*,
-  -bugprone-narrowing-conversions,
   -readability-magic-numbers,
   -readability-braces-around-statements,
-  -readability-identifier-length,
   -readability-implicit-bool-conversion,
+  -readability-identifier-length,
+  -readability-named-parameter,
   clang-analyzer-*,
   modernize-*,
-  llvm-*,
-"
+  -modernize-avoid-c-arrays,
+  -modernize-use-trailing-return-type,
+  llvm-*"
 
 CheckOptions:
-  - key:   readability-identifier-naming.EnumCase
-    value: lower_case
-  - key:   readability-identifier-naming.UnionCase
-    value: lower_case
-
+  - key: readability-identifier-naming.MethodCase
+    value: camelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelCase
+  - key: readability-identifier-naming.PrivateMethodCase
+    value: camelCase
+  - key: readability-identifier-naming.PublicMethodCase
+    value: camelCase
+  - key: readability-identifier-naming.ProtectedMethodCase
+    value: camelCase
   - key:   readability-identifier-naming.FunctionCase
-    value: lower_case
-  - key:   readability-identifier-naming.ParameterCase
-    value: lower_case
+    value: camelCase
   - key:   readability-identifier-naming.VariableCase
     value: lower_case
-
   - key:   readability-identifier-naming.GlobalVariableCase
     value: UPPER_CASE
-
-  - key:   readability-function-cognitive-complexity.IgnoreMacros
+  - key: modernize-avoid-c-arrays.AllowStringArrays
     value: true
