@@ -40,6 +40,9 @@
     sessionVariables.EDITOR = "nvim";
 
     packages = with pkgs; [
+      firefox
+      figma-linux
+
       # settings
       arandr
       brightnessctl
@@ -47,8 +50,8 @@
 
       # messaging
       vesktop
-      firefox
       teams-for-linux
+      telegram-desktop
 
       # dev
       nix-output-monitor
@@ -63,7 +66,9 @@
       pamixer
       pavucontrol
     ] else [ ]) ++ [
+      aseprite
       gimp
+
       neofetch
       pass
 
