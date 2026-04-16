@@ -96,6 +96,11 @@
 
   security.rtkit.enable = true;
   services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+    };
+
     libinput = {
       enable = true;
       mouse.accelProfile = "flat";
