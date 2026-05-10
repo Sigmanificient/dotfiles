@@ -15,24 +15,24 @@ let
           cbonsai --seed=4
         '');
 
-        auto-neofetch = (pkgs.writeShellScriptBin "auto_neofetch" ''
+        auto-fetch = (pkgs.writeShellScriptBin "auto_fetch" ''
           clear
           sleep 1
 
           xdotool getactivewindow windowmove 1080 600
-          neofetch
+          fastfetch
         '');
       in
       [
         cbonsai
-        neofetch
+        fastfetch
       ] ++ [
         kitty
         picom
         xdotool
       ] ++ [
         auto-cbonsai
-        auto-neofetch
+        auto-fetch
       ];
 
       users.users.${username} = {
@@ -106,7 +106,7 @@ pkgs.testers.runNixOSTest {
         machine.shell_interact()
         machine.sleep(2)
 
-        for key in "auto_neofetch":
+        for key in "auto_fetch":
           machine.send_key(key)
         machine.send_key("ret")
 

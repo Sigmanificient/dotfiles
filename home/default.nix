@@ -11,7 +11,7 @@
 
     ./bash
     ./btop
-    ./neofetch
+    ./fastfetch
     ./picom
     ./dunst
     ./qtile
@@ -69,7 +69,6 @@
       aseprite
       gimp
 
-      pkgs-stable.neofetch
       pass
 
       # utils

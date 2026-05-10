@@ -5,6 +5,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./fastfetch
     ./picom
     ./qtile
     ./zsh

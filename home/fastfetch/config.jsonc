@@ -1,0 +1,90 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "color": {
+      "1": "light_blue",
+      "2": "bright_blue",
+      "3": "light_blue",
+      "4": "bright_blue",
+      "5": "light_blue",
+      "6": "bright_blue"
+    }
+  },
+  "display": {
+    "separator": " ➜ "
+  },
+  "modules": [
+    "break",
+    {
+      "type": "title",
+      "keyWidth": 10
+    },
+    "break",
+    {
+      "type": "os",
+      "key": "OS",
+      "keyColor": "white"
+    },
+    {
+      "type": "kernel",
+      "key": "\u001b[0m├\u001b[34m KRN"
+    },
+    {
+      "type": "packages",
+      "key": "\u001b[0m├\u001b[34m PKG",
+      "keyColor": "white"
+    },
+    {
+      "type": "uptime",
+      "key": "\u001b[0m└\u001b[34m UPT",
+      "keyColor": "white"
+    },
+    "break",
+    {
+      "type": "host",
+      "key": "HW",
+      "keyColor": "white"
+    },
+    {
+      "type": "cpu",
+      "key": "\u001b[0m├\u001b[34m CPU",
+      "keyColor": "white"
+    },
+    {
+      "type": "memory",
+      "key": "\u001b[0m├\u001b[34m RAM",
+      "keyColor": "white"
+    },
+    {
+      "type": "gpu",
+      "key": "\u001b[0m├\u001b[34m GPU",
+      "keyColor": "white"
+    },
+    {
+      "type": "disk",
+      "key": "\u001b[0m└\u001b[34m DSK",
+      "keyColor": "white"
+    },
+    "break",
+    {
+      "type": "wm",
+      "key": "WM",
+      "keyColor": "white"
+    },
+    {
+      "type": "terminal",
+      "key": "\u001b[0m├\u001b[34m TRM",
+      "keyColor": "white"
+    },
+    {
+      "type": "shell",
+      "key": "\u001b[0m├\u001b[34m SHL",
+      "keyColor": "white"
+    },
+    {
+      "type": "editor",
+      "key": "\u001b[0m└\u001b[34m EDR",
+      "keyColor": "white"
+    }
+  ]
+}
