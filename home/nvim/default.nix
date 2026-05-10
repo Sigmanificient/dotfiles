@@ -1,6 +1,6 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 let
-  hls = pkgs-stable.haskell.packages.ghc984.haskell-language-server;
+  hls = pkgs.haskell.packages.ghc984.haskell-language-server;
 in
 {
   home.file = {

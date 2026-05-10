@@ -1,4 +1,4 @@
-{ pkgs, username, osConfig, spicePkgs, ... }:
+{ pkgs, pkgs-stable, username, osConfig, spicePkgs, ... }:
 {
   catppuccin = {
     enable = true;
@@ -69,7 +69,7 @@
       aseprite
       gimp
 
-      neofetch
+      pkgs-stable.neofetch
       pass
 
       # utils
