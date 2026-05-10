@@ -53,9 +53,13 @@ let
         };
       };
 
-      virtualisation.resolution = {
-        x = 1920;
-        y = 1080;
+      virtualisation = {
+        resolution = {
+          x = 1920;
+          y = 1200;
+        };
+        # virtualisation.resolution fallback
+        qemu.options = [ "-vga none -device virtio-gpu-pci,xres=1920,yres=1200" ];
       };
     };
 in
