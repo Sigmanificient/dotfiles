@@ -1,29 +1,29 @@
 { pkgs, nixos-system, username }:
 let
+  inherit (pkgs) lib;
+
+  auto-cbonsai = (pkgs.writeShellScriptBin "auto_cbonsai" ''
+    ${lib.getExe pkgs.xdotool} getactivewindow windowmove 80 80
+    ${lib.getExe pkgs.xdotool} getactivewindow windowsize 400 400
+
+    sleep 1
+    clear
+    ${lib.getExe pkgs.cbonsai} --seed=4
+  '');
+
+  auto-fetch = (pkgs.writeShellScriptBin "auto_fetch" ''
+    ${lib.getExe pkgs.xdotool} getactivewindow windowmove 1080 600
+
+    sleep 1
+    clear
+    ${lib.getExe pkgs.fastfetch}
+  '');
+
   vm-config = { config, lib, ... }:
     {
       boot.consoleLogLevel = lib.mkForce 7;
 
-      environment.systemPackages = with pkgs; let
-        auto-cbonsai = (pkgs.writeShellScriptBin "auto_cbonsai" ''
-          xdotool getactivewindow windowmove 80 80
-          xdotool getactivewindow windowsize 400 400
-
-          clear
-          sleep 1
-
-          cbonsai --seed=4
-        '');
-
-        auto-fetch = (pkgs.writeShellScriptBin "auto_fetch" ''
-          clear
-          sleep 1
-
-          xdotool getactivewindow windowmove 1080 600
-          fastfetch
-        '');
-      in
-      [
+      environment.systemPackages = with pkgs; [
         cbonsai
         fastfetch
       ] ++ [
@@ -80,37 +80,30 @@ pkgs.testers.runNixOSTest {
   };
 
   testScript = ''
-    with subtest("ensure x starts"):
-        machine.wait_for_x()
-        machine.wait_for_file("/home/${username}/.Xauthority")
-        machine.succeed("xauth merge ~${username}/.Xauthority")
+    socket_file = "/home/${username}/.cache/qtile/qtilesocket.:0"
 
-    # it might take some time to boot up the session...
+    machine.wait_for_x()
+    machine.wait_for_file("/home/${username}/.Xauthority")
+    machine.succeed("xauth merge ~${username}/.Xauthority")
+
+    machine.wait_until_succeeds(f"${lib.getExe' pkgs.coreutils "test"} -S '{socket_file}'")
+    machine.wait_until_succeeds(f"qtile cmd-obj -f windows --socket {socket_file}")
+
+    machine.succeed("mkdir /home/${username}/.ssh") # skip ssh setup
+
+    machine.sleep(1)
+    machine.execute(
+      "qtile cmd-obj -o cmd -f spawn"
+      " -a 'kitty sh -c \"${lib.getExe auto-fetch} && cat -\" '"
+      f" --socket {socket_file} & disown")
+
+    machine.sleep(1)
+    machine.execute(
+      "qtile cmd-obj -o cmd -f spawn"
+      " -a 'kitty sh -c \"${lib.getExe auto-cbonsai} && cat -\" '"
+      f" --socket {socket_file} & disown")
+
     machine.sleep(10)
-
-    with subtest("ensure we can open a new terminal"):
-        machine.send_key("meta_l-ret")
-        machine.wait_for_window("zsh", timeout=10)
-
-        machine.shell_interact()
-        machine.sleep(2)
-
-        for key in "auto_cbonsai":
-          machine.send_key(key)
-        machine.send_key("ret")
-        machine.sleep(15)
-
-        machine.send_key("meta_l-ret")
-        machine.sleep(2)
-
-        machine.shell_interact()
-        machine.sleep(2)
-
-        for key in "auto_fetch":
-          machine.send_key(key)
-        machine.send_key("ret")
-
-        machine.sleep(20)
-        machine.screenshot("terminal")
+    machine.screenshot("terminal")
   '';
 }
