@@ -41,7 +41,6 @@
   };
 
   services.sshd.enable = true;
-  programs.ladybird.enable = true;
 
 } // {
   services.tlp = {

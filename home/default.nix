@@ -66,7 +66,6 @@
       pamixer
       pavucontrol
     ] else [ ]) ++ [
-      aseprite
       gimp
 
       pass
