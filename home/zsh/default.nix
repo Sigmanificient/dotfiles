@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -46,7 +46,7 @@
     oh-my-zsh = {
       enable = true;
 
-      custom = "$HOME/extra/zsh";
+      custom = "/home/${username}/extra/zsh";
       theme = "sigma";
 
       plugins = [
