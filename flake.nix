@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
-    flake-utils.url = "github:numtide/flake-utils";
 
     catppuccin = {
       type = "github";
@@ -34,7 +33,6 @@
     , nixpkgs-stable
     , home-manager
     , nixos-hardware
-    , flake-utils
     , pre-commit-hooks
     , catppuccin
     , spicetify-nix
@@ -72,34 +70,33 @@
       };
 
     in
-    flake-utils.lib.eachSystem [ system ]
-      (system: rec {
-        formatter = pkgs.nixpkgs-fmt;
+    {
+      formatter.${system} = pkgs.nixpkgs-fmt;
 
-        checks.pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks.nixpkgs-fmt = {
-            enable = true;
-            name = lib.mkForce "Nix files format";
-          };
+      checks.${system}.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks.nixpkgs-fmt = {
+          enable = true;
+          name = lib.mkForce "Nix files format";
+        };
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        packages = [ pkgs.python312Packages.qtile ];
+      };
+
+      packages.${system} = {
+        screenshot-system = import ./screenshot.nix {
+          inherit pkgs username;
+
+          # lets use the lightest one
+          nixos-system = self.nixosConfigurations.Gha;
         };
 
-        devShells.default = pkgs.mkShell {
-          inherit (checks.pre-commit-check) shellHook;
-          packages = [ pkgs.python312Packages.qtile ];
-        };
-
-        packages = {
-          screenshot-system = import ./screenshot.nix {
-            inherit pkgs username;
-
-            # lets use the lightest one
-            nixos-system = self.nixosConfigurations.Gha;
-          };
-
-          qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
-        };
-      })
+        qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
+      };
+    }
     // (
       let
         nhw-mod = nixos-hardware.nixosModules;
