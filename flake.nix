@@ -181,6 +181,7 @@
                 system.stateVersion = "25.05";
                 fileSystems."/" = {
                   device = "nodev";
+                  fsType = "auto";
                 };
               }
             ];
