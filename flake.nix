@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixpkgs-qtile-0-36.url = "github:NixOS/nixpkgs/83b8ff5ad36094db6f339a8151cade8f01caaa0d";
+
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     catppuccin = {
@@ -30,6 +32,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-qtile-0-36
     , nixpkgs-stable
     , home-manager
     , nixos-hardware
@@ -69,6 +72,9 @@
         };
       };
 
+      qtile = (import nixpkgs-qtile-0-36 { inherit system; }).python3Packages.qtile.overrideAttrs (prev: {
+        dontUsePytestCheck = true; # tests are slow
+      });
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
@@ -83,7 +89,7 @@
 
       devShells.${system}.default = pkgs.mkShell {
         inherit (self.checks.${system}.pre-commit-check) shellHook;
-        packages = [ pkgs.python312Packages.qtile ];
+        packages = [ qtile ];
       };
 
       packages.${system} = {
@@ -95,6 +101,8 @@
         };
 
         qwerty-fr = pkgs.callPackage ./system/qwerty-fr.nix { };
+
+        inherit qtile;
       };
     }
     // (
@@ -120,7 +128,7 @@
           let
             conf = {
               specialArgs = {
-                inherit catppuccin username;
+                inherit catppuccin username qtile;
               };
 
               modules = [ base ]

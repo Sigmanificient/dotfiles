@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, qtile, ... }:
 {
   imports = [
     ./polkit.nix
@@ -137,7 +137,10 @@
             "${ouioui}/share/X11/xkb/symbols/us_qwerty-fr";
         };
       };
-      windowManager.qtile.enable = true;
+      windowManager.qtile = {
+        enable = true;
+        package = qtile;
+      };
     };
   };
 

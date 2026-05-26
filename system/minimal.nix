@@ -1,10 +1,13 @@
-{ pkgs, username, ... }:
+{ pkgs, username, qtile, ... }:
 {
   boot.loader.grub.device = "nodev";
 
   services.xserver = {
     enable = true;
-    windowManager.qtile.enable = true;
+    windowManager.qtile = {
+      enable = true;
+      package = qtile;
+    };
   };
 
   users.users.${username} = {
