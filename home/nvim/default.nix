@@ -28,6 +28,9 @@ in
     plugins = [ pkgs.vimPlugins.lazy-nvim ];
     package = pkgs-stable.neovim-unwrapped;
 
+    withRuby = false;
+    withNodeJs = false;
+    withPython3 = false;
 
     extraPackages = with pkgs; [
       nil
