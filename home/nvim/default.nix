@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 let
   hls = pkgs.haskell.packages.ghc984.haskell-language-server;
 in
@@ -26,6 +26,8 @@ in
 
     extraConfig = (builtins.readFile ./.vimrc);
     plugins = [ pkgs.vimPlugins.lazy-nvim ];
+    package = pkgs-stable.neovim-unwrapped;
+
 
     extraPackages = with pkgs; [
       nil
