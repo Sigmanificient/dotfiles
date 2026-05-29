@@ -1,7 +1,6 @@
 local lsp = require("lsp-zero").preset({})
-local lspconfig = require("lspconfig")
 
-lspconfig.lua_ls.setup {
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
@@ -21,10 +20,9 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.nil_ls.setup({})
-lspconfig.clangd.setup({
+vim.lsp.config("clangd", {
   cmd = {
     "clangd",
     "--background-index",
@@ -32,12 +30,10 @@ lspconfig.clangd.setup({
     "--header-insertion=never",
     "--clang-tidy",
   },
-  init_options = {
-  },
+  init_options = {},
 })
-lspconfig.pyright.setup({})
 
-lspconfig.ts_ls.setup({})
+vim.lsp.enable({ "lua_ls", "nil_ls", "clangd", "pyright", "ts_ls" })
 
 lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
@@ -48,7 +44,7 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set("n", "gf", function() vim.diagnostic.open_float() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-  lsp.default_keymaps({buffer = bufnr})
+  lsp.default_keymaps({ buffer = bufnr })
 end)
 
 lsp.setup()
