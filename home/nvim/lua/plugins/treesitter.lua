@@ -1,15 +1,20 @@
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "bash", "c", "lua", "vim", "python", "yaml" },
-  ignore_install = { "all" },
+local treesitter = require("nvim-treesitter")
 
-  sync_install = false,
-  auto_install = false,
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    pcall(vim.treesitter.start)
 
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
 
-  indent = { enable = true },
-  modules = {}
-}
+local ensure_installed = { "bash", "c", "lua", "vim", "python", "yaml" }
+local already_installed = require("nvim-treesitter.config").get_installed()
+
+local to_install = vim.iter(ensure_installed):filter(function(parser)
+  return not vim.tbl_contains(already_installed, parser)
+end):totable()
+
+if #to_install > 0 then
+  treesitter.install(to_install)
+end
