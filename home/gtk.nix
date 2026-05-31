@@ -11,22 +11,26 @@
 
   gtk = {
     enable = true;
-    # catppuccin = {
-    #  enable = true;
-    #  size = "compact";
-    #  tweaks = [ "rimless" ];
-    # };
+    theme = {
+      name = "catppuccin-mocha-lavender-compact+rimless";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "lavender" ];
+        size = "compact";
+        tweaks = [ "rimless" ];
+        variant = "mocha";
+      };
+    };
 
-    # cursorTheme = {
-    #  name = "Catppuccin-Macchiato-Dark";
-    #  package = pkgs.catppuccin-cursors.macchiatoDark;
-    # };
-
-    # iconTheme = {
-    #  name = "Papirus-Dark";
-    #  package = pkgs.papirus-icon-theme;
-    # };
+    cursorTheme = {
+      name = "Catppuccin-Macchiato-Dark";
+      package = pkgs.catppuccin-cursors.macchiatoDark;
+    };
   };
+
+  home.packages = with pkgs; [
+    glib
+    gsettings-desktop-schemas
+  ];
 
   qt = {
     enable = true;

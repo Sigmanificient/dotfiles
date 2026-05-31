@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, username, osConfig, spicePkgs, ... }:
+{ pkgs, username, osConfig, spicePkgs, ... }:
 {
   catppuccin = {
     enable = true;
