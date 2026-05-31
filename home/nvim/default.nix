@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 let
   hls = pkgs.haskell.packages.ghc984.haskell-language-server;
 in
@@ -26,7 +26,7 @@ in
 
     extraConfig = (builtins.readFile ./.vimrc);
     plugins = [ pkgs.vimPlugins.lazy-nvim ];
-    package = pkgs-stable.neovim-unwrapped;
+    package = pkgs.neovim-unwrapped;
 
     withRuby = false;
     withNodeJs = false;
@@ -43,6 +43,7 @@ in
       xclip
       fzf-make
       typescript-language-server
+      tree-sitter
       hls
     ];
   };
