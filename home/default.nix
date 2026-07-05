@@ -49,9 +49,10 @@
       python3Packages.iwlib
 
       # messaging
-      vesktop
+      element-desktop
       teams-for-linux
       telegram-desktop
+      vesktop
 
       # dev
       nix-output-monitor
@@ -67,7 +68,7 @@
       pavucontrol
     ] else [ ]) ++ [
       gimp
-
+      thunar
       pass
 
       # utils
