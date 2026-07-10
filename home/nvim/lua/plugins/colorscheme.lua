@@ -3,7 +3,7 @@ local is_vt_tty = vim.fn.expand("$TERM") == "linux"
 if not is_vt_tty then
   require("catppuccin").setup({
     integrations = {
-      blink_indent = false,
+      blink_cmp = false
     }
   })
 
