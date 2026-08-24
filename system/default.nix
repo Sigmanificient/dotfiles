@@ -32,7 +32,14 @@
     };
     optimise.automatic = true;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      auto-allocate-uids = true;
+      extra-system-features = [ "uid-range" ];
+      experimental-features = [
+        "auto-allocate-uids"
+        "cgroups"
+        "flakes"
+        "nix-command"
+      ];
       trusted-users = [ "root" "@wheel" ];
       keep-outputs = true;
       keep-derivations = true;
