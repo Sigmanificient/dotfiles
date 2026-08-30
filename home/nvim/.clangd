@@ -1,6 +1,7 @@
 CompileFlags:
-  Add: -Wno-unknown-warning-option
-  Add: -Wno-compare-distinct-pointer-types
+  Add:
+  - -Wno-unknown-warning-option
+  - -Wno-compare-distinct-pointer-types
   Remove: [-m*, -f*]
 FileExtensions:
   - Pattern: "*.c"
