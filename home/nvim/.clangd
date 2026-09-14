@@ -12,3 +12,10 @@ FileExtensions:
     Language: C++
   - Pattern: "*.hpp"
     Language: C++
+Diagnostics:
+  MissingIncludes: Strict
+
+  ClangTidy:
+    Add:
+      - misc-include-cleaner
+    FastCheckFilter: None
