@@ -33,7 +33,14 @@ vim.lsp.config("clangd", {
   init_options = {},
 })
 
-vim.lsp.enable({ "lua_ls", "nil_ls", "clangd", "pyright", "ts_ls" })
+vim.lsp.enable({
+  "lua_ls",
+  "nil_ls",
+  "clangd",
+  "pyright",
+  "ts_ls",
+  "qmlls"
+})
 
 lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
