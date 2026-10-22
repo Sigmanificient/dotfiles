@@ -4,6 +4,8 @@
     enable = true;
     flavor = "macchiato";
     accent = "blue";
+
+    nvim.enable = false;
   };
 
   imports = [
