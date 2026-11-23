@@ -42,6 +42,19 @@ vim.lsp.enable({
   "qmlls"
 })
 
+vim.lsp.config("rust_analyzer", {
+  cmd = { "rust-analyzer" },
+  settings = {
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+    },
+  },
+})
+
+vim.lsp.enable("rust_analyzer")
+
 lsp.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
