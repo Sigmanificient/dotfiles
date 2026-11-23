@@ -79,4 +79,11 @@
     docker.enable = true;
     libvirtd.enable = true;
   };
+} // {
+  networking.firewall.checkReversePath = "loose";
+
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
 }
